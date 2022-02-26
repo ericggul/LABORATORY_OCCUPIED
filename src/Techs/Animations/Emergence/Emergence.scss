@@ -1,0 +1,44 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{random(160) + 20}s;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: black;
+
+  .element {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    animation: blink 3s infinite;
+  }
+}
+
+@keyframes movement {
+  to {
+    transform: translate(10vw, 5vh);
+  }
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes appearance-change {
+  to {
+    transform: scale(0.7);
+  }
+}

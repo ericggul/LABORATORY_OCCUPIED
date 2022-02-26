@@ -1,0 +1,58 @@
+$color1: black;
+$color2: rgb(4, 39, 43);
+
+@mixin blink-animation-delay {
+  @for $i from 1 through 10 {
+    &:nth-child(40n + #{2 * $i - 1}) {
+      animation: breathe-y-plus 1.2s linear forwards;
+      animation-delay: 1.3s;
+    }
+    &:nth-child(40n + #{2 * $i}) {
+      animation: breathe-x-plus 1.2s linear forwards;
+      animation-delay: 1.2s;
+    }
+    &:nth-child(40n + #{2 * $i + 19}) {
+      animation: breathe-x-minus 1.2s linear forwards;
+      animation-delay: 1.4s;
+    }
+    &:nth-child(40n + #{2 * $i + 20}) {
+      animation: breathe-y-minus 1.2s linear forwards;
+      animation-delay: 1.5s;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(40, 50px);
+  grid-template-rows: repeat(40, 50px);
+  background: $color1;
+
+  .comp {
+    background: $color1;
+  }
+
+  .compinit {
+    background: $color2;
+    animation: opacity 0.8s forwards;
+  }
+}
+
+@keyframes opacity {
+  from {
+    height: 0;
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    height: 50px;
+    width: 50px;
+    opacity: 1;
+  }
+}

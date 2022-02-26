@@ -1,0 +1,85 @@
+@mixin animation-adjust {
+  @for $i from 1 through 31 {
+    &:nth-child(31n + #{$i}) {
+      .square {
+        animation-delay: -#{$i}s;
+      }
+    }
+  }
+
+  @for $i from 1 through 23 {
+    &:nth-child(23n + #{$i}) {
+      .square {
+        animation-duration: #{$i * 0.5+15}s;
+      }
+    }
+  }
+}
+
+body {
+  overflow: hidden;
+}
+
+.container {
+  position: fixed;
+  display: grid;
+  grid-template-rows: repeat(100, 60px);
+  grid-template-columns: repeat(10, 220px);
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+
+  .profilePic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 5px;
+    background: grey;
+    cursor: pointer;
+    position: relative;
+    background-clip: padding-box;
+    overflow: hidden;
+
+    .circle {
+      background: white;
+      height: 2px;
+      width: 2px;
+      border-radius: 50%;
+      position: absolute;
+    }
+  }
+
+  .profileDescrp {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    color: black;
+    margin-left: 5px;
+
+    .profileName {
+      margin-top: 4px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .profileLoc {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+
+  .profileTemp {
+    margin-left: auto;
+    display: flex;
+  }
+}

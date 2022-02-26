@@ -1,0 +1,25 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 0.1rem;
+  position: relative;
+  overflow: auto;
+
+  background: black;
+  color: white;
+
+  .adjustable {
+    overflow-y: scroll;
+    width: 20vw;
+    height: 80vh;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}

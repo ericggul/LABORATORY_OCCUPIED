@@ -1,0 +1,36 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{random(20) / 5}s;
+      font-weight: #{$i}* 100;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background: black;
+
+  .light {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: #feffac;
+
+    box-shadow: 0 0 1px #f89d86, 0 0 2px #e55e57, 0 0 3px #e55e57,
+      0 0 5px #e4222a, 0 0 10px #e4222a, 0 0 15px #e4222a, 0 0 20px #e21d24,
+      0 0 30px #ff0006, 0 0 40px #ff0006, 0 0 60px #ff0006, 0 0 70px #ff0006,
+      0 0 80px #ff0006, 0 0 90px #ff0006, 0 0 100px #ff0006, 0 0 110px #ff0006,
+      0 0 130px #ff0006, 0 0 150px #ff0006, 0 0 200px #ff0006, 0 0 230px #ff0006,
+      0 0 250px #ff0006, 0 0 270px #ff0006, 0 0 300px #ff0006;
+  }
+}

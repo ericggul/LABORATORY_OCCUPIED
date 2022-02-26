@@ -1,0 +1,21 @@
+.container {
+  position: absolute;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  grid-template-columns: repeat(10, 10vw);
+  grid-template-rows: repeat(200, 10vw);
+  background: #2d34ab;
+
+  .comp {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  .compclicked {
+    width: 10vw;
+    height: 10vw;
+  }
+}

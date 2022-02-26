@@ -1,0 +1,29 @@
+body {
+  overflow: hidden;
+}
+
+.container {
+  position: absolute;
+
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #030505;
+
+  grid-template-columns: repeat(40, 2.5vw);
+  grid-template-rows: repeat(200, 2.5vw);
+  overflow-y: scroll;
+
+  .comp {
+    width: 2.5vw;
+    height: 2.5vw;
+    position: relative;
+
+    .square {
+      position: absolute;
+      border-radius: 50%;
+    }
+  }
+}

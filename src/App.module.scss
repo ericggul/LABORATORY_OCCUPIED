@@ -1,0 +1,57 @@
+$color: #bb3434, #f7715f, #8f1111, #e22e23;
+$elements: 7;
+
+@mixin animation-delay {
+  @for $i from 1 through $elements {
+    &:nth-child(#{$i}) {
+      .text {
+        animation-delay: -#{$i}s;
+      }
+    }
+  }
+}
+
+@mixin color-input {
+  @for $i from 1 through $elements {
+    &:nth-child(#{$i}) {
+      .text {
+        color: nth($color, ($i%4 + 1));
+      }
+    }
+  }
+}
+
+.App {
+  background: black;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+
+  .box {
+    @include animation-delay;
+    @include color-input;
+    height: 10%;
+    .text {
+      font-size: 3rem;
+      // color: #BB3434;
+      animation: test 3s infinite alternate;
+    }
+  }
+}
+
+@keyframes test {
+  0% {
+    font-weight: 500;
+  }
+
+  70% {
+    font-size: 4rem;
+    font-weight: 800;
+    color: white;
+  }
+}

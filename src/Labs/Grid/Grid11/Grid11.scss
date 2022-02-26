@@ -1,0 +1,45 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{random(160) + 20}s;
+    }
+  }
+}
+
+.thekingofwhole {
+  background: black;
+  display: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+.BoxcontainerG {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(100, 3.1vw);
+  grid-template-rows: repeat(100, 3.1vw);
+
+  animation: expand 3s infinite;
+
+  .square {
+  }
+
+  &:last-child {
+    z-index: -5;
+    background: black;
+  }
+
+  @keyframes expand {
+    from {
+      transform: translateX(1);
+    }
+    to {
+      transform: translateX(200);
+    }
+  }
+}

@@ -1,0 +1,64 @@
+$color1: black;
+$color2: rgb(4, 39, 43);
+
+@mixin blink-animation-delay {
+  &:nth-child(2n + 1) {
+    animation: breathe-bottom 2s linear forwards;
+  }
+  &:nth-child(2n) {
+    animation: breathe-top 2s linear forwards;
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(20, 100px);
+  grid-template-rows: repeat(20, 100px);
+  background: $color1;
+
+  .comp {
+    background: $color2;
+    @include blink-animation-delay;
+    animation-delay: 1s;
+  }
+}
+
+@keyframes breathe-bottom {
+  0% {
+    width: 0;
+    height: 0;
+    margin: 50px;
+    border-radius: 50%;
+  }
+  50% {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    border-radius: 50%;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+@keyframes breathe-top {
+  0% {
+    width: 100px;
+    height: 0;
+    margin: 0;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+  }
+}

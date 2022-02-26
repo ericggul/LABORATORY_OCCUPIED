@@ -1,0 +1,18 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{random(160) + 20}s;
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  height: 2.5vh;
+
+  .element {
+    box-shadow: inset 0 0 0.5vw white;
+    // border: .1vw solid #aaa;
+  }
+}

@@ -1,0 +1,68 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      .circle {
+        animation-delay: -#{$i * 23}s;
+      }
+    }
+  }
+  @for $i from 1 through 13 {
+    &:nth-child(13n + #{$i}) {
+      .circle {
+        animation-duration: #{abs(3.25-$i/6)}s;
+      }
+    }
+  }
+}
+
+.container {
+  height: 1030vw;
+  width: 100%;
+  position: fixed;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-template-columns: repeat(4, 25vw);
+  grid-template-rows: repeat(40, 25vw);
+  background: black;
+  position: relative;
+
+  .box {
+    position: relative;
+    width: 25vw;
+    height: 25vw;
+    @include blink-animation-delay;
+
+    .circle {
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 18vw;
+      height: 18vw;
+      border-radius: 50%;
+      background: white;
+      animation: rotatee 3s infinite linear;
+      cursor: pointer;
+
+      span {
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+      }
+    }
+  }
+}
+
+@keyframes rotatee {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

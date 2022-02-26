@@ -1,0 +1,29 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{random(20) / 5}s;
+      font-weight: #{$i}* 100;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background: black;
+
+  .light {
+    position: absolute;
+    width: 50px;
+    height: 10px;
+    border-radius: 3px;
+    background: transparent;
+  }
+}

@@ -1,0 +1,80 @@
+$color1: black;
+$color2: rgb(4, 39, 43);
+
+@mixin blink-animation-delay {
+  &:nth-child(2n + 1) {
+    animation: breathe-bottom 1.2s linear forwards;
+  }
+  &:nth-child(2n) {
+    animation: breathe-top 1.2s linear forwards;
+  }
+  @for $i from 1 through 31 {
+    &:nth-child(31n + #{$i}) {
+      animation-delay: #{random($i + 10) / 31}s;
+    }
+  }
+
+  @for $i from 1 through 7 {
+    &:nth-child(7n + #{$i}) {
+      animation-duration: #{random($i) / 13}s;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(50, 100px);
+  grid-template-rows: repeat(50, 100px);
+  background: $color1;
+
+  .comp {
+    width: 0;
+    height: 0;
+    background: $color2;
+    @include blink-animation-delay;
+  }
+}
+
+@keyframes breathe-bottom {
+  0% {
+    width: 0;
+    height: 50px;
+    margin: 0;
+  }
+  50% {
+    width: 100px;
+    height: 50px;
+    margin: 0;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+  }
+}
+
+@keyframes breathe-top {
+  0% {
+    width: 0;
+    height: 50px;
+    margin-left: 0;
+    margin-top: 50px;
+  }
+  50% {
+    width: 100px;
+    height: 50px;
+    margin-left: 0;
+    margin-top: 100px;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+  }
+}

@@ -1,0 +1,47 @@
+@mixin a-bit-of-margin {
+  @for $i from 1 through 7 {
+    &:nth-child(7n + #{$i}) {
+      margin-top: #{$i * 3}px;
+      animation-delay: -#{$i * 0.5}s;
+    }
+  }
+  @for $i from 1 through 13 {
+    &:nth-child(13n + #{$i}) {
+      margin-left: #{$i * 11}px;
+      animation-duration: #{$i * 0.1 + 4}s;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: black;
+
+  display: grid;
+  grid-template-columns: repeat(50, 36px);
+  grid-template-rows: repeat(50, 26px);
+
+  align-items: center;
+  justify-content: center;
+
+  .comp {
+    width: 36px;
+    height: 26px;
+
+    color: white;
+
+    @include a-bit-of-margin;
+    animation: blink 5s infinite alternate;
+  }
+}
+
+@keyframes blink {
+  0% {
+    color: white;
+  }
+  100% {
+    color: black;
+  }
+}

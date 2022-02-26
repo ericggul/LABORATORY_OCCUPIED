@@ -1,0 +1,47 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{$i/5}s;
+    }
+  }
+}
+
+:root {
+  --c1: #6ba782;
+  --c2: #cbedb5;
+  --c3: #679b69;
+  --c4: #bfe6c1;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background: radial-gradient(#7c8ba2, #acbfac);
+
+  .component {
+    position: absolute;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    @include blink-animation-delay;
+    animation: opaque 3s infinite linear;
+  }
+}
+
+@keyframes opaque {
+  0% {
+    opacity: 0.02;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}

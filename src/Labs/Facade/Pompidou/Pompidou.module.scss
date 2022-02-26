@@ -1,0 +1,122 @@
+@mixin rotate-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{random(160) + 20}s;
+    }
+  }
+  @for $i from 1 through 31 {
+    &:nth-child(31n + #{$i}) {
+      animation-duration: #{random(40) + 30}s;
+    }
+  }
+  @for $i from 1 through 2 {
+    &:nth-child(2n + 1) {
+      animation-direction: reverse;
+    }
+  }
+}
+
+.whole {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: -5;
+  background: black;
+  animation: none;
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  grid-template-columns: repeat(50, 2vw);
+  grid-template-rows: repeat(30, 3.33vh);
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+      height: 0.5vh;
+
+      width: 10vw;
+      background: white;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0.2vw;
+        height: 4vh;
+        left: 0.4vw;
+        bottom: -0.1vh;
+
+        transform: rotate(30deg);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0.2vw;
+        height: 4vh;
+        left: 0.4vw;
+        top: -0.1vh;
+        background: white;
+        transform: rotate(-30deg);
+      }
+
+      &:last-child {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        height: 0.5vh;
+      }
+    }
+  }
+
+  .outerwrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+      height: 0.5vh;
+
+      width: 10vw;
+      background: white;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0.2vw;
+        height: 4vh;
+        left: -0.5vw;
+        bottom: -0.1vh;
+        background: white;
+        transform: rotate(-30deg);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0.2vw;
+        height: 4vh;
+        left: -0.5vw;
+        top: -0.1vh;
+        background: white;
+        transform: rotate(30deg);
+      }
+
+      &:last-child {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        height: 0.5vh;
+      }
+    }
+  }
+}

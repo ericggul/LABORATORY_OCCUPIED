@@ -1,0 +1,28 @@
+body {
+  overflow: hidden;
+}
+
+.container {
+  position: absolute;
+
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #030505;
+
+  grid-template-columns: repeat(10, 10vw);
+  grid-template-rows: repeat(50, 10vw);
+  overflow-y: scroll;
+
+  .comp {
+    width: 10vw;
+    height: 10vw;
+    position: relative;
+
+    .circle {
+      position: absolute;
+    }
+  }
+}

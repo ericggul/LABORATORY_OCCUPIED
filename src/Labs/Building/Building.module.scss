@@ -1,0 +1,24 @@
+.container {
+  position: absolute;
+
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: black;
+
+  .square {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+
+    background: rgb(247, 246, 236);
+    box-shadow: inset 0 0 2vw #777, 0 0 1vw white;
+  }
+}

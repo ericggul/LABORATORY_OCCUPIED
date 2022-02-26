@@ -1,0 +1,29 @@
+.container {
+  position: absolute;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(20, 5vw);
+  grid-template-rows: repeat(200, 5vw);
+
+  .comp {
+    width: 5vw;
+    height: 5vw;
+  }
+
+  .compclicked {
+    width: 5vw;
+    height: 5vw;
+    animation: click-color-change 2.3s infinite;
+  }
+}
+
+@keyframes click-color-change {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

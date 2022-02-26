@@ -1,0 +1,27 @@
+.container {
+  position: absolute;
+
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: white;
+
+  .block {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+    .comp {
+      width: 80px;
+      height: 80px;
+    }
+
+    .compclicked {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}

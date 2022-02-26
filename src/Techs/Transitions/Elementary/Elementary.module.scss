@@ -1,0 +1,59 @@
+$color1: black;
+$color2: rgb(4, 39, 43);
+
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: #{random(13) / 13}s;
+    }
+  }
+
+  @for $i from 1 through 13 {
+    &:nth-child(13n + #{$i}) {
+      animation-duration: #{random($i) / 13}s;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(50, 100px);
+  grid-template-rows: repeat(50, 100px);
+  background: $color1;
+
+  .comp {
+    width: 0;
+    height: 0;
+    background: $color2;
+    @include blink-animation-delay;
+    animation: breathe 0.6s linear forwards;
+  }
+}
+
+@keyframes breathe {
+  from {
+    width: 10px;
+    height: 10px;
+    margin-left: 45px;
+    margin-top: 45px;
+  }
+  to {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@keyframes change-background {
+  from {
+    background: $color1;
+  }
+  to {
+    background: $color2;
+  }
+}

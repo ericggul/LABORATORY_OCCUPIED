@@ -1,0 +1,56 @@
+.container {
+  position: absolute;
+
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: none;
+
+  .number {
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+
+    .single {
+      width: 5.3rem;
+      margin: 0.5rem;
+      text-align: right;
+
+      &:nth-of-type(3) {
+        text-align: center;
+      }
+      &:nth-of-type(5) {
+        text-align: left;
+      }
+    }
+
+    .divider {
+      width: 1rem;
+      margin-top: -0.5rem;
+    }
+  }
+
+  .factory {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 1rem;
+
+    .display {
+      color: white;
+      font-size: 0.7rem;
+      text-align: center;
+      margin: 1rem;
+    }
+  }
+}

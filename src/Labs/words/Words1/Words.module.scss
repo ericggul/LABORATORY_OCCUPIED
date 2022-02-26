@@ -1,0 +1,42 @@
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-template-columns: repeat(4, 25vw);
+  grid-template-rows: repeat(10, 25vw);
+  position: relative;
+
+  .box {
+    position: relative;
+    width: 25vw;
+    height: 25vw;
+
+    .circle {
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 15vw;
+      height: 15vw;
+      border-radius: 50%;
+
+      animation: rotatee 5s infinite linear;
+    }
+  }
+}
+
+@keyframes rotatee {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

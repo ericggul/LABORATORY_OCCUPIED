@@ -1,0 +1,71 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 12 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{$i/5}s;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  background: rgb(37, 83, 87);
+  display: grid;
+  grid-template-columns: repeat(50, 100px);
+  grid-template-rows: repeat(50, 100px);
+  animation: color-change 5s infinite;
+
+  .comp {
+    width: 100px;
+    height: 100px;
+
+    background: radial-gradient(rgb(29, 114, 117), rgb(37, 83, 87));
+    animation: breathe 3s infinite;
+  }
+
+  .compclicked {
+    width: 100px;
+    height: 100px;
+
+    background: radial-gradient(rgb(117, 97, 29), rgb(37, 83, 87));
+  }
+}
+
+@keyframes breathe {
+  0% {
+    width: 103px;
+    height: 103px;
+  }
+  50% {
+    width: 100px;
+    height: 100px;
+  }
+  100% {
+    width: 103px;
+    height: 103px;
+  }
+}
+
+@keyframes color-change {
+  0% {
+    background: radial-gradient(rgb(29, 114, 117), black);
+  }
+
+  50% {
+    background: radial-gradient(black, rgb(29, 114, 117));
+  }
+}
+
+@keyframes blink {
+  0% {
+    background: rgba(1, 1, 1, 0);
+  }
+  30% {
+    background: rgba(1, 1, 1, 0.7);
+  }
+  50% {
+    background: rgba(1, 1, 1, 0);
+  }
+}

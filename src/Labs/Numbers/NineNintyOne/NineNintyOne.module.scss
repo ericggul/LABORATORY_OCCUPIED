@@ -1,0 +1,71 @@
+@mixin a-bit-of-margin {
+  @for $i from 1 through 13 {
+    &:nth-child(13n + #{$i}) {
+      margin-top: #{$i * 0.3}px;
+    }
+  }
+  @for $i from 1 through 241 {
+    &:nth-child(241n + #{$i}) {
+      margin-left: #{$i * 1}px;
+    }
+  }
+
+  @for $i from 1 through 31 {
+    &:nth-child(31n + #{$i}) {
+      animation-delay: -#{$i * 0.32}s;
+    }
+  }
+
+  @for $i from 1 through 23 {
+    &:nth-child(23n + #{$i}) {
+      animation-duration: #{$i * 1+5}s;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: black;
+
+  display: grid;
+  grid-template-columns: repeat(50, 47px);
+  grid-template-rows: repeat(50, 47px);
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .comp {
+    width: 47px;
+    height: 47px;
+    font-size: 24px;
+    color: transparent;
+    text-shadow: 3px 3px 5px white, 5px 5px 5px white;
+
+    @include a-bit-of-margin;
+
+    animation: shadow-change 2s linear infinite alternate;
+  }
+}
+
+@keyframes shadow-change {
+  0% {
+    text-shadow: 3px 3px 5px white, 5px 5px 2px white, 7px 7px 3px #aaa,
+      9px 9px 15px white, 4px 4px 3px #bbb;
+  }
+  30% {
+    text-shadow: 3px 3px 5px white, 5px 5px 5px white, 70px 35px 10px #aaa,
+      8px -8px 2px white, 4px 80px 3px #bbb;
+  }
+
+  70% {
+    text-shadow: -40px 12px 5px white, 7px -8px 5px white, 80px -29px 1px #aaa,
+      8px -8px 2px white, 4px 880px 1px #bbb;
+  }
+  100% {
+    text-shadow: -40px 12px 1px white, 7px -8px 1px white, 80px -29px 1px #aaa,
+      8px -8px 2px white, 4px 4px 30px #bbb;
+  }
+}

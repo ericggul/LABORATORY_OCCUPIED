@@ -1,0 +1,12 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{random(160) + 20}s;
+    }
+  }
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+}

@@ -1,0 +1,49 @@
+$color1: black;
+$color2: rgb(4, 39, 43);
+
+@mixin blink-animation-delay {
+  @for $i from 1 through 31 {
+    &:nth-child(31n + #{$i}) {
+      animation-delay: -#{random(60)}s;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background: $color1;
+
+  .comp {
+    background: transparent;
+    position: absolute;
+    width: 80px;
+    height: 120px;
+    border-radius: 30% 70% 26% 74% / 30% 30% 70% 70%;
+
+    opacity: 0.8;
+    box-shadow: inset 5px 10px 30px #aaa, inset -5px -10px 10px #888,
+      5px 10px 30px #666;
+    animation: changes 30s infinite alternate;
+    @include blink-animation-delay;
+  }
+}
+
+@keyframes changes {
+  0% {
+    transform: rotate(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(20vw, 3px);
+  }
+}

@@ -1,0 +1,76 @@
+$color1: black;
+$color2: rgb(4, 39, 43);
+
+@mixin blink-animation-delay {
+  @for $i from 1 through 31 {
+    &:nth-child(31n + #{$i}) {
+      animation-delay: -#{random(60)}s;
+    }
+  }
+  @for $i from 1 through 13 {
+    &:nth-child(13n + #{$i}) {
+      animation-duration: -#{random(24) + 12}s;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  .comp {
+    background: transparent;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+
+    opacity: 0.8;
+    box-shadow: inset 5px 10px 10px #aaa, inset -5px -10px 10px #888,
+      5px 10px 10px #666;
+    @include blink-animation-delay;
+  }
+}
+
+.containerTwo {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: black;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(20, 10vw);
+  grid-template-rows: repeat(80, 10vw);
+
+  z-index: -2;
+
+  .boxTwo {
+    position: relative;
+    .circleTwo {
+      height: 10vw;
+      width: 10vw;
+      border-radius: 50%;
+      box-shadow: inset 0 0 3vw #aaa, 0 0 3vw #888, 1vw 1vw 2vw #aaa;
+    }
+  }
+}
+
+@keyframes changes {
+  0% {
+    transform: rotate(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(20vw, 3px);
+  }
+}

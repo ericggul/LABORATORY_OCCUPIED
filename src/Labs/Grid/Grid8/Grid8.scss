@@ -1,0 +1,93 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{random(160) + 20}s;
+    }
+  }
+}
+
+.Boxcontainer {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(100, 3.1vw);
+  grid-template-rows: repeat(100, 3.1vw);
+
+  animation: expand 3s infinite;
+
+  .square {
+  }
+
+  &:last-child {
+    z-index: -5;
+    background: black;
+  }
+
+  @keyframes expand {
+    from {
+      transform: translateX(1);
+    }
+    to {
+      transform: translateX(200);
+    }
+  }
+}
+
+.containerOne {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(100, 3.1vw);
+  grid-template-rows: repeat(100, 3.1vw);
+
+  .squareOne {
+    height: 3.1vw;
+    width: 3.1vw;
+  }
+}
+
+.containerTwo {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background: black;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(20, 5.3vw);
+  grid-template-rows: repeat(80, 5.3vw);
+
+  z-index: -2;
+
+  .squareTwo {
+    height: 5.3vw;
+    width: 5.3vw;
+  }
+}
+
+@keyframes movement {
+  to {
+    transform: translate(10vw, 5vh);
+  }
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes appearance-change {
+  to {
+    transform: scale(0.7);
+  }
+}

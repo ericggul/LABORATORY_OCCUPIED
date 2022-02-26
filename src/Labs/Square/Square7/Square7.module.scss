@@ -1,0 +1,29 @@
+.container {
+  position: absolute;
+
+  display: flex;
+  width: 100vw;
+  height: 400vh;
+  align-items: center;
+  justify-content: center;
+  background: #030505;
+
+  overflow-y: scroll;
+
+  .block {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+    .comp {
+      width: 30px;
+      height: 30px;
+    }
+
+    .compclicked {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  font-size: 0.5rem;
+  position: relative;
+  overflow: auto;
+
+  background: black;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

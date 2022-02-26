@@ -1,0 +1,33 @@
+body {
+  overflow: hidden;
+}
+
+.whole {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+}
+
+.container {
+  position: absolute;
+
+  display: grid;
+
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+
+  // overflow-y: scroll;
+
+  .comp {
+    width: 2.5vw;
+    height: 2.5vw;
+    position: relative;
+
+    .square {
+      position: absolute;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@mixin blink-animation-delay {
+  @for $i from 1 through 17 {
+    &:nth-child(17n + #{$i}) {
+      animation-delay: -#{random(160) + 20}s;
+    }
+  }
+}
+
+.container2 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: black;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(40, 2.5vw);
+  grid-template-rows: repeat(160, 2.5vw);
+
+  z-index: -2;
+
+  .square2 {
+    height: 2.5vw;
+    width: 2.5vw;
+    display: flex;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.25rem;
+  }
+}
+
+@keyframes movement {
+  to {
+    transform: translate(10vw, 5vh);
+  }
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes appearance-change {
+  to {
+    transform: scale(0.7);
+  }
+}
