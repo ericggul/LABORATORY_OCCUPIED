@@ -33,6 +33,7 @@
     "@types/webfontloader": "^1.6.33",
     "canvas-confetti": "^1.4.0",
     "classnames": "^2.3.1",
+    "cors": "^2.8.5",
     "csv": "^6.0.4",
     "d3-ease": "^3.0.1",
     "dat.gui": "^0.7.7",
@@ -91,5 +92,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://apis.data.go.kr"
 }

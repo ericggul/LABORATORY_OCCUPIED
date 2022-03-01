@@ -11,7 +11,7 @@ import Shitga114 from "../Labs/Shitga/Shitga114/Shitga";
 import Shitga115 from "../Labs/Shitga/Shitga115/Shitga";
 
 const ShitgaRoutes = [
-  { path: "/the-system-one-and-only", component: ShitgaSystem },
+  { path: "/the-system", component: ShitgaSystem },
   { path: "/shitgatesting", component: ShitgaTesting },
   { path: "/shitga1", component: Shitga1 },
   { path: "/shitga2", component: Shitga2 },

@@ -59,7 +59,7 @@ function HandsModel() {
     >
       <ambientLight intensity={0.2} />
 
-      <fog args={["white", 1, 30]} />
+      <fog attach="fog" args={["white", 1, 100]} />
       <spotLight position={[10, 10, 10]} intensity={1.3} color="#4682dd" />
       <spotLight position={[-30, -20, 10]} intensity={0.5} color="#0ee5e5" />
 
@@ -80,7 +80,7 @@ function HandsModel() {
             target={[0, 0, 200 / 2]}
             focalLength={0.5}
             bokehScale={0.1}
-            height={1000}
+            height={100}
           />
         </EffectComposer>
       </Suspense>
