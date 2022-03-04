@@ -170,6 +170,7 @@ import NineOne1 from "./Labs/Circles/NineOne1/NineOne1";
 import BounceMusic from "./Labs/Tone/BounceMusic/BounceMusic";
 import ToneTesting from "./Labs/Tone/ToneTesting/Tone";
 
+import TextBlinkTesting from "./Labs/Blink/TextBlink/TextBlinkTesting";
 import Spike from "./Labs/Spike/SpikeTesting/Spike";
 import Writings from "./Labs/VeryLogical/Writings/Writings";
 
@@ -298,6 +299,7 @@ function App() {
 
         <Route exact path="/bounce-music" component={BounceMusic} />
 
+        <Route exact path="/text-blink-testing" component={TextBlinkTesting} />
         <Route exact path="/spike" component={Spike} />
         <Route exact path="/writings" component={Writings} />
 

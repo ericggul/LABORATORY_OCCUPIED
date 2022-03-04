@@ -171,7 +171,7 @@ export default function Shitga() {
         method: "GET",
         url: "https://api.waqi.info/feed/seoul/?token=bdc1d1870e7d445ba1a223e952d5e1d61d8a931f",
       });
-      console.log("dust", res.data.data.forecast.daily.pm25);
+
       let result = res.data.data.forecast.daily.pm25;
       const today = new Date().getDate();
       const yesterday = new Date(

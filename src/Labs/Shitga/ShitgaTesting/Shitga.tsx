@@ -82,7 +82,7 @@ class App {
 
     this.ctx.scale(this.scale, this.scale);
 
-    this.squareFibonacci = 5;
+    this.squareFibonacci = 4;
     this.squareInterval = fibonacci(this.squareFibonacci);
 
     this.numbers = Math.floor(610 / this.squareInterval);
@@ -112,22 +112,22 @@ class App {
   init2() {
     for (let i = 0; i < this.numbers; i++) {
       for (let j = 0; j < this.numbers; j++) {
-        this.ctx.fillStyle = `rgba(255,255,255, ${getRandom(0.1, 1)})`;
+        this.ctx.fillStyle = `rgba(255,255,255, ${getRandom(0, 1)})`;
         this.ctx.fillRect(
           this.squareInterval * i + this.margin,
           this.squareInterval * j + this.margin,
           fibonacci(
             weightedNumber(
               this.squareFibonacci - 2,
-              this.squareFibonacci + 1,
-              0.95
+              this.squareFibonacci + 2,
+              0.9
             )
           ),
           fibonacci(
             weightedNumber(
               this.squareFibonacci - 2,
-              this.squareFibonacci + 1,
-              0.95
+              this.squareFibonacci + 2,
+              0.9
             )
           )
         );

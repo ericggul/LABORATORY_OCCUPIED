@@ -68,7 +68,7 @@ class Canvas {
 
     this.ctx.scale(this.scale, this.scale);
     this.bundlesNumber = 300;
-    this.perBundleNumber = 30;
+    this.perBundleNumber = 20;
     this.bundles = [];
 
     this.init();
@@ -85,6 +85,7 @@ class Canvas {
   }
 
   draw(mouseX: any, mouseY: any) {
+    // this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
     this.bundles.map((bundle: any) => {
       bundle.draw(this.ctx, { x: mouseX, y: mouseY });
     });
@@ -126,8 +127,8 @@ class Bundle {
             y: getRandom(0, this.stageHeight),
           },
           {
-            x: getRandom(0.2, 0.4),
-            y: getRandom(0.2, 0.4),
+            x: getRandom(0.1, 0.4),
+            y: getRandom(0.1, 0.4),
           },
           getRandom(0, Math.PI * 2)
         )
@@ -136,9 +137,9 @@ class Bundle {
   }
 
   draw(ctx: any, pos: any) {
-    const opacity = getRandom(0.2, 0.4);
+    const opacity = getRandom(0.5, 1);
     this.particles.map((particle: any) => {
-      particle.draw(ctx, opacity, pos);
+      particle.draw(ctx, opacity);
     });
   }
 }
@@ -148,7 +149,6 @@ class Particle {
   size: any;
   rotation: any;
   color: any;
-  colorSpeed: any;
 
   movementSpeed: any;
   movementAcc: any;
@@ -158,66 +158,31 @@ class Particle {
     this.size = size;
     this.rotation = rotation;
     this.movementSpeed = {
-      x: getRandom(getRandom(-0.2, 0), getRandom(0, 0.2)),
-      y: getRandom(-0.1, 0.1),
+      x: getRandom(getRandom(-0.02, 0), getRandom(0, 0.02)),
+      y: getRandom(-0.01, 0.01),
     };
     this.movementAcc = {
-      x: getRandom(-0.0005, 0.0005),
-      y: getRandom(-0.001, 0.0015),
+      x: getRandom(-0.00005, 0.00005),
+      y: getRandom(-0.0001, 0.00015),
     };
     this.color = {
-      r: getRandom(100, 250),
-      g: getRandom(0, 250),
-      b: getRandom(200, 250),
-    };
-    this.colorSpeed = {
-      r: getRandom(0.5, 0.6),
-      g: getRandom(-0.8, -0.7),
-      b: getRandom(0.03, 0.04),
+      r: getRandom(40, 200),
+      g: getRandom(150, 230),
+      b: getRandom(150, 230),
     };
   }
 
-  draw(ctx: any, opacity: any, pos: any) {
-    const currentPos = this.pos;
-    let randomness =
-      Math.random() < 0.01 ? getRandom(-110, -70) : getRandom(0.5, 1.5);
-    this.pos.x +=
-      ((pos.x - currentPos.x) / 20) * randomness +
-      (Math.random() < 0.1 ? getRandom(-50, 50) : 0);
-
-    this.pos.y +=
-      ((pos.y - currentPos.y) / 20) * randomness +
-      (Math.random() < 0.1 ? getRandom(-50, 50) : 0);
-
+  draw(ctx: any, opacity: any) {
+    this.pos.x += this.movementSpeed.x * (1 / Math.random());
+    this.pos.y += this.movementSpeed.y * (1 / Math.random());
+    this.movementSpeed.x += this.movementAcc.x;
+    this.movementSpeed.y += this.movementAcc.y;
     ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g},${this.color.b}, ${opacity})`;
     ctx.translate(this.pos.x, this.pos.y);
 
     ctx.fillRect(-this.size.x / 2, -this.size.y / 2, this.size.x, this.size.y);
 
     ctx.translate(-this.pos.x, -this.pos.y);
-
-    if (
-      this.color.r <= -this.colorSpeed.r ||
-      this.color.r > 255 - this.colorSpeed.r
-    ) {
-      this.colorSpeed.r *= -1;
-    }
-    if (
-      this.color.g <= -this.colorSpeed.g ||
-      this.color.g > 255 - this.colorSpeed.g
-    ) {
-      this.colorSpeed.g *= -1;
-    }
-    if (
-      this.color.b <= -this.colorSpeed.b ||
-      this.color.b > 255 - this.colorSpeed.b
-    ) {
-      this.colorSpeed.b *= -1;
-    }
-
-    this.color.r += this.colorSpeed.r;
-    this.color.g += this.colorSpeed.g;
-    this.color.b += this.colorSpeed.b;
   }
 }
 

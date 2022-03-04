@@ -126,8 +126,8 @@ class Bundle {
             y: getRandom(0, this.stageHeight),
           },
           {
-            x: getRandom(0.2, 0.4),
-            y: getRandom(0.2, 0.4),
+            x: getRandom(0.1, 0.4),
+            y: getRandom(0.1, 0.4),
           },
           getRandom(0, Math.PI * 2)
         )
@@ -136,7 +136,7 @@ class Bundle {
   }
 
   draw(ctx: any, pos: any) {
-    const opacity = getRandom(0.2, 0.4);
+    const opacity = getRandom(0.3, 0.5);
     this.particles.map((particle: any) => {
       particle.draw(ctx, opacity, pos);
     });
@@ -148,7 +148,6 @@ class Particle {
   size: any;
   rotation: any;
   color: any;
-  colorSpeed: any;
 
   movementSpeed: any;
   movementAcc: any;
@@ -166,28 +165,19 @@ class Particle {
       y: getRandom(-0.001, 0.0015),
     };
     this.color = {
-      r: getRandom(100, 250),
+      r: getRandom(200, 250),
       g: getRandom(0, 250),
-      b: getRandom(200, 250),
-    };
-    this.colorSpeed = {
-      r: getRandom(0.5, 0.6),
-      g: getRandom(-0.8, -0.7),
-      b: getRandom(0.03, 0.04),
+      b: getRandom(40, 250),
     };
   }
 
   draw(ctx: any, opacity: any, pos: any) {
     const currentPos = this.pos;
     let randomness =
-      Math.random() < 0.01 ? getRandom(-110, -70) : getRandom(0.5, 1.5);
-    this.pos.x +=
-      ((pos.x - currentPos.x) / 20) * randomness +
-      (Math.random() < 0.1 ? getRandom(-50, 50) : 0);
+      Math.random() < 0.01 ? getRandom(-100, -70) : getRandom(0.8, 1.2);
+    this.pos.x += ((pos.x - currentPos.x) / 100) * randomness;
 
-    this.pos.y +=
-      ((pos.y - currentPos.y) / 20) * randomness +
-      (Math.random() < 0.1 ? getRandom(-50, 50) : 0);
+    this.pos.y += ((pos.y - currentPos.y) / 100) * randomness;
 
     ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g},${this.color.b}, ${opacity})`;
     ctx.translate(this.pos.x, this.pos.y);
@@ -195,29 +185,6 @@ class Particle {
     ctx.fillRect(-this.size.x / 2, -this.size.y / 2, this.size.x, this.size.y);
 
     ctx.translate(-this.pos.x, -this.pos.y);
-
-    if (
-      this.color.r <= -this.colorSpeed.r ||
-      this.color.r > 255 - this.colorSpeed.r
-    ) {
-      this.colorSpeed.r *= -1;
-    }
-    if (
-      this.color.g <= -this.colorSpeed.g ||
-      this.color.g > 255 - this.colorSpeed.g
-    ) {
-      this.colorSpeed.g *= -1;
-    }
-    if (
-      this.color.b <= -this.colorSpeed.b ||
-      this.color.b > 255 - this.colorSpeed.b
-    ) {
-      this.colorSpeed.b *= -1;
-    }
-
-    this.color.r += this.colorSpeed.r;
-    this.color.g += this.colorSpeed.g;
-    this.color.b += this.colorSpeed.b;
   }
 }
 

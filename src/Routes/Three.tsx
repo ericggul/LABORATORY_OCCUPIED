@@ -7,7 +7,6 @@ import ThreeCannonTutorial from "../Techs/Three/Cannon/Tutorial1/Tutorial";
 
 import ThreeTutorial from "../Techs/Three/Tutorials/Tutorial1/Tutorial";
 import ThreeTutorial0ca0a from "../Techs/Three/Tutorials/Tutorial0ca0a/Tutorial";
-import ThreeCardFlip from "../Techs/Three/Tutorials/CardFlip/Tutorial";
 
 import ThreeSphere from "../Techs/Three/Sphere/Sphere";
 import ThreeBounceBalls from "../Techs/Three/BounceBalls/BounceBalls";
@@ -16,6 +15,7 @@ import ThreeSphereLoading from "../Techs/Three/SphereLoading/SphereLoading";
 import LayoutChange from "../Techs/Three/Shape/LayoutChange/Shape";
 import ShapeTutorial from "../Techs/Three/Shape/ShapeTutorial/Shape";
 import ShapeTesting from "../Techs/Three/Shape/ShapeTesting/Shape";
+import PlaneTraversal from "../Techs/Three/Shape/PlaneTraversal/Plane";
 import ParticlesTutorial from "../Techs/Three/Shape/ParticlesTutorial/Shape";
 
 import ArtifactsTesting from "../Techs/Three/Artifacts/ArtifactsTesting/Artifacts";
@@ -31,7 +31,6 @@ const NestedCirclesRoutes = [
 
   { path: "/tutorial", component: ThreeTutorial },
   { path: "/tutorialbanana", component: ThreeTutorial0ca0a },
-  { path: "/cardflip", component: ThreeCardFlip },
 
   { path: "/sphere", component: ThreeSphere },
   { path: "/bounceballs", component: ThreeBounceBalls },
@@ -40,6 +39,7 @@ const NestedCirclesRoutes = [
   { path: "/layoutchange", component: LayoutChange },
   { path: "/shapetutorial", component: ShapeTutorial },
   { path: "/shapetesting", component: ShapeTesting },
+  { path: "/planetraversal", component: PlaneTraversal },
   { path: "/particlestutorial", component: ParticlesTutorial },
 
   { path: "/artifactstesting", component: ArtifactsTesting },
