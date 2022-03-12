@@ -1,21 +1,3 @@
-@mixin animation-adjust {
-  @for $i from 1 through 31 {
-    &:nth-child(31n + #{$i}) {
-      .square {
-        animation-delay: -#{$i}s;
-      }
-    }
-  }
-
-  @for $i from 1 through 23 {
-    &:nth-child(23n + #{$i}) {
-      .square {
-        animation-duration: #{$i * 0.5+15}s;
-      }
-    }
-  }
-}
-
 body {
   overflow: hidden;
 }

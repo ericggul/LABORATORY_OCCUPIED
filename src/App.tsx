@@ -181,6 +181,8 @@ import Dollar from "./Labs/VeryLogical/Dollar/Dollar";
 
 import Email from "./Labs/VeryLogical/Email/Email";
 
+import LinesTesting from "./Labs/Lines/LinesTesting";
+
 import SixteenTesting from "./Labs/VeryLogical/Sixteen/SixteenTesting/SixteenTesting";
 
 import QuadriptychTesting from "./Labs/Quadriptych/QuadriptychTesting/QuadriptychTesting";
@@ -205,7 +207,9 @@ import WhiteMonuments13 from "./Labs/WhiteMonuments/WhiteMonuments13/WhiteMonume
 
 import Smudge from "./Techs/Smudge/Smudge";
 import Quotes from "./Techs/Quotes/Quotes";
-import FaceRec from "./Techs/FaceRec/FaceRec";
+import FaceRec from "./Techs/Face/FaceRec/FaceRec";
+
+import DeviceMotionTesting from "./Techs/DeviceMotion/DeviceMotionTesting";
 
 import UTurn from "./Labs/U/UTurn/UTurn";
 import UR1 from "./Labs/U/UR1/UR1";
@@ -239,6 +243,8 @@ import BallsBounce1 from "./Techs/Animations/Balls/BallsBounce1/BallsBounce1";
 import BallsBounce2 from "./Techs/Animations/Balls/BallsBounce2/BallsBounce2";
 import BallsBounce3 from "./Techs/Animations/Balls/BallsBounce3/BallsBounce3";
 import BallsConverge from "./Techs/Animations/Balls/BallsConverge/BallsConverge";
+
+import MapBoxTesting from "./Techs/MapBox/MapBoxTesting";
 
 import MapsSunflower from "./Techs/Maps/MapsSunflower/Maps";
 import MapsTesting from "./Techs/Maps/MapsTesting/Maps";
@@ -388,8 +394,16 @@ function App() {
         <Route exact path="/textspread" component={TextSpread} />
         <Route exact path="/wordstesting" component={WordsTesting} />
 
-        <Route exact path="/art-noveau" component={ArtNoveau} />
-        <Route exact path="/face-rec" component={FaceRec} />
+        <Route exact path="/linestesting" component={LinesTesting} />
+
+        <Route exact path="/artnoveau" component={ArtNoveau} />
+        <Route exact path="/facerec" component={FaceRec} />
+
+        <Route
+          exact
+          path="/device-motion-testing"
+          component={DeviceMotionTesting}
+        />
 
         <Route exact path="/building" component={Building} />
 
@@ -536,6 +550,7 @@ function App() {
 
         <Route exact path="/divide" component={Divide} />
 
+        <Route exact path="/mapboxtesting" component={MapBoxTesting} />
         <Route exact path="/mapssunflower" component={MapsSunflower} />
         <Route exact path="/mapstesting" component={MapsTesting} />
 

@@ -1,26 +1,6 @@
 $color: #bb3434, #f7715f, #8f1111, #e22e23;
 $elements: 7;
 
-@mixin animation-delay {
-  @for $i from 1 through $elements {
-    &:nth-child(#{$i}) {
-      .text {
-        animation-delay: -#{$i}s;
-      }
-    }
-  }
-}
-
-@mixin color-input {
-  @for $i from 1 through $elements {
-    &:nth-child(#{$i}) {
-      .text {
-        color: nth($color, ($i%4 + 1));
-      }
-    }
-  }
-}
-
 .App {
   background: black;
   position: fixed;
@@ -33,8 +13,6 @@ $elements: 7;
   flex-direction: column;
 
   .box {
-    @include animation-delay;
-    @include color-input;
     height: 10%;
     .text {
       font-size: 3rem;

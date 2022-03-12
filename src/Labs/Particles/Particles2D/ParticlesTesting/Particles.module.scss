@@ -1,0 +1,48 @@
+.compWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(50, 2vw);
+  grid-template-rows: repeat(50, 2vh);
+}
+
+.component {
+  position: relative;
+  height: 2vh;
+  width: 2vw;
+}
+
+$width: 30%;
+$height: 70%;
+
+.cover {
+  background: black;
+  position: absolute;
+
+  &:first-child {
+    top: 0;
+    left: 0;
+    height: $width;
+    width: $height;
+  }
+
+  &:nth-child(2) {
+    top: 0;
+    right: 0;
+    height: $height;
+    width: $width;
+  }
+  &:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    height: $width;
+    width: $height;
+  }
+  &:nth-child(4) {
+    bottom: 0;
+    left: 0;
+    height: $height;
+    width: $width;
+  }
+}

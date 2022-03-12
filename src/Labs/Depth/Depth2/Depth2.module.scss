@@ -1,12 +1,3 @@
-@mixin blink-animation-delay {
-  @for $i from 1 through 12 {
-    &:nth-child(17n + #{$i}) {
-      animation-delay: -#{$i/5}s;
-      font-weight: #{$i}* 100;
-    }
-  }
-}
-
 .container {
   height: 100%;
   width: 100%;

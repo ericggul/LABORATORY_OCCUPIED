@@ -72,7 +72,7 @@ class App {
     this.goingStraight = true;
     this.currentRadialPos = 0;
 
-    this.elementNumber = 5000;
+    this.elementNumber = 3000;
     this.elementArray = [];
     for (let i = 0; i < this.elementNumber; i++) {
       this.elementArray.push(new Element(this.stageWidth, this.stageHeight));
@@ -131,10 +131,10 @@ class Element {
 
   constructor(stageWidth: any, stageHeight: any) {
     this.angle = getRandom(0, Math.PI * 2);
-    this.color = "white";
+    this.color = `rgb(${getRandom(0, 250)}, 200, 200)`;
     this.incrementAngleSpeed = (Math.random() < 0.5 ? -1 : 1) * (Math.PI / 300);
     this.centerPos = {
-      x: stageHeight * getRandomFromArray([0.25, 0.5, 0.75]),
+      x: stageWidth * getRandomFromArray([0.25, 0.5, 0.75]),
       y: stageHeight * getRandomFromArray([0.25, 0.5, 0.75]),
     };
   }

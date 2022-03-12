@@ -38,7 +38,6 @@ body {
 
   .comp {
     position: relative;
-    @include animation-adjust;
 
     .square {
       position: absolute;

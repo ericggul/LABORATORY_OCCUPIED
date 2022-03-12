@@ -5,7 +5,7 @@ import * as facemesh from "@tensorflow-models/face-landmarks-detection";
 import Webcam from "react-webcam";
 import classNames from "classnames";
 import { drawMesh } from "./Utils";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 function FaceRec() {
   const webcamRef = useRef<any>(null);
@@ -66,11 +66,11 @@ function FaceRec() {
       ) {
         const video = webcamRef.current.video;
         const face = await net.estimateFaces({ input: video });
-        
+
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
         drawMesh(face, ctx, canvasSize.width, canvasSize.height);
-    
+
         // requestAnimationFrame(()=> {drawMesh(face,ctx, canvasSize.width, canvasSize.height)})
       }
     },
