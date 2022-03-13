@@ -81,7 +81,7 @@ import PipeOrgan from "./Labs/words/PipeOrgan/Words";
 import TextSpread from "./Labs/words/TextSpread/Words";
 import WordsTesting from "./Labs/words/WordsTesting/Words";
 
-import ArtNoveau from "./Labs/ArtNoveau/ArtNoveau";
+import ArtNoveau from "./Labs/ArtNoveau/ArtNoveauTesting/ArtNoveau";
 import Division from "./Labs/Division/Division";
 import Depth from "./Labs/Depth/Depth1/Depth";
 import Depth2 from "./Labs/Depth/Depth2/Depth2";

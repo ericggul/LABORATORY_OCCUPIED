@@ -12,21 +12,12 @@ export default function MapBoxTesting() {
   const mapRef = useRef<any>(!null);
   const mapContainerRef = useRef<any>(!null);
 
-  const [clicked, setClicked] = useState(false);
   const [displayMap, setDisplayMap] = useState(false);
   const [pos, setPos] = useState({ lat: 37.45843, lng: 126.95597 });
   const [zoom, setZoom] = useState(12);
 
   useEffect(() => {
-    if (clicked) {
-      setDisplayMap(true);
-      const audio: HTMLAudioElement = new Audio(BlueDanubeAudio);
-      audio.play();
-    }
-  }, [clicked]);
-
-  useEffect(() => {
-    if (clicked && mapContainerRef && mapContainerRef.current) {
+    if (mapContainerRef && mapContainerRef.current) {
       mapRef.current = new mapboxgl.Map({
         container: mapContainerRef.current,
         center: [pos.lng, pos.lat],
@@ -37,7 +28,7 @@ export default function MapBoxTesting() {
       });
       mapRef.current.addControl(new mapboxgl.GeolocateControl());
     }
-  }, [clicked, mapContainerRef]);
+  }, [mapContainerRef]);
 
   useEffect(() => {
     if (mapRef.current && typeof mapRef.current == "object") {
@@ -154,7 +145,7 @@ export default function MapBoxTesting() {
       });
     }
     mapZoom();
-  }, [mapRef, clicked]);
+  }, [mapRef]);
 
   async function mapZoom() {
     if (mapRef.current && typeof mapRef.current == "object") {
@@ -196,11 +187,7 @@ export default function MapBoxTesting() {
     <S.Container>
       <S.MapContainer ref={mapContainerRef} displayMap={displayMap} />
 
-      {!displayMap && (
-        <S.Loading onClick={() => setClicked(true)}>
-          {!clicked ? "Click" : "Loading..."}
-        </S.Loading>
-      )}
+      {!displayMap && <S.Loading>{"Loading..."}</S.Loading>}
     </S.Container>
   );
 }
