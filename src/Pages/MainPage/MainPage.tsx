@@ -364,13 +364,199 @@ const Grid = {
   type: "Static",
   lists: [
     {
-      title: "White Monuments",
-      img: "/assets/images/9WhiteMonuments/0.png",
-      link: "/whitemonumentstest",
+      title: "Grid 4",
+      img: "/assets/images/10Grid/4.png",
+      link: "/grid4",
+    },
+    {
+      title: "Grid 5",
+      img: "/assets/images/10Grid/5.png",
+      link: "/grid5",
+    },
+    {
+      title: "Grid 6",
+      img: "/assets/images/10Grid/6.png",
+      link: "/grid6",
+    },
+    {
+      title: "Grid 7",
+      img: "/assets/images/10Grid/7.png",
+      link: "/grid7",
+    },
+    {
+      title: "Grid 8",
+      img: "/assets/images/10Grid/8.png",
+      link: "/grid8",
+    },
+    {
+      title: "Grid 10",
+      img: "/assets/images/10Grid/10.png",
+      link: "/grid10",
+    },
+    {
+      title: "Grid 11",
+      img: "/assets/images/10Grid/11.png",
+      link: "/grid11",
+    },
+    {
+      title: "Grid 13",
+      img: "/assets/images/10Grid/13.png",
+      link: "/grid13",
+    },
+    {
+      title: "Grid Rose",
+      img: "/assets/images/10Grid/rose.png",
+      link: "/gridrose",
     },
   ],
 };
 
+const TiltedGrid = {
+  header: "Tilted Grid",
+  year: "2021",
+  type: "Dynamic",
+  lists: [
+    {
+      title: "Tilted Grid 1",
+      img: "/assets/images/11TiltedGrid/1.png",
+      link: "/tiltedgrid1",
+    },
+    {
+      title: "Tilted Grid 2",
+      img: "/assets/images/11TiltedGrid/2.png",
+      link: "/tiltedgrid2",
+    },
+    {
+      title: "Tilted Grid 3",
+      img: "/assets/images/11TiltedGrid/3.png",
+      link: "/tiltedgrid3",
+    },
+    {
+      title: "Tilted Grid 4",
+      img: "/assets/images/11TiltedGrid/4.png",
+      link: "/tiltedgrid4",
+    },
+  ],
+};
+
+const AnimatedGrid = {
+  header: "Animated Grid",
+  year: "2022",
+  type: "Dynamic",
+  lists: [
+    {
+      title: "\x6c\x61\x76\x65\x6e\x64\x65\x72",
+      img: "/assets/images/12AnimatedGrid/1.png",
+      link: "/animatedgrid1",
+    },
+    {
+      title: "rise",
+      img: "/assets/images/12AnimatedGrid/2.png",
+      link: "/animatedgrid2",
+    },
+    {
+      title: "\x72\x61\x69\x6e\x69\x6e\x67 \x6f\x75\x74\x73\x69\x64\x65",
+      img: "/assets/images/12AnimatedGrid/3.png",
+      link: "/animatedgrid3",
+    },
+    {
+      title: "\x75\x6e\x74\x69\x74\x6c\x65\x64",
+      img: "/assets/images/12AnimatedGrid/4.png",
+      link: "/animatedgrid4",
+    },
+    {
+      title: "fall",
+      img: "/assets/images/12AnimatedGrid/5.png",
+      link: "/animatedgrid5",
+    },
+  ],
+};
+
+const FourPillars = {
+  header: "Four Pillars",
+  year: "2021",
+  type: "Static",
+  lists: [
+    {
+      title: "Four Pillars 1",
+      img: "/assets/images/13FourPillars/1.png",
+      link: "/fourpillars1",
+    },
+    {
+      title: "Four Pillars 3",
+      img: "/assets/images/13FourPillars/3.png",
+      link: "/fourpillars3",
+    },
+    {
+      title: "Four Pillars 4",
+      img: "/assets/images/13FourPillars/4.png",
+      link: "/fourpillars4",
+    },
+    {
+      title: "Four Pillars 5",
+      img: "/assets/images/13FourPillars/5.png",
+      link: "/fourpillars5",
+    },
+    {
+      title: "Four Pillars 6",
+      img: "/assets/images/13FourPillars/6.png",
+      link: "/fourpillars6",
+    },
+    {
+      title: "Four Pillars 7",
+      img: "/assets/images/13FourPillars/7.png",
+      link: "/fourpillars7",
+    },
+    {
+      title: "Four Pillars 8",
+      img: "/assets/images/13FourPillars/8.png",
+      link: "/fourpillars8",
+    },
+    {
+      title: "Four Pillars 9",
+      img: "/assets/images/13FourPillars/9.png",
+      link: "/fourpillars9",
+    },
+    {
+      title: "Four Pillars 10",
+      img: "/assets/images/13FourPillars/10.png",
+      link: "/fourpillars10",
+    },
+    {
+      title: "Four Pillars 11",
+      img: "/assets/images/13FourPillars/11.png",
+      link: "/fourpillars11",
+    },
+  ],
+};
+
+const Texture = {
+  header: "Texture",
+  year: "2021",
+  type: "Static",
+  lists: [
+    {
+      title: "Texture 1",
+      img: "/assets/images/14Texture/1.png",
+      link: "/texture1",
+    },
+    {
+      title: "Texture 2",
+      img: "/assets/images/14Texture/2.png",
+      link: "/texture2",
+    },
+    {
+      title: "Texture 3",
+      img: "/assets/images/14Texture/3.png",
+      link: "/texture3",
+    },
+    {
+      title: "Texture 5",
+      img: "/assets/images/14Texture/5.png",
+      link: "/texture5",
+    },
+  ],
+};
 const LIST = [
   ArtNoveau,
   Straight,
@@ -382,6 +568,10 @@ const LIST = [
   Monochrome,
   WhiteMonuments,
   Grid,
+  TiltedGrid,
+  AnimatedGrid,
+  FourPillars,
+  Texture,
 ];
 
 const Element = ({ el }: any) => {
