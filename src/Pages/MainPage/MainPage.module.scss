@@ -2,7 +2,6 @@
   background: black;
   color: white;
   height: 100vh;
-  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -35,19 +34,76 @@
       display: flex;
 
       .header {
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: bold;
       }
       .year {
-        font-size: 1.3rem;
-        margin-left: 2rem;
-        margin-top: 0.7rem;
+        font-size: 1rem;
+        margin-left: 1.4rem;
+        margin-top: 0.5rem;
       }
     }
 
     .listContainer {
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+      margin: 1.5rem 0;
+      margin-right: 3rem;
+      &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+      }
+      & ::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+      }
+
       .elContainer {
+        min-width: 15rem;
+        height: 15rem;
+        position: relative;
+
         .pic {
+          width: 15rem;
+          height: 15rem;
+          position: absolute;
+          margin: auto;
+          object-fit: cover;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+        }
+
+        .hoverViewer {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 15rem;
+          height: 15rem;
+
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          cursor: pointer;
+
+          background: rgba(0, 0, 0, 0.4);
+          font-size: 0.8rem;
+          opacity: 0;
+          transition: opacity 0.5s;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          .title {
+            margin: 0.5rem;
+          }
+          .link {
+            margin: 0.5rem;
+            font-weight: bold;
+          }
         }
       }
     }

@@ -11,32 +11,32 @@ const ArtNoveau = {
     {
       title: "Art Noveau 1",
       img: "/assets/images/1ArtNoveau/1.png",
-      url: "/artnoveau1",
+      link: "/artnoveau1",
     },
     {
       title: "Art Noveau 4",
       img: "/assets/images/1ArtNoveau/4.png",
-      url: "/artnoveau4",
+      link: "/artnoveau4",
     },
     {
       title: "Art Noveau 5",
       img: "/assets/images/1ArtNoveau/5.png",
-      url: "/artnoveau5",
+      link: "/artnoveau5",
     },
     {
       title: "Art Noveau Text 1",
       img: "/assets/images/1ArtNoveau/Text1.png",
-      url: "/artnoveautext1",
+      link: "/artnoveautext1",
     },
     {
       title: "Art Noveau Text 3",
       img: "/assets/images/1ArtNoveau/Text3.png",
-      url: "/artnoveautext3",
+      link: "/artnoveautext3",
     },
     {
       title: "Art Noveau Text 4",
       img: "/assets/images/1ArtNoveau/Text4.png",
-      url: "/artnoveautext4",
+      link: "/artnoveautext4",
     },
   ],
 };
@@ -49,17 +49,17 @@ const Depth = {
     {
       title: "Depth 2",
       img: "/assets/images/2Depth/2.png",
-      url: "/depth2",
+      link: "/depth2",
     },
     {
       title: "Depth 3",
       img: "/assets/images/2Depth/3.png",
-      url: "/depth3",
+      link: "/depth3",
     },
     {
       title: "Depth 4",
       img: "/assets/images/2Depth/4.png",
-      url: "/depth4",
+      link: "/depth4",
     },
   ],
 };
@@ -182,22 +182,27 @@ const Numbers = {
     {
       title: "241",
       img: "/assets/images/5Numbers/241.png",
+      link: "/241",
     },
     {
       title: "242",
       img: "/assets/images/5Numbers/242.png",
+      link: "/242",
     },
     {
       title: "243",
       img: "/assets/images/5Numbers/243.png",
+      link: "/243",
     },
     {
       title: "773",
       img: "/assets/images/5Numbers/773.png",
+      link: "/773",
     },
     {
       title: "991",
       img: "/assets/images/5Numbers/991.png",
+      link: "/991",
     },
   ],
 };
@@ -210,42 +215,52 @@ const Particles = {
     {
       title: "Particles 2",
       img: "/assets/images/6Particles/2.png",
+      link: "/particles2",
     },
     {
       title: "Particles 4",
       img: "/assets/images/6Particles/4.png",
+      link: "/particles4",
     },
     {
       title: "Particles 5",
       img: "/assets/images/6Particles/5.png",
+      link: "/particles5",
     },
     {
       title: "Particles 12",
       img: "/assets/images/6Particles/12.png",
+      link: "/particles12",
     },
     {
       title: "Particles 13",
       img: "/assets/images/6Particles/13.png",
+      link: "/particles13",
     },
     {
       title: "Particles 21",
       img: "/assets/images/6Particles/21.png",
+      link: "/particles21",
     },
     {
       title: "Particles 23",
       img: "/assets/images/6Particles/23.png",
+      link: "/particles23",
     },
     {
       title: "Particles 31",
       img: "/assets/images/6Particles/31.png",
+      link: "/particles31",
     },
     {
       title: "Particles 33",
       img: "/assets/images/6Particles/33.png",
+      link: "/particles33",
     },
     {
       title: "Particles 34",
       img: "/assets/images/6Particles/34.png",
+      link: "/particles34",
     },
   ],
 };
@@ -356,12 +371,25 @@ const Grid = {
   ],
 };
 
+const LIST = [
+  ArtNoveau,
+  Straight,
+  Particles,
+  Numbers,
+  Depth,
+  Shitga,
+  ClementAugustin,
+  Monochrome,
+  WhiteMonuments,
+  Grid,
+];
+
 const Element = ({ el }: any) => {
   const [hover, setHover] = useState(false);
 
   const handleClick = () => {
     if (el.link) {
-      window.open(`https://laboratory-occupied.com/${el.link}`, "_blank");
+      window.open(`https://laboratory-occupied.com${el.link}`, "_blank");
     }
   };
 
@@ -372,14 +400,13 @@ const Element = ({ el }: any) => {
       onMouseLeave={() => setHover(false)}
     >
       <img className={style.pic} src={el.img} alt={el.title} />
-      {hover && (
-        <div className={style.hoverViewer} onClick={handleClick}>
-          <div className={style.title}>{el.title}</div>
-          <div className={style.link}>
-            {el.link ? "Visit Project" : "No Project Link"}
-          </div>
+
+      <div className={style.hoverViewer} onClick={handleClick}>
+        <div className={style.title}>{el.title}</div>
+        <div className={style.link}>
+          {el.link ? "Visit Project" : "No Project Link"}
         </div>
-      )}
+      </div>
     </div>
   );
 };
@@ -414,7 +441,10 @@ function MainPage() {
           </div>
         </div>
       </div>
-      <RowContainer data={ArtNoveau} />
+
+      {LIST.map((data, i) => (
+        <RowContainer data={data} key={100 + i} />
+      ))}
     </div>
   );
 }
