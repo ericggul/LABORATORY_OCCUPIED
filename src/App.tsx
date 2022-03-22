@@ -81,7 +81,8 @@ import PipeOrgan from "./Labs/words/PipeOrgan/Words";
 import TextSpread from "./Labs/words/TextSpread/Words";
 import WordsTesting from "./Labs/words/WordsTesting/Words";
 
-import ArtNoveau from "./Labs/ArtNoveau/ArtNoveauTesting/ArtNoveau";
+import MonochromeTesting from "./Labs/Monochrome/MonochromeTesting";
+
 import Division from "./Labs/Division/Division";
 import Depth from "./Labs/Depth/Depth1/Depth";
 import Depth2 from "./Labs/Depth/Depth2/Depth2";
@@ -257,14 +258,10 @@ import Movement from "./Techs/Patterns/Movement/Movement";
 import Movement2 from "./Techs/Patterns/Movement2/Movement2";
 import TestingCentre from "./Techs/Patterns/TestingCentre/TestingCentre";
 
-import Divide from "./Techs/Transitions/Divide/Divide";
-import Elementary from "./Techs/Transitions/Elementary/Elementary";
-import Elementary2 from "./Techs/Transitions/Elementary2/Elementary2";
-import Elementary3 from "./Techs/Transitions/Elementary3/Elementary3";
-import Elementary4 from "./Techs/Transitions/Elementary4/Elementary4";
-import Elementary5 from "./Techs/Transitions/Elementary5/Elementary5";
-import Elementary6 from "./Techs/Transitions/Elementary6/Elementary6";
+import SingaSong from "./Techs/TTS/SingaSong";
+import ShadersTutorial from "./Techs/Shaders/ShadersTutorial";
 
+import ArtNoveauRoutes from "./Routes/ArtNoveau";
 import FourPillarsRoutes from "./Routes/FourPillars";
 import CircleVariantsRoutes from "./Routes/CircleVariants";
 import ClementAugustinRoutes from "./Routes/ClementAugustin";
@@ -396,7 +393,8 @@ function App() {
 
         <Route exact path="/linestesting" component={LinesTesting} />
 
-        <Route exact path="/artnoveau" component={ArtNoveau} />
+        <Route exact path="/monochrometesting" component={MonochromeTesting} />
+
         <Route exact path="/facerec" component={FaceRec} />
 
         <Route
@@ -548,8 +546,6 @@ function App() {
         <Route exact path="/whitemonuments12" component={WhiteMonuments12} />
         <Route exact path="/whitemonuments13" component={WhiteMonuments13} />
 
-        <Route exact path="/divide" component={Divide} />
-
         <Route exact path="/mapboxtesting" component={MapBoxTesting} />
         <Route exact path="/mapssunflower" component={MapsSunflower} />
         <Route exact path="/mapstesting" component={MapsTesting} />
@@ -562,12 +558,8 @@ function App() {
         <Route exact path="/movement2" component={Movement2} />
         <Route exact path="/patternstestingcentre" component={TestingCentre} />
 
-        <Route exact path="/elementary" component={Elementary} />
-        <Route exact path="/elementary2" component={Elementary2} />
-        <Route exact path="/elementary3" component={Elementary3} />
-        <Route exact path="/elementary4" component={Elementary4} />
-        <Route exact path="/elementary5" component={Elementary5} />
-        <Route exact path="/elementary6" component={Elementary6} />
+        <Route exact path="/singasong" component={SingaSong} />
+        <Route exact path="/shaderstutorial" component={ShadersTutorial} />
 
         <Route exact path="/snowfall" component={Snowfall} />
 
@@ -591,6 +583,9 @@ function App() {
             component={route.component}
           />
         ))}
+        {ArtNoveauRoutes.map((route: any, i: any) => (
+          <Route exact key={i} path={route.path} component={route.component} />
+        ))}
         {ShitgaRoutes.map((route: any, i: any) => (
           <Route exact key={i} path={route.path} component={route.component} />
         ))}
@@ -608,7 +603,7 @@ function App() {
             component={route.component}
           />
         ))}
-        <Redirect exact to="/archived" />
+        <Redirect exact to="/lobby" />
       </Switch>
     </Router>
   );

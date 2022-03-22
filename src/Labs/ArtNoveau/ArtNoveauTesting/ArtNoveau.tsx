@@ -55,7 +55,7 @@ class Canvas {
     this.canvas.height = this.stageHeight * this.scale;
 
     this.ctx.scale(this.scale, this.scale);
-    this.squareNumber = 1000;
+    this.squareNumber = 20000;
     this.squareSets = [];
 
     this.init();
@@ -66,12 +66,12 @@ class Canvas {
       this.squareSets.push(
         new Square(
           {
-            x: getRandom(0, this.stageWidth),
-            y: getRandom(0, this.stageHeight),
+            x: getRandom(-this.stageWidth * 0.4, this.stageWidth * 1.2),
+            y: getRandom(0, this.stageHeight * 1.2),
           },
           {
-            x: getRandom(0, getRandom(0, 100)),
-            y: getRandom(0, getRandom(0, 100)),
+            x: getRandom(50, 100),
+            y: getRandom(50, 100),
           }
         )
       );
@@ -110,32 +110,24 @@ class Square {
     this.pos = pos;
     this.size = size;
 
-    this.repeat = Math.floor(getRandom(10, 100));
+    this.repeat = Math.floor(getRandom(0, 100));
     this.interval = { x: getRandom(-5, 5), y: getRandom(-5, 5) };
-    this.colorArrange =
-      Math.random() < 0.5
-        ? {
-            r: getRandom(0, 200),
-            g: getRandom(0, 50),
-            b: getRandom(0, 50),
-          }
-        : {
-            r: getRandom(100, 150),
-            g: getRandom(0, 50),
-            b: getRandom(100, 200),
-          };
+    this.colorArrange = {
+      r: getRandom(190, 250),
+      g: getRandom(190, 250),
+      b: getRandom(0, 30),
+    };
 
-    this.opacity = 1 / this.repeat;
+    this.opacity = 0.01;
   }
 
   draw(ctx: any) {
-    console.log("hey");
-
     for (let i = 0; i < this.repeat; i++) {
       ctx.fillStyle = `rgba(
-        ${this.colorArrange.r + getRandom(-30, 30)},  ${
-        this.colorArrange.g + getRandom(-30, 30)
-      },  ${this.colorArrange.b + getRandom(-30, 30)}, ${this.opacity})`;
+        ${getRandom(0, 250)}, ${getRandom(0, 250)}, ${getRandom(0, 30)} ,${
+        this.opacity
+      })`;
+
       ctx.fillRect(
         this.pos.x - this.size.x / 2 + this.interval.x * i,
         this.pos.y - this.size.y / 2 + this.interval.y * i,

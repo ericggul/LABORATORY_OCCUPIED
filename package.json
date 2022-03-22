@@ -37,6 +37,7 @@
     "canvas-confetti": "^1.4.0",
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
+    "craco": "^0.0.3",
     "csv": "^6.0.4",
     "d3-ease": "^3.0.1",
     "dat.gui": "^0.7.7",
@@ -44,6 +45,7 @@
     "fast-equals": "^2.0.4",
     "file-loader": "^6.2.0",
     "firebase": "^9.6.6",
+    "glslCanvas": "^0.1.7",
     "gsap": "^3.9.1",
     "howler": "^2.2.3",
     "html2canvas": "^1.4.1",
@@ -71,6 +73,7 @@
     "url-loader": "^4.1.1",
     "web-vitals": "^1.0.1",
     "webfontloader": "^1.6.28",
+    "worker-loader": "^3.0.8",
     "xlsx": "^0.17.4"
   },
   "scripts": {
@@ -89,15 +92,13 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "defaults",
+      "not ie 11"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://apis.data.go.kr"
+  }
 }

@@ -1,12 +1,15 @@
 import * as S from "./styles";
 import { useEffect, useRef, useState } from "react";
-import mapboxgl from "mapbox-gl";
+// @ts-ignore
+import mapboxgl from "!mapbox-gl"; /* eslint import/no-webpack-loader-syntax: off */
+
 import SunCalc from "suncalc";
 import BlueDanubeAudio from "../../../assets/BlueDanube.mp3";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { map } from "@firebase/util";
 
 export default function MapBoxTesting() {
+  // mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
   mapboxgl.accessToken =
     "pk.eyJ1IjoiZXJpY2dndWwiLCJhIjoiY2wwMmkyYTRkMTRhczNobHNsMnBxb3BkMyJ9.DLFELyGRBinEC75rdCGBBQ";
   const mapRef = useRef<any>(!null);
