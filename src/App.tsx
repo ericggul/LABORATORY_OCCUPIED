@@ -120,33 +120,9 @@ import ElevatorCircular from "./Labs/Elevator/ElevatorCircular/Elevator";
 import ParkingLot from "./Labs/Elevator/ParkingLot/Parking";
 import TowardsDivergenceTesting from "./Labs/TowardsDivergence/TowardsDivergenceTesting/TowardsDivergence";
 
-import CircleColorTesting from "./Labs/Circles/CircleColor/CircleColorTesting/CircleColor";
-import CircleColor2 from "./Labs/Circles/CircleColor/CircleColor2/CircleColor2";
-import CircleColor3 from "./Labs/Circles/CircleColor/CircleColor3/CircleColor3";
-import CircleColor4 from "./Labs/Circles/CircleColor/CircleColor4/CircleColor4";
-import CircleRotate from "./Labs/Circles/CircleRotate/CircleRotate";
-
-import CircleGrid1 from "./Labs/Circles/CircleGrid1/CircleGrid1";
-import CircleGrid2 from "./Labs/Circles/CircleGrid2/CircleGrid2";
-import CircleGrid3 from "./Labs/Circles/CircleGrid3/CircleGrid3";
-import CircleGrid4 from "./Labs/Circles/CircleGrid4/CircleGrid4";
-
 import Chandelier1 from "./Labs/Circles/Chandelier/Chandelier1/Chandelier1";
 import Chandelier2 from "./Labs/Circles/Chandelier/Chandelier2/Chandelier2";
 import Chandelier3 from "./Labs/Circles/Chandelier/Chandelier3/Chandelier3";
-
-import CircleTesting from "./Labs/Circles/CircleTesting/CircleTesting";
-import Circle1 from "./Labs/Circles/Circle1/Circle1";
-import Circle2 from "./Labs/Circles/Circle2/Circle2";
-import Circle3 from "./Labs/Circles/Circle3/Circle3";
-import Circle4 from "./Labs/Circles/Circle4/Circle4";
-import Circle5 from "./Labs/Circles/Circle5/Circle5";
-import Circle6 from "./Labs/Circles/Circle6/Circle6";
-import Circle7 from "./Labs/Circles/Circle7/Circle7";
-import Circle8 from "./Labs/Circles/Circle8/Circle8";
-import Circle9 from "./Labs/Circles/Circle9/Circle9";
-import Circle10 from "./Labs/Circles/Circle10/Circle10";
-import Circle11 from "./Labs/Circles/Circle11/Circle11";
 
 import DataCirclesTesting from "./Labs/Circles/DataCircles/DataCirclesTesting/DataCircles";
 
@@ -474,17 +450,6 @@ function App() {
             component={TowardsDivergenceTesting}
           />
 
-          <Route exact path="/circlecolortest" component={CircleColorTesting} />
-          <Route exact path="/circlecolor2" component={CircleColor2} />
-          <Route exact path="/circlecolor3" component={CircleColor3} />
-          <Route exact path="/circlecolor4" component={CircleColor4} />
-          <Route exact path="/circlerotate" component={CircleRotate} />
-
-          <Route exact path="/circlegrid1" component={CircleGrid1} />
-          <Route exact path="/circlegrid2" component={CircleGrid2} />
-          <Route exact path="/circlegrid3" component={CircleGrid3} />
-          <Route exact path="/circlegrid4" component={CircleGrid4} />
-
           <Route exact path="/chandelier1" component={Chandelier1} />
           <Route exact path="/chandelier2" component={Chandelier2} />
           <Route exact path="/chandelier3" component={Chandelier3} />
@@ -494,19 +459,6 @@ function App() {
             path="/datacirclestesting"
             component={DataCirclesTesting}
           />
-
-          <Route exact path="/circletesting" component={CircleTesting} />
-          <Route exact path="/circle1" component={Circle1} />
-          <Route exact path="/circle2" component={Circle2} />
-          <Route exact path="/circle3" component={Circle3} />
-          <Route exact path="/circle4" component={Circle4} />
-          <Route exact path="/circle5" component={Circle5} />
-          <Route exact path="/circle6" component={Circle6} />
-          <Route exact path="/circle7" component={Circle7} />
-          <Route exact path="/circle8" component={Circle8} />
-          <Route exact path="/circle9" component={Circle9} />
-          <Route exact path="/circle10" component={Circle10} />
-          <Route exact path="/circle11" component={Circle11} />
 
           <Route exact path="/nineone1" component={NineOne1} />
 

@@ -9,10 +9,12 @@
   overflow-y: scroll;
   overflow-x: hidden;
   text-decoration: none;
+  padding-bottom: 2rem;
 
   .mainHeader {
     margin: 2rem 3rem;
     display: flex;
+
     .title {
       font-size: 2.5rem;
       font-weight: bold;
@@ -108,15 +110,35 @@
       }
     }
   }
+
+  .footer {
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin: 2rem 3rem;
+  }
 }
 
 @media (max-width: 768px) {
   .mainHeader {
-    margin: 2rem 1rem !important;
+    margin: 5rem 2rem !important;
     flex-direction: column !important;
+    .title {
+      font-size: 2rem !important;
+    }
     .mainText {
       margin-left: 0 !important;
       margin-top: 1rem !important;
     }
+  }
+
+  .rowContainer {
+    margin-left: 2rem !important;
+    .listContainer {
+      margin-right: 2rem !important;
+    }
+  }
+
+  .footer {
+    margin-left: 2rem !important;
   }
 }
