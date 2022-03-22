@@ -97,26 +97,6 @@ import Rainbow from "./Labs/Rainbow/Rainbow";
 
 import ComponentsTesting from "./Labs/Components/ComponentsTesting/Components";
 
-import GridTestingCentre from "./Labs/Grid/GridTestingCentre/GridTestingCentre";
-import Grid1 from "./Labs/Grid/Grid1/Grid";
-import Grid2 from "./Labs/Grid/Grid2/Grid2";
-import Grid3 from "./Labs/Grid/Grid3/Grid3";
-import Grid4 from "./Labs/Grid/Grid4/Grid4";
-import Grid5 from "./Labs/Grid/Grid5/Grid5";
-import Grid6 from "./Labs/Grid/Grid6/Grid6";
-import Grid7 from "./Labs/Grid/Grid7/Grid7";
-import Grid8 from "./Labs/Grid/Grid8/Grid8";
-import Grid9 from "./Labs/Grid/Grid9/Grid9";
-import Grid10 from "./Labs/Grid/Grid10/Grid10";
-import Grid11 from "./Labs/Grid/Grid11/Grid11";
-import Grid12 from "./Labs/Grid/Grid12/Grid12";
-import Grid13 from "./Labs/Grid/Grid13/Grid13";
-import GridRose from "./Labs/Grid/GridRose/GridRose";
-
-import NewGrid1 from "./Labs/NewGrid/NewGrid1/NewGrid1";
-import NewGrid2 from "./Labs/NewGrid/NewGrid2/NewGrid2";
-import NewGridTest from "./Labs/NewGrid/NewGridTest/NewGrid";
-
 import Facade1 from "./Labs/Facade/Facade1/Facade1";
 import Facade2 from "./Labs/Facade/Facade2/Facade2";
 import Pompidou from "./Labs/Facade/Pompidou/Pompidou";
@@ -343,26 +323,6 @@ function App() {
         <Route exact path="/depth4" component={Depth4} />
 
         <Route exact path="/componentsTesting" component={ComponentsTesting} />
-
-        <Route exact path="/gridtesting" component={GridTestingCentre} />
-        <Route exact path="/grid1" component={Grid1} />
-        <Route exact path="/grid2" component={Grid2} />
-        <Route exact path="/grid3" component={Grid3} />
-        <Route exact path="/grid4" component={Grid4} />
-        <Route exact path="/grid5" component={Grid5} />
-        <Route exact path="/grid6" component={Grid6} />
-        <Route exact path="/grid7" component={Grid7} />
-        <Route exact path="/grid8" component={Grid8} />
-        <Route exact path="/grid9" component={Grid9} />
-        <Route exact path="/grid10" component={Grid10} />
-        <Route exact path="/grid11" component={Grid11} />
-        <Route exact path="/grid12" component={Grid12} />
-        <Route exact path="/grid13" component={Grid13} />
-        <Route exact path="/gridrose" component={GridRose} />
-
-        <Route exact path="/newgrid1" component={NewGrid1} />
-        <Route exact path="/newgrid2" component={NewGrid2} />
-        <Route exact path="/newgridtest" component={NewGridTest} />
 
         <Route exact path="/facade1" component={Facade1} />
         <Route exact path="/facade2" component={Facade2} />

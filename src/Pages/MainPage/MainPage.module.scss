@@ -3,23 +3,64 @@
   color: white;
   height: 100vh;
   width: 100%;
-  position: fixed;
 
   display: flex;
   flex-direction: column;
 
-  align-items: center;
-
   overflow-y: scroll;
+  overflow-x: hidden;
   text-decoration: none;
 
-  .element {
-    margin: 5px;
-    color: #888;
-    text-decoration: none;
+  .mainHeader {
+    margin: 2rem 3rem;
+    display: flex;
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .mainText {
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
 
-    &:hover {
-      color: white;
+      .mainTextRow {
+      }
+    }
+  }
+
+  .rowContainer {
+    margin-top: 1rem;
+    margin-left: 3rem;
+    .keyInfo {
+      display: flex;
+
+      .header {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .year {
+        font-size: 1.3rem;
+        margin-left: 2rem;
+        margin-top: 0.7rem;
+      }
+    }
+
+    .listContainer {
+      .elContainer {
+        .pic {
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mainHeader {
+    margin: 2rem 1rem !important;
+    flex-direction: column !important;
+    .mainText {
+      margin-left: 0 !important;
+      margin-top: 1rem !important;
     }
   }
 }

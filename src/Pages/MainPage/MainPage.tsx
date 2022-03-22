@@ -343,8 +343,80 @@ const WhiteMonuments = {
   ],
 };
 
+const Grid = {
+  header: "Grid",
+  year: "2021",
+  type: "Static",
+  lists: [
+    {
+      title: "White Monuments",
+      img: "/assets/images/9WhiteMonuments/0.png",
+      link: "/whitemonumentstest",
+    },
+  ],
+};
+
+const Element = ({ el }: any) => {
+  const [hover, setHover] = useState(false);
+
+  const handleClick = () => {
+    if (el.link) {
+      window.open(`https://laboratory-occupied.com/${el.link}`, "_blank");
+    }
+  };
+
+  return (
+    <div
+      className={style.elContainer}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <img className={style.pic} src={el.img} alt={el.title} />
+      {hover && (
+        <div className={style.hoverViewer} onClick={handleClick}>
+          <div className={style.title}>{el.title}</div>
+          <div className={style.link}>
+            {el.link ? "Visit Project" : "No Project Link"}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const RowContainer = ({ data }: any) => {
+  return (
+    <div className={style.rowContainer}>
+      <div className={style.keyInfo}>
+        <div className={style.header}>{data.header}</div>
+        <div className={style.year}>{data.year + "/" + data.type}</div>
+      </div>
+      <div className={style.listContainer}>
+        {data.lists.map((el: any, i: any) => (
+          <Element key={i} el={el} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 function MainPage() {
-  return <div className={style.container}></div>;
+  return (
+    <div className={style.container}>
+      <div className={style.mainHeader}>
+        <div className={style.title}>Laboratory.Occupied</div>
+        <div className={style.mainText}>
+          <div className={style.mainTextRow}>
+            :a set of Experimentory Web Drawings,
+          </div>
+          <div className={style.mainTextRow}>
+            :aiming to expand the boundary of expressions.
+          </div>
+        </div>
+      </div>
+      <RowContainer data={ArtNoveau} />
+    </div>
+  );
 }
 
 export default MainPage;
