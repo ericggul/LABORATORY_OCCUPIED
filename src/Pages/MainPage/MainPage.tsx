@@ -208,24 +208,137 @@ const Particles = {
   type: "Interactive",
   lists: [
     {
-      title: "241",
-      img: "/assets/images/5Numbers/241.png",
+      title: "Particles 2",
+      img: "/assets/images/6Particles/2.png",
     },
     {
-      title: "242",
-      img: "/assets/images/5Numbers/242.png",
+      title: "Particles 4",
+      img: "/assets/images/6Particles/4.png",
     },
     {
-      title: "243",
-      img: "/assets/images/5Numbers/243.png",
+      title: "Particles 5",
+      img: "/assets/images/6Particles/5.png",
     },
     {
-      title: "773",
-      img: "/assets/images/5Numbers/773.png",
+      title: "Particles 12",
+      img: "/assets/images/6Particles/12.png",
     },
     {
-      title: "991",
-      img: "/assets/images/5Numbers/991.png",
+      title: "Particles 13",
+      img: "/assets/images/6Particles/13.png",
+    },
+    {
+      title: "Particles 21",
+      img: "/assets/images/6Particles/21.png",
+    },
+    {
+      title: "Particles 23",
+      img: "/assets/images/6Particles/23.png",
+    },
+    {
+      title: "Particles 31",
+      img: "/assets/images/6Particles/31.png",
+    },
+    {
+      title: "Particles 33",
+      img: "/assets/images/6Particles/33.png",
+    },
+    {
+      title: "Particles 34",
+      img: "/assets/images/6Particles/34.png",
+    },
+  ],
+};
+
+const Shitga = {
+  header: "Shitga",
+  year: "2022",
+  type: "Static",
+  lists: [
+    {
+      title: "Shitga 24",
+      img: "/assets/images/7Shitga/24.png",
+    },
+    {
+      title: "Shitga 3",
+      img: "/assets/images/7Shitga/3.png",
+    },
+    {
+      title: "Shitga 7",
+      img: "/assets/images/7Shitga/7.png",
+    },
+    {
+      title: "Shitga 14",
+      img: "/assets/images/7Shitga/14.png",
+    },
+    {
+      title: "Shitga 16",
+      img: "/assets/images/7Shitga/16.png",
+    },
+    {
+      title: "Shitga 23",
+      img: "/assets/images/7Shitga/23.png",
+    },
+  ],
+};
+
+const Monochrome = {
+  header: "Monochrome",
+  year: "2022",
+  type: "Static",
+  lists: [
+    {
+      title: "Monochrome 1",
+      img: "/assets/images/8Monochrome/1.png",
+      link: "/monochrome1",
+    },
+    {
+      title: "Monochrome 2",
+      img: "/assets/images/8Monochrome/2.png",
+      link: "/monochrome2",
+    },
+    {
+      title: "Monochrome 4",
+      img: "/assets/images/8Monochrome/4.png",
+      link: "/monochrome4",
+    },
+  ],
+};
+
+const WhiteMonuments = {
+  header: "White Monuments",
+  year: "2021",
+  type: "Interactive",
+  lists: [
+    {
+      title: "White Monuments",
+      img: "/assets/images/9WhiteMonuments/0.png",
+      link: "/whitemonumentstest",
+    },
+    {
+      title: "White Monuments 2",
+      img: "/assets/images/9WhiteMonuments/2.png",
+      link: "/whitemonuments2",
+    },
+    {
+      title: "White Monuments 3",
+      img: "/assets/images/9WhiteMonuments/3.png",
+      link: "/whitemonuments3",
+    },
+    {
+      title: "White Monuments 5",
+      img: "/assets/images/9WhiteMonuments/5.png",
+      link: "/whitemonuments5",
+    },
+    {
+      title: "White Monuments 8",
+      img: "/assets/images/9WhiteMonuments/8.png",
+      link: "/whitemonuments8",
+    },
+    {
+      title: "White Monuments 10",
+      img: "/assets/images/9WhiteMonuments/10.png",
+      link: "/whitemonuments10",
     },
   ],
 };

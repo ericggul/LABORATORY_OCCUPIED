@@ -81,6 +81,10 @@ import PipeOrgan from "./Labs/words/PipeOrgan/Words";
 import TextSpread from "./Labs/words/TextSpread/Words";
 import WordsTesting from "./Labs/words/WordsTesting/Words";
 
+import Monochrome1 from "./Labs/Monochrome/Monochrome1";
+import Monochrome2 from "./Labs/Monochrome/Monochrome2";
+import Monochrome3 from "./Labs/Monochrome/Monochrome3";
+import Monochrome4 from "./Labs/Monochrome/Monochrome4";
 import MonochromeTesting from "./Labs/Monochrome/MonochromeTesting";
 
 import Division from "./Labs/Division/Division";
@@ -393,6 +397,10 @@ function App() {
 
         <Route exact path="/linestesting" component={LinesTesting} />
 
+        <Route exact path="/monochrome1" component={Monochrome1} />
+        <Route exact path="/monochrome2" component={Monochrome2} />
+        <Route exact path="/monochrome3" component={Monochrome3} />
+        <Route exact path="/monochrome4" component={Monochrome4} />
         <Route exact path="/monochrometesting" component={MonochromeTesting} />
 
         <Route exact path="/facerec" component={FaceRec} />
