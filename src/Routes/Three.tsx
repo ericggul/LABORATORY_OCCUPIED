@@ -18,7 +18,6 @@ import ShapeTesting from "../Techs/Three/Shape/ShapeTesting/Shape";
 import PlaneTraversal from "../Techs/Three/Shape/PlaneTraversal/Plane";
 import ParticlesTutorial from "../Techs/Three/Shape/ParticlesTutorial/Shape";
 
-import ArtifactsTesting from "../Techs/Three/Artifacts/ArtifactsTesting/Artifacts";
 import CylindersTesting from "../Techs/Three/Cylinders/CylindersTesting/Cylinders";
 
 const NestedCirclesRoutes = [
@@ -42,7 +41,6 @@ const NestedCirclesRoutes = [
   { path: "/planetraversal", component: PlaneTraversal },
   { path: "/particlestutorial", component: ParticlesTutorial },
 
-  { path: "/artifactstesting", component: ArtifactsTesting },
   { path: "/cylinderstesting", component: CylindersTesting },
 ];
 
