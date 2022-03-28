@@ -217,7 +217,6 @@ import Movement2 from "./Techs/Patterns/Movement2/Movement2";
 import TestingCentre from "./Techs/Patterns/TestingCentre/TestingCentre";
 
 import SingaSong from "./Techs/TTS/SingaSong";
-import ShadersTutorial from "./Techs/Shaders/ShadersTutorial";
 
 import BLT from "./Labs/Black/BLT";
 import BOB from "./Labs/Black/BOB";
@@ -234,6 +233,8 @@ import ShitgaRoutes from "./Routes/Shitga";
 import ParticlesRoutes from "./Routes/Particles";
 import StraightRoutes from "./Routes/Straight";
 import DomestikaTutorialsRoutes from "./Routes/DomestikaTutorials";
+
+import IconsRoutes from "./Routes/PreOccupied/Icons";
 
 import styled from "styled-components";
 import LoadingPage from "./Pages/LoadingPage/LoadingPage";
@@ -514,8 +515,6 @@ function App() {
           />
 
           <Route exact path="/singasong" component={SingaSong} />
-          <Route exact path="/shaderstutorial" component={ShadersTutorial} />
-
           <Route exact path="/snowfall" component={Snowfall} />
 
           <Route exact path="/blt" component={BLT} />
@@ -600,6 +599,15 @@ function App() {
               exact
               key={i}
               path={`/domestika${route.path}`}
+              component={route.component}
+            />
+          ))}
+
+          {IconsRoutes.map((route: any, i: any) => (
+            <Route
+              exact
+              key={i}
+              path={`${route.path}`}
               component={route.component}
             />
           ))}

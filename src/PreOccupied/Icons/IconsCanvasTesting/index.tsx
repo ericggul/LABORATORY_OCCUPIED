@@ -1,9 +1,7 @@
----
-to: src/<%= h.changeCase.pascalCase(name) %>/index.tsx
----
 import React, {useState, useEffect} from 'react';
+import * as S from './styles';
 
-function <%= h.changeCase.pascalCase(name) %>() {
+function IconsCanvasTesting() {
 
   const [draw, setDraw] = useState<any>(null);
   useEffect(() => {
@@ -78,4 +76,4 @@ class Canvas {
 }
 
 
-export default <%= h.changeCase.pascalCase(name) %>;
+export default IconsCanvasTesting;
