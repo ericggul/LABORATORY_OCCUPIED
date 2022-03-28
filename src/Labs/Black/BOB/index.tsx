@@ -1,9 +1,8 @@
-import style from "./ArtNoveau.module.scss";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const getRandom = (a: number, b: number) => Math.random() * (b - a) + a;
 
-function ArtNoveau() {
+export default function BOB() {
   const [draw, setDraw] = useState<any>(null);
   useEffect(() => {
     setDraw(new Canvas());
@@ -16,12 +15,17 @@ function ArtNoveau() {
   }, [draw]);
 
   return (
-    <div
-      id="CanvasWrapper"
-      style={{ width: "100vw", height: "100vh", background: "white" }}
-    />
+    <>
+      <div
+        id="CanvasWrapper"
+        style={{ width: "100vw", height: "100vh", background: "black" }}
+      />
+    </>
   );
 }
+
+//30vh + 10px
+//23vw + 10px
 
 class Canvas {
   wrapper: any;
@@ -32,6 +36,8 @@ class Canvas {
 
   squareSets: any;
   squareNumber: any;
+
+  restrictedArea: any;
 
   scale: any;
 
@@ -57,6 +63,11 @@ class Canvas {
     this.squareNumber = 20000;
     this.squareSets = [];
 
+    this.restrictedArea = {
+      x: [this.stageWidth * 0.23, this.stageWidth * 0.23 + 10],
+      y: [this.stageHeight * 0.3, this.stageHeight * 0.3 + 10],
+    };
+
     this.init();
   }
 
@@ -71,7 +82,8 @@ class Canvas {
           {
             x: getRandom(50, 100),
             y: getRandom(50, 100),
-          }
+          },
+          this.restrictedArea
         )
       );
     }
@@ -102,39 +114,58 @@ class Square {
   interval: any;
   repeat: any;
   colorArrange: any;
+  restrictedArea: any;
 
   opacity: any;
 
-  constructor(pos: any, size: any) {
+  constructor(pos: any, size: any, restrictedArea: any) {
     this.pos = pos;
     this.size = size;
 
     this.repeat = Math.floor(getRandom(0, 100));
     this.interval = { x: getRandom(-5, 5), y: getRandom(-5, 5) };
-    this.colorArrange = {
-      r: getRandom(190, 250),
-      g: getRandom(190, 250),
-      b: getRandom(0, 30),
-    };
 
-    this.opacity = 0.01;
+    this.restrictedArea = restrictedArea;
+    this.opacity = 0.05;
   }
 
   draw(ctx: any) {
     for (let i = 0; i < this.repeat; i++) {
-      ctx.fillStyle = `rgba(
-        ${getRandom(0, 250)}, ${getRandom(0, 250)}, ${getRandom(0, 30)} ,${
-        this.opacity
-      })`;
+      if (
+        this.pos.x + this.interval.x * i + this.size.x / 2 >
+          this.restrictedArea.x[0] &&
+        this.pos.x + this.interval.x * i - this.size.x / 2 <
+          this.restrictedArea.x[1] &&
+        this.pos.y + this.interval.y * i + this.size.y / 2 >
+          this.restrictedArea.y[0] &&
+        this.pos.y + this.interval.y * i - this.size.y / 2 <
+          this.restrictedArea.y[1]
+      ) {
+        return;
+      } else {
+        const angle = 0;
+        ctx.translate(
+          this.pos.x + this.interval.x * i,
+          this.pos.y + this.interval.y * i
+        );
+        ctx.rotate(angle);
+        ctx.fillStyle = `rgba(
+            ${getRandom(getRandom(200, 250), 255)},
+             ${getRandom(getRandom(getRandom(180, 220), 240), 255)}, 
+             ${getRandom(getRandom(200, 250), 255)} ,${this.opacity})`;
 
-      ctx.fillRect(
-        this.pos.x - this.size.x / 2 + this.interval.x * i,
-        this.pos.y - this.size.y / 2 + this.interval.y * i,
-        this.size.x,
-        this.size.y
-      );
+        ctx.fillRect(
+          -this.size.x / 2,
+          -this.size.y / 2,
+          this.size.x,
+          this.size.y
+        );
+        ctx.rotate(-angle);
+        ctx.translate(
+          -this.pos.x - this.interval.x * i,
+          -this.pos.y - this.interval.y * i
+        );
+      }
     }
   }
 }
-
-export default ArtNoveau;

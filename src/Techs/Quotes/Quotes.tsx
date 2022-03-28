@@ -1,8 +1,5 @@
 import style from "./Quotes.module.scss";
 import { useState, useRef, useEffect } from "react";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
-import useMousePosition from "../../hooks/useMousePosition";
-import useTouchPosition from "../../hooks/useTouchPosition";
 
 function Quotes() {
   const quoteRef = useRef<any>();

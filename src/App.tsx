@@ -190,8 +190,6 @@ import BlueDanube1 from "./Techs/Audio/BlueDanube1/BlueDanube1";
 import BlueDanube2 from "./Techs/Audio/BlueDanube2/BlueDanube2";
 import BlueDanube3 from "./Techs/Audio/BlueDanube3/BlueDanube3";
 
-import WaveTesting from "./Techs/Animations/Wave/WaveTesting/WaveTesting";
-
 import MouseBallMove from "./Techs/Animations/MouseBallMove/MouseBallMove";
 
 import Snowfall from "./Techs/Clone/Snowfall/Snowfall";
@@ -220,6 +218,11 @@ import TestingCentre from "./Techs/Patterns/TestingCentre/TestingCentre";
 
 import SingaSong from "./Techs/TTS/SingaSong";
 import ShadersTutorial from "./Techs/Shaders/ShadersTutorial";
+
+import BLT from "./Labs/Black/BLT";
+import BOB from "./Labs/Black/BOB";
+import WHT from "./Labs/Black/WHT";
+import WOB from "./Labs/Black/WOB";
 
 import ArtNoveauRoutes from "./Routes/ArtNoveau";
 import FourPillarsRoutes from "./Routes/FourPillars";
@@ -405,7 +408,6 @@ function App() {
           <Route exact path="/bluedanube2" component={BlueDanube2} />
           <Route exact path="/bluedanube3" component={BlueDanube3} />
 
-          <Route exact path="/wavetesting" component={WaveTesting} />
           <Route exact path="/mouseballmove" component={MouseBallMove} />
           <Route exact path="/meteo" component={Meteo} />
           <Route exact path="/meteocircle" component={MeteoCircle} />
@@ -515,6 +517,11 @@ function App() {
           <Route exact path="/shaderstutorial" component={ShadersTutorial} />
 
           <Route exact path="/snowfall" component={Snowfall} />
+
+          <Route exact path="/blt" component={BLT} />
+          <Route exact path="/bob" component={BOB} />
+          <Route exact path="/wht" component={WHT} />
+          <Route exact path="/wob" component={WOB} />
 
           {FourPillarsRoutes.map((route: any, i: any) => (
             <Route

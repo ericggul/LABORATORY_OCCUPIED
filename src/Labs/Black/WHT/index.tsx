@@ -1,9 +1,8 @@
-import style from "./ArtNoveau.module.scss";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const getRandom = (a: number, b: number) => Math.random() * (b - a) + a;
 
-function ArtNoveau() {
+export default function WHT() {
   const [draw, setDraw] = useState<any>(null);
   useEffect(() => {
     setDraw(new Canvas());
@@ -16,10 +15,22 @@ function ArtNoveau() {
   }, [draw]);
 
   return (
-    <div
-      id="CanvasWrapper"
-      style={{ width: "100vw", height: "100vh", background: "white" }}
-    />
+    <>
+      <div
+        id="CanvasWrapper"
+        style={{ width: "100vw", height: "100vh", background: "white" }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          background: "white",
+          top: "30vh",
+          left: "23vw",
+          width: "10px",
+          height: "10px",
+        }}
+      />
+    </>
   );
 }
 
@@ -111,30 +122,34 @@ class Square {
 
     this.repeat = Math.floor(getRandom(0, 100));
     this.interval = { x: getRandom(-5, 5), y: getRandom(-5, 5) };
-    this.colorArrange = {
-      r: getRandom(190, 250),
-      g: getRandom(190, 250),
-      b: getRandom(0, 30),
-    };
 
-    this.opacity = 0.01;
+    this.opacity = 0.05;
   }
 
   draw(ctx: any) {
     for (let i = 0; i < this.repeat; i++) {
+      const angle = getRandom(0, Math.PI);
+      ctx.translate(
+        this.pos.x + this.interval.x * i,
+        this.pos.y + this.interval.y * i
+      );
+      ctx.rotate(angle);
       ctx.fillStyle = `rgba(
-        ${getRandom(0, 250)}, ${getRandom(0, 250)}, ${getRandom(0, 30)} ,${
-        this.opacity
-      })`;
+          ${getRandom(0, getRandom(0, 50))},
+           ${getRandom(0, getRandom(0, 50))}, 
+           ${getRandom(0, 40)} ,${this.opacity})`;
 
       ctx.fillRect(
-        this.pos.x - this.size.x / 2 + this.interval.x * i,
-        this.pos.y - this.size.y / 2 + this.interval.y * i,
+        -this.size.x / 2,
+        -this.size.y / 2,
         this.size.x,
         this.size.y
+      );
+      ctx.rotate(-angle);
+      ctx.translate(
+        -this.pos.x - this.interval.x * i,
+        -this.pos.y - this.interval.y * i
       );
     }
   }
 }
-
-export default ArtNoveau;

@@ -1,7 +1,5 @@
 import style from "./Square4.module.scss";
 import { useState, useCallback } from "react";
-import useTouchPosition from "../../../hooks/useTouchPosition";
-import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 function Square4() {
   const Component = () => {
