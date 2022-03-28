@@ -19,10 +19,10 @@ function <%= h.changeCase.pascalCase(name) %>() {
 
   return (
 
-      </%= div
+      <div
         id="CanvasWrapper"
         style={{ width: "100vw", height: "100vh", background: "black" }}
-      %>>
+      ></div>
   );
 }
 
@@ -63,7 +63,7 @@ class Canvas {
   }
 
   draw() {
-  
+  }
 
   capture() {
     console.log("handling..");
