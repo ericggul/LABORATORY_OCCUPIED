@@ -1,31 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { FiThumbsUp } from "react-icons/fi";
-import useMousePosition from "../../../hooks/useMousePosition";
-import useTouchPosition from "../../../hooks/useTouchPosition";
+
 import * as S from "./styles";
 
 const getRandom = (a: number, b: number) => Math.random() * (b - a) + a;
 
-function SingleIcon() {
-  const [size, setSize] = useState(getRandom(1, 2));
+function SingleIcon({ state }: any) {
+  const COLOR_ARRAY = ["white", "hotpink"];
+  const [internalState, setInternalState] = useState(state);
+
   return (
-    <S.Icon size={size}>
+    <S.Icon
+      color={COLOR_ARRAY[internalState ? 1 : 0]}
+      background={COLOR_ARRAY[internalState ? 0 : 1]}
+      onClick={() => setInternalState((st: any) => 1 - st)}
+    >
       <FiThumbsUp />
     </S.Icon>
   );
 }
 
 function Icons() {
-  const { mouseX, mouseY } = useMousePosition();
-  const { touchX, touchY } = useTouchPosition();
+  const INITIAL_INTERVAL = 900;
+
+  const [colorState, setColorState] = useState(0);
+  const [intervalTIme, setIntervalTime] = useState(INITIAL_INTERVAL);
+
+  function test() {
+    setColorState((st: any) => 1 - st);
+  }
 
   return (
     <S.StyledIcons>
-      <S.Container>
-        {new Array(1600).fill(0).map((e, i) => (
-          <SingleIcon key={i} />
-        ))}
-      </S.Container>
+      {new Array(25).fill(0).map((e, i) => (
+        <SingleIcon key={i} state={(i + colorState) % 2} />
+      ))}
     </S.StyledIcons>
   );
 }

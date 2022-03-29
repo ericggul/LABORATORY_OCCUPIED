@@ -17,7 +17,6 @@ function <%= h.changeCase.pascalCase(name) %>() {
   }, [draw]);
 
   return (
-
       <div
         id="CanvasWrapper"
         style={{ width: "100vw", height: "100vh", background: "black" }}

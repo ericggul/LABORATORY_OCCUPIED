@@ -49,13 +49,6 @@ class Canvas {
     this.resize();
 
     window.addEventListener("resize", this.resize.bind(this));
-
-    // document.addEventListener("mousemove", (e) =>
-    //   this.draw(e.clientX, e.clientY)
-    // );
-    // document.addEventListener("touchmove", (e) =>
-    //   this.draw(e.changedTouches[0].clientX, e.changedTouches[0].clientY)
-    // );
   }
 
   resize() {
@@ -84,14 +77,8 @@ class Canvas {
         this.iconSets.push(
           new Icon(
             {
-              x:
-                this.stageWidth / 2 +
-                j * this.iconInterval -
-                (this.iconCols * this.iconInterval) / 2,
-              y:
-                this.stageHeight / 2 +
-                i * this.iconInterval -
-                (this.iconRows * this.iconInterval) / 2,
+              x: getRandom(-300, this.stageWidth),
+              y: getRandom(-300, this.stageHeight),
             },
             {
               i,
@@ -132,7 +119,7 @@ class Icon {
     this.pos = pos;
     this.idx = idx;
     this.angle = 0;
-    this.scale = 1.3;
+    this.scale = getRandom(5, 20);
     this.color = `rgba(${getRandom(200, 250)}, ${getRandom(0, 200)}, 0, 0.3)`;
   }
 
@@ -144,11 +131,12 @@ class Icon {
     ctx.fillStyle = ctx.strokeStyle = this.color;
 
     let p = new Path2D(PATH);
-    if ((this.idx.i + this.idx.j) % 2 === 0) {
-      ctx.fill(p);
-    } else {
-      ctx.stroke(p);
-    }
+    ctx.fill(p);
+    // if ((this.idx.i + this.idx.j) % 2 === 0) {
+    //   ctx.fill(p);
+    // } else {
+    //   ctx.stroke(p);
+    // }
 
     ctx.restore();
   }

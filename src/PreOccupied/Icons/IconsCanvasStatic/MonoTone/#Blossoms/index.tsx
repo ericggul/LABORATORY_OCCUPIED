@@ -39,7 +39,6 @@ class Canvas {
   iconNumber: any;
 
   iconSets: any;
-  iconInterval: any;
 
   constructor() {
     this.wrapper = document.getElementById("CanvasWrapper");
@@ -49,13 +48,6 @@ class Canvas {
     this.resize();
 
     window.addEventListener("resize", this.resize.bind(this));
-
-    // document.addEventListener("mousemove", (e) =>
-    //   this.draw(e.clientX, e.clientY)
-    // );
-    // document.addEventListener("touchmove", (e) =>
-    //   this.draw(e.changedTouches[0].clientX, e.changedTouches[0].clientY)
-    // );
   }
 
   resize() {
@@ -68,10 +60,7 @@ class Canvas {
 
     this.ctx.scale(this.scale, this.scale);
 
-    this.iconInterval = 30;
-    this.iconRows = this.iconCols = Math.ceil(
-      this.stageHeight / this.iconInterval
-    );
+    this.iconRows = this.iconCols = 90;
     this.iconNumber = this.iconRows * this.iconCols;
     this.iconSets = [];
 
@@ -84,14 +73,8 @@ class Canvas {
         this.iconSets.push(
           new Icon(
             {
-              x:
-                this.stageWidth / 2 +
-                j * this.iconInterval -
-                (this.iconCols * this.iconInterval) / 2,
-              y:
-                this.stageHeight / 2 +
-                i * this.iconInterval -
-                (this.iconRows * this.iconInterval) / 2,
+              x: getRandom(-200, this.stageWidth + 100),
+              y: getRandom(-200, this.stageHeight + 100),
             },
             {
               i,
@@ -105,6 +88,8 @@ class Canvas {
   }
 
   draw(x: any, y: any) {
+    this.ctx.fillStyle = "white";
+    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
     this.iconSets.map((icon: any) => icon.draw(this.ctx));
     // this.iconSets.map((icon: any) => icon.draw(this.ctx, { x, y }));
   }
@@ -131,9 +116,12 @@ class Icon {
   constructor(pos: any, idx: any) {
     this.pos = pos;
     this.idx = idx;
-    this.angle = 0;
-    this.scale = 1.3;
-    this.color = `rgba(${getRandom(200, 250)}, ${getRandom(0, 200)}, 0, 0.3)`;
+    this.angle = getRandom(0, Math.PI * 2);
+    this.scale = getRandom(3, getRandom(3, 10));
+    this.color = `rgba(${getRandom(220, 250)}, ${getRandom(
+      140,
+      200
+    )}, ${getRandom(170, 250)}, ${getRandom(0.05, getRandom(0.1, 0.5))})`;
   }
 
   draw(ctx: any) {
@@ -144,11 +132,7 @@ class Icon {
     ctx.fillStyle = ctx.strokeStyle = this.color;
 
     let p = new Path2D(PATH);
-    if ((this.idx.i + this.idx.j) % 2 === 0) {
-      ctx.fill(p);
-    } else {
-      ctx.stroke(p);
-    }
+    ctx.stroke(p);
 
     ctx.restore();
   }
