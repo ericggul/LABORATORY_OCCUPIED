@@ -60,7 +60,7 @@ class Canvas {
 
     this.ctx.scale(this.scale, this.scale);
 
-    this.iconRows = this.iconCols = 70;
+    this.iconRows = this.iconCols = 80;
     this.iconNumber = this.iconRows * this.iconCols;
     this.iconSets = [];
 
@@ -117,11 +117,11 @@ class Icon {
     this.pos = pos;
     this.idx = idx;
     this.angle = getRandom(0, Math.PI * 2);
-    this.scale = getRandom(3, 10);
+    this.scale = getRandom(3, getRandom(3, 10));
     this.color = `rgba(${getRandom(200, 250)}, ${getRandom(
       0,
       200
-    )}, ${getRandom(50, 100)}, 0.1)`;
+    )}, ${getRandom(50, 100)}, ${getRandom(0.05, getRandom(0.1, 0.2))})`;
   }
 
   draw(ctx: any) {

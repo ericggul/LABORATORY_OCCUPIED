@@ -141,10 +141,10 @@ class Icon {
     this.targetAngle = Math.PI * getRandom(4, getRandom(10, 30));
     this.scale = 5;
     this.targetScale = getRandom(3, getRandom(3, 13));
-    this.color = `rgba(${getRandom(0, 180)}, ${getRandom(0, 220)}, ${getRandom(
-      0,
-      255
-    )}, ${getRandom(0.02, getRandom(0.05, 0.1))})`;
+    this.color = `rgba(${getRandom(0, 250)}, ${getRandom(
+      100,
+      150
+    )}, ${getRandom(0, 150)}, ${getRandom(0.02, getRandom(0.02, 0.05))})`;
 
     this.timeStart = timeStart;
   }
@@ -152,7 +152,7 @@ class Icon {
   draw(ctx: any, elapsedTime: any) {
     if (
       elapsedTime > this.timeStart &&
-      elapsedTime < this.timeStart + 80 / this.posSpeed
+      elapsedTime < this.timeStart + 50 / this.posSpeed
     ) {
       this.pos.x += (this.targetPos.x - this.pos.x) * this.posSpeed;
       this.pos.y += (this.targetPos.y - this.pos.y) * this.posSpeed;
@@ -166,7 +166,7 @@ class Icon {
       ctx.fillStyle = ctx.strokeStyle = this.color;
 
       let p = new Path2D(PATH);
-      ctx.stroke(p);
+      ctx.fill(p);
 
       ctx.restore();
     }
