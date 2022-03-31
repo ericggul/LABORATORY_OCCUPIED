@@ -34,9 +34,8 @@ class Canvas {
   scale: any;
 
   //icon numbers
-  iconNumber: any;
-
-  iconSets: any;
+  layerNumber: any;
+  layerSets: any;
 
   //Time Related
   then: any;
@@ -64,25 +63,27 @@ class Canvas {
 
     this.ctx.scale(this.scale, this.scale);
 
-    this.iconNumber = 5000;
-    this.iconSets = [];
+    this.layerNumber = 50;
+    this.layerSets = [];
 
     this.init();
   }
 
   init() {
-    for (let i = 0; i < this.iconNumber; i++) {
-      this.iconSets.push(
-        new Icon(
+    this.ctx.fillStyle = "white";
+    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+    for (let i = 0; i < this.layerNumber; i++) {
+      this.layerSets.push(
+        new Layer(
+          400,
+          3500 * i,
           {
-            x: getRandom(-200, this.stageWidth + 100),
-            y: getRandom(-200, this.stageHeight + 100),
+            r: getRandom(50, 100),
+            g: getRandom(100, 150),
+            b: getRandom(100, 150),
           },
-          i * 100,
-          {
-            x: this.stageWidth * getRandom(0.3, 0.6),
-            y: this.stageHeight * getRandom(0.3, 0.7),
-          }
+          this.stageWidth,
+          this.stageHeight
         )
       );
     }
@@ -105,19 +106,61 @@ class Canvas {
   }
 
   draw() {
-    this.iconSets.map((icon: any) => icon.draw(this.ctx, this.elapsedTime));
+    this.layerSets.map((layer: any) => layer.draw(this.ctx, this.elapsedTime));
   }
 
-  capture() {
-    console.log("handling..");
-    let dataURL = this.canvas.toDataURL("image/png");
-    var link = document.createElement("a");
-    link.download = "image.png";
-    link.href = dataURL;
+  capture() {}
+}
 
-    link.click();
-    console.log("downloaded..");
-    link.remove();
+class Layer {
+  iconNumber: any;
+  iconSets: any;
+  startTime: any;
+  colorRange: any;
+
+  stageWidth: any;
+  stageHeight: any;
+
+  constructor(
+    iconNumber: any,
+    startTime: any,
+    colorRange: any,
+    stageWidth: any,
+    stageHeight: any
+  ) {
+    this.iconNumber = iconNumber;
+    this.iconSets = [];
+    this.startTime = startTime;
+    this.colorRange = [];
+
+    this.stageWidth = stageWidth;
+    this.stageHeight = stageHeight;
+
+    this.init();
+  }
+
+  init() {
+    for (let i = 0; i < this.iconNumber; i++) {
+      this.iconSets.push(
+        new Icon(
+          {
+            x: getRandom(-100, this.stageWidth + 50),
+            y: getRandom(-100, this.stageHeight + 50),
+          },
+          this.startTime + getRandom(0, 200),
+          {
+            x: this.stageWidth * 0.5,
+            y: this.stageHeight * 0.5,
+          }
+        )
+      );
+    }
+  }
+
+  draw(ctx: any, elapsedTime: any) {
+    if (elapsedTime > this.startTime) {
+      this.iconSets.map((icon: any) => icon.draw(ctx, elapsedTime));
+    }
   }
 }
 
@@ -135,16 +178,24 @@ class Icon {
 
   constructor(pos: any, timeStart: any, initialPos: any) {
     this.pos = initialPos;
-    this.posSpeed = getRandom(0.005, 0.015);
+    this.posSpeed = 0.02;
     this.angle = 0;
     this.targetPos = pos;
-    this.targetAngle = Math.PI * getRandom(10, getRandom(20, 30));
-    this.scale = getRandom(1, 5);
-    this.targetScale = getRandom(1, getRandom(1, getRandom(1, 20)));
-    this.color = `rgba(${getRandom(0, 50)}, ${getRandom(0, 50)}, ${getRandom(
-      0,
-      255
-    )}, ${getRandom(0.05, getRandom(0.05, 0.3))})`;
+    this.targetAngle = Math.PI * getRandom(10, getRandom(10, 20));
+    this.scale = getRandom(1, 4);
+    this.targetScale = getRandom(1, getRandom(1, 5));
+    this.targetColor = {
+      r: getRandom(0, 200),
+      g: getRandom(0, 200),
+      b: getRandom(100, 150),
+      a: getRandom(0.05, 0.1),
+    };
+    this.color = {
+      r: 0,
+      g: 0,
+      b: 0,
+      a: 0,
+    };
 
     this.timeStart = timeStart;
   }
@@ -159,14 +210,23 @@ class Icon {
       this.angle += (this.targetAngle - this.angle) * 0.05;
       this.scale += (this.targetScale - this.scale) * 0.1;
 
+      this.color.r +=
+        (this.targetColor.r - this.color.r) * 0.1 + getRandom(-10, 10);
+      this.color.g += (this.targetColor.g - this.color.g) * 0.07;
+      this.color.b += (this.targetColor.b - this.color.b) * 0.07;
+      this.color.a += (this.targetColor.a - this.color.a) * 0.07;
+
       ctx.save();
       ctx.translate(this.pos.x, this.pos.y);
       ctx.rotate(this.angle);
       ctx.scale(this.scale, this.scale);
-      ctx.fillStyle = ctx.strokeStyle = this.color;
+
+      ctx.fillStyle =
+        ctx.strokeStyle = `rgba(${this.color.r},${this.color.g},${this.color.b}, ${this.color.a})`;
 
       let p = new Path2D(PATH);
-      ctx.stroke(p);
+
+      ctx.fill(p);
 
       ctx.restore();
     }

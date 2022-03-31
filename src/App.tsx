@@ -182,7 +182,7 @@ import Nightsky from "./Techs/Animations/Nightsky/Nightsky";
 import Verticals from "./Techs/Animations/Verticals/Verticals";
 import Emergence from "./Techs/Animations/Emergence/Emergence";
 
-import AudioTesting from "./Techs/Audio/AudioTesting/AudioTesting";
+import AudioTesting from "./Techs/Audio/MapboxAudio/AudioTesting/AudioTesting";
 import AudioDefault from "./Techs/Audio/AudioDefault/AudioDefault";
 import RageTheNight from "./Techs/Audio/RageTheNight/RageTheNight";
 import RageTheNight2 from "./Techs/Audio/RageTheNight2/RageTheNight2";

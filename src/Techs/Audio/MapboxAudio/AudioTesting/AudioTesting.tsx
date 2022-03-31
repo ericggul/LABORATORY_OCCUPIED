@@ -1,7 +1,8 @@
 import * as S from "./styles";
-import { useCallback, useState, useEffect } from "react";
-import { request } from "http";
-import Rage from "../../../assets/Rage.mp3";
+import { useCallback, useState, useEffect, useRef } from "react";
+
+import Reality from "../../../../assets/Reality.mp3";
+import ReactAudioPlayer from "react-audio-player";
 
 function getRandom(a: number, b: number) {
   return Math.random() * (b - a) + a;
@@ -36,34 +37,40 @@ function activation(a: any) {
   }
 }
 
-const PI2 = Math.PI * 2;
-
 export default function AudioTesting() {
-  const audio: HTMLAudioElement = new Audio(Rage);
-  var wave: any;
+  const audio: HTMLAudioElement = new Audio(Reality);
+  const audioRef = useRef<any>(!null);
+  const [rap, setRap] = useState<any>(!null);
+  const [wave, setWave] = useState<any>(!null);
+
+  //Initial Play Button
   const [buttonClicked, setButtonClicked] = useState(false);
 
   useEffect(() => {
-    wave = new App(audio);
-  }, []);
+    if (rap && rap.audioEl) {
+      console.log(rap.audioEl.current);
+      let canvasEl = new App(rap.audioEl.current);
+      canvasEl.audioCtx.resume();
+      setWave(canvasEl);
+    }
+  }, [rap]);
 
   const handleClick = () => {
     console.log("click");
-    wave.audioCtx.resume();
-    wave.audioElement.play();
 
     setButtonClicked(true);
   };
 
   return (
     <>
-      <div
-        id="CanvasWrapper"
-        style={{ width: "100vw", height: "100vh", background: "black" }}
-      />
+      <div id="CanvasWrapper" style={{ width: "100vw", height: "100vh" }} />
       {!buttonClicked && (
         <S.Button onClick={handleClick}>Play the Song</S.Button>
       )}
+      {buttonClicked && (
+        <ReactAudioPlayer src={Reality} autoPlay ref={(el) => setRap(el)} />
+      )}
+      {buttonClicked && <S.Container />}
     </>
   );
 }
@@ -89,7 +96,7 @@ class App {
   rowHeight: any;
   cellSize: any;
 
-  shuffledArray: any;
+  pointArray: any;
 
   time: any;
 
@@ -105,7 +112,9 @@ class App {
     this.audioCtx = new AudioContext();
     this.analyser = this.audioCtx.createAnalyser();
 
-    this.analyser.fftSize = 2048;
+    this.analyser.fftSize = 256;
+    this.analyser.smoothingTimeConstant = 0.95;
+
     this.source = this.audioCtx.createMediaElementSource(this.audioElement);
     this.data = new Uint8Array(this.analyser.frequencyBinCount);
 
@@ -122,10 +131,9 @@ class App {
     this.stageHeight = this.wrapper.clientHeight;
     this.space = this.stageWidth / this.stageHeight;
 
-    this.sizeCalculator();
+    this.pointArray = [];
 
-    this.shuffledArray = shuffle(1025);
-    console.log(this.shuffledArray);
+    this.sizeCalculator();
 
     this.canvas.width = this.stageWidth;
     this.canvas.height = this.stageHeight;
@@ -155,6 +163,20 @@ class App {
   }
 
   init() {
+    for (let i = 0; i < 129; i++) {
+      this.pointArray.push(
+        new Point(
+          getRandom(0, this.stageWidth),
+          getRandom(0, this.stageHeight),
+          `rgba(${getRandom(180, 255)}, ${getRandom(140, 170)}, ${getRandom(
+            140,
+            170
+          )}, 0.05)`,
+          this.cellSize * 10
+        )
+      );
+    }
+
     this.loopingFunction();
   }
 
@@ -166,32 +188,46 @@ class App {
   }
 
   draw(data: any) {
-    data = [...data];
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
 
-    this.data.forEach((value: any, i: number) => {
-      const shuffledNumber = this.shuffledArray[i];
-      const activated = activation(i);
-      this.ctx.beginPath();
-
-      this.ctx.fillStyle = `rgba(${value * (activated / 300)}, ${
-        value * (1 - activated / 350)
-      }, ${(shuffledNumber / 1024) * 255}, ${value / 1300})`;
-      // this.ctx.globalCompositeOperation = 'soft-light'
-
-      const size = (value / 255) * this.cellSize * 5;
-
-      this.ctx.fillRect(
-        (shuffledNumber % this.columnNums) * this.columnWidth -
-          this.cellSize * 2.5,
-        Math.floor(shuffledNumber / this.columnNums) * this.rowHeight -
-          this.cellSize * 2.5,
-        this.cellSize * 5,
-        this.cellSize * 5
-      );
-
-      this.ctx.fill();
-      this.ctx.closePath();
+    data.forEach((value: any, i: number) => {
+      this.pointArray[i].draw(this.ctx, value);
     });
+  }
+}
+
+class Point {
+  x: any;
+  y: any;
+  color: any;
+  cellSize: any;
+  constructor(x: any, y: any, color: any, cellSize: any) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.cellSize = cellSize;
+  }
+
+  draw(ctx: any, value: any) {
+    const size = (value / 255) * this.cellSize;
+    ctx.beginPath();
+    var gradient = ctx.createRadialGradient(
+      this.x,
+      this.y,
+      0,
+      this.x,
+      this.y,
+      size * 1
+    );
+    // Add three color stops
+    gradient.addColorStop(0, this.color);
+    gradient.addColorStop(1, `transparent`);
+
+    // Set the fill style and draw a rectangle
+    ctx.fillStyle = gradient;
+    ctx.arc(this.x, this.y, size, 0, Math.PI * 2, false);
+
+    ctx.fill();
+    ctx.closePath();
   }
 }

@@ -1,6 +1,11 @@
 import IconsTesting from "../../PreOccupied/Icons/IconsTesting";
 import IconsCanvasTesting from "../../PreOccupied/Icons/IconsCanvasTesting";
 
+import IconsCanvasAnimateTesting from "../../PreOccupied/Icons/IconsCanvasAnimate/Testing";
+import A from "../../PreOccupied/Icons/IconsCanvasAnimate/Preliminary/A";
+import B from "../../PreOccupied/Icons/IconsCanvasAnimate/Preliminary/B";
+import C from "../../PreOccupied/Icons/IconsCanvasAnimate/Preliminary/C";
+
 import IconsCanvasStaticTesting from "../../PreOccupied/Icons/IconsCanvasStatic/Testing";
 import Autumn from "../../PreOccupied/Icons/IconsCanvasStatic/MonoTone/#Autumn";
 import Blossoms from "../../PreOccupied/Icons/IconsCanvasStatic/MonoTone/#Blossoms";
@@ -13,6 +18,13 @@ const IconsRoutes = [
   { path: "/iconscanvastesting", component: IconsCanvasTesting },
 ];
 
+const IconCanvasAnimate = [
+  { path: "/iconscanvasanimatetesting", component: IconsCanvasAnimateTesting },
+  { path: "/a", component: A },
+  { path: "/b", component: B },
+  { path: "/c", component: C },
+];
+
 const IconCanvasStatic = [
   { path: "/iconscanvasstatictesting", component: IconsCanvasStaticTesting },
   { path: "/autumn", component: Autumn },
@@ -22,5 +34,9 @@ const IconCanvasStatic = [
   { path: "/ocean", component: Ocean },
 ];
 
-const ArtNoveauWholeRoutes = [...IconsRoutes, ...IconCanvasStatic];
+const ArtNoveauWholeRoutes = [
+  ...IconsRoutes,
+  ...IconCanvasAnimate,
+  ...IconCanvasStatic,
+];
 export default ArtNoveauWholeRoutes;

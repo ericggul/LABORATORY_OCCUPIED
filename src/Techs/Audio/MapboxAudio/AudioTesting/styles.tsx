@@ -6,13 +6,14 @@ const getRandom = (a: number, b: number) => {
 };
 
 export const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  display: grid;
-  background: black;
-  grid-template-rows: repeat(20, 5vh);
-  grid-template-columns: repeat(20, 5vw);
+  height: calc(100vh + 10rem);
+  width: calc(100vw + 10rem);
+  position: absolute;
+  top: -5rem;
+  left: -5rem;
+  background: #936f6f;
+  opacity: 0.8;
+  filter: blur(5rem);
 `;
 
 export const Button = styled.div`
@@ -21,7 +22,7 @@ export const Button = styled.div`
   top: 10vh;
   left: 0;
   text-align: center;
-  color: white;
+  color: black;
   font-size: 2rem;
   cursor: pointer;
 `;
