@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-const PATH =
-  "M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3";
 const getRandom = (a: number, b: number) => Math.random() * (b - a) + a;
 
 function IconsCanvasTesting() {
@@ -63,7 +61,7 @@ class Canvas {
 
     this.ctx.scale(this.scale, this.scale);
 
-    this.layerNumber = 50;
+    this.layerNumber = 100;
     this.layerSets = [];
 
     this.init();
@@ -72,26 +70,15 @@ class Canvas {
   init() {
     this.ctx.fillStyle = "white";
     this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+
     for (let i = 0; i < this.layerNumber; i++) {
-      this.layerSets.push(
-        new Layer(
-          400,
-          3500 * i,
-          {
-            r: getRandom(50, 100),
-            g: getRandom(100, 150),
-            b: getRandom(100, 150),
-          },
-          this.stageWidth,
-          this.stageHeight
-        )
-      );
+      this.layerSets.push(new Layer(100, this.stageWidth, this.stageHeight));
     }
 
     this.then = Date.now();
     this.initial = Date.now();
 
-    this.animate();
+    this.draw();
   }
 
   animate() {
@@ -106,6 +93,9 @@ class Canvas {
   }
 
   draw() {
+    this.ctx.fillStyle = "white";
+    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+
     this.layerSets.map((layer: any) => layer.draw(this.ctx, this.elapsedTime));
   }
 
@@ -115,24 +105,13 @@ class Canvas {
 class Layer {
   iconNumber: any;
   iconSets: any;
-  startTime: any;
-  colorRange: any;
 
   stageWidth: any;
   stageHeight: any;
 
-  constructor(
-    iconNumber: any,
-    startTime: any,
-    colorRange: any,
-    stageWidth: any,
-    stageHeight: any
-  ) {
+  constructor(iconNumber: any, stageWidth: any, stageHeight: any) {
     this.iconNumber = iconNumber;
     this.iconSets = [];
-    this.startTime = startTime;
-    this.colorRange = [];
-
     this.stageWidth = stageWidth;
     this.stageHeight = stageHeight;
 
@@ -147,7 +126,6 @@ class Layer {
             x: getRandom(-100, this.stageWidth + 50),
             y: getRandom(-100, this.stageHeight + 50),
           },
-          this.startTime + getRandom(0, 200),
           {
             x: this.stageWidth * 0.5,
             y: this.stageHeight * 0.5,
@@ -157,79 +135,85 @@ class Layer {
     }
   }
 
-  draw(ctx: any, elapsedTime: any) {
-    if (elapsedTime > this.startTime) {
-      this.iconSets.map((icon: any) => icon.draw(ctx, elapsedTime));
-    }
+  draw(ctx: any, time: any) {
+    this.iconSets.map((icon: any) => icon.draw(ctx, time));
   }
 }
 
 class Icon {
   pos: any;
-  targetPos: any;
-  posSpeed: any;
-  angle: any;
-  targetAngle: any;
+  center: any;
   color: any;
-  targetColor: any;
+  angle: any;
+  angleSpeed: any;
   scale: any;
-  targetScale: any;
-  timeStart: any;
 
-  constructor(pos: any, timeStart: any, initialPos: any) {
-    this.pos = initialPos;
-    this.posSpeed = 0.02;
-    this.angle = 0;
-    this.targetPos = pos;
-    this.targetAngle = Math.PI * getRandom(10, getRandom(10, 20));
-    this.scale = getRandom(1, 4);
-    this.targetScale = getRandom(1, getRandom(1, 5));
-    this.targetColor = {
-      r: getRandom(0, 200),
-      g: getRandom(0, 200),
-      b: getRandom(100, 150),
-      a: getRandom(0.05, 0.1),
-    };
+  //shape
+  bodyRadius: any;
+
+  constructor(pos: any, center: any) {
+    this.pos = pos;
+    this.center = center;
+
+    this.angle = getRandom(0, Math.PI * 2);
+    this.angleSpeed = getRandom(0, getRandom(0, 0.03));
+    this.scale = getRandom(0, getRandom(0, 35));
     this.color = {
-      r: 0,
-      g: 0,
-      b: 0,
-      a: 0,
+      h: (this.scale * 350) / 150,
+      s: getRandom(40, 50),
+      l: getRandom(30, 80),
+      a: getRandom(0.03, 0.08),
     };
 
-    this.timeStart = timeStart;
+    this.bodyRadius = getRandom(4, 8);
   }
 
-  draw(ctx: any, elapsedTime: any) {
-    if (
-      elapsedTime > this.timeStart &&
-      elapsedTime < this.timeStart + 80 / this.posSpeed
-    ) {
-      this.pos.x += (this.targetPos.x - this.pos.x) * this.posSpeed;
-      this.pos.y += (this.targetPos.y - this.pos.y) * this.posSpeed;
-      this.angle += (this.targetAngle - this.angle) * 0.05;
-      this.scale += (this.targetScale - this.scale) * 0.1;
+  draw(ctx: any, time: any) {
+    this.angle += this.angleSpeed;
+    ctx.save();
+    ctx.translate(this.center.x, this.center.y);
+    ctx.rotate(this.angle);
+    ctx.scale(this.scale, this.scale);
 
-      this.color.r +=
-        (this.targetColor.r - this.color.r) * 0.1 + getRandom(-10, 10);
-      this.color.g += (this.targetColor.g - this.color.g) * 0.07;
-      this.color.b += (this.targetColor.b - this.color.b) * 0.07;
-      this.color.a += (this.targetColor.a - this.color.a) * 0.07;
+    ctx.fillStyle =
+      ctx.strokeStyle = `hsla(${this.color.h},${this.color.s}%,${this.color.l}%, ${this.color.a})`;
 
-      ctx.save();
-      ctx.translate(this.pos.x, this.pos.y);
-      ctx.rotate(this.angle);
-      ctx.scale(this.scale, this.scale);
+    //Circle
+    const circleRadius = 5;
+    ctx.beginPath();
+    ctx.moveTo(0, circleRadius);
+    ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+    ctx.lineWidth = 0.1;
+    ctx.stroke();
 
-      ctx.fillStyle =
-        ctx.strokeStyle = `rgba(${this.color.r},${this.color.g},${this.color.b}, ${this.color.a})`;
+    //Body
+    const margin = 2;
+    const radius = this.bodyRadius;
+    const height = 8;
+    const width = 20;
 
-      let p = new Path2D(PATH);
+    ctx.beginPath();
+    ctx.moveTo(width / 2, height + margin + circleRadius);
+    ctx.lineTo(-width / 2, height + margin + circleRadius);
+    ctx.lineTo(-width / 2, margin + radius + circleRadius);
+    ctx.quadraticCurveTo(
+      -width / 2,
+      margin + circleRadius,
+      -width / 2 + radius,
+      margin + circleRadius
+    );
+    ctx.lineTo(width / 2 - radius, margin + circleRadius);
+    ctx.quadraticCurveTo(
+      width / 2,
+      margin + circleRadius,
+      width / 2,
+      margin + radius + circleRadius
+    );
+    ctx.lineTo(width / 2, height + margin + circleRadius);
+    ctx.lineWidth = 0.1;
+    ctx.stroke();
 
-      ctx.fill(p);
-
-      ctx.restore();
-    }
+    ctx.restore();
   }
 }
 

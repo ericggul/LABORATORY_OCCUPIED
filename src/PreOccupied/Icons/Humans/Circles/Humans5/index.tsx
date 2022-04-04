@@ -72,7 +72,9 @@ class Canvas {
     this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
     for (let i = 0; i < this.layerNumber; i++) {
-      this.layerSets.push(new Layer(100, this.stageWidth, this.stageHeight));
+      this.layerSets.push(
+        new Layer(getRandom(30, 70), this.stageWidth, this.stageHeight)
+      );
     }
 
     this.then = Date.now();
@@ -109,12 +111,15 @@ class Layer {
   stageWidth: any;
   stageHeight: any;
 
+  scale: any;
+
   constructor(iconNumber: any, stageWidth: any, stageHeight: any) {
     this.iconNumber = iconNumber;
     this.iconSets = [];
     this.stageWidth = stageWidth;
     this.stageHeight = stageHeight;
 
+    this.scale = getRandom(1, getRandom(5, 50));
     this.init();
   }
 
@@ -129,7 +134,8 @@ class Layer {
           {
             x: this.stageWidth * 0.5,
             y: this.stageHeight * 0.5,
-          }
+          },
+          this.scale
         )
       );
     }
@@ -151,21 +157,24 @@ class Icon {
   //shape
   bodyRadius: any;
 
-  constructor(pos: any, center: any) {
+  constructor(pos: any, center: any, scale: any) {
     this.pos = pos;
-    this.center = center;
-
-    this.angle = getRandom(0, Math.PI * 2);
-    this.angleSpeed = getRandom(0, getRandom(0, 0.03));
-    this.scale = getRandom(0, getRandom(0, 150));
-    this.color = {
-      h: (this.scale * 350) / 150,
-      s: getRandom(40, 50),
-      l: getRandom(30, 80),
-      a: (getRandom(0.03, 0.05) * this.scale) / 150,
+    this.center = {
+      x: center.x + getRandom(-1, 1),
+      y: center.y + getRandom(-1, 1),
     };
 
-    this.bodyRadius = getRandom(4, 8);
+    this.angle = getRandom(0, Math.PI * 2);
+    this.angleSpeed = getRandom(0.001, getRandom(0, 0.01));
+    this.scale = scale;
+    this.color = {
+      h: getRandom(100, 250),
+      s: 0,
+      l: 0,
+      a: 0.01,
+    };
+
+    this.bodyRadius = 8;
   }
 
   draw(ctx: any, time: any) {
@@ -189,7 +198,7 @@ class Icon {
     const margin = 2;
     const radius = this.bodyRadius;
     const height = 8;
-    const width = 20;
+    const width = 18;
 
     ctx.beginPath();
     ctx.moveTo(width / 2, height + margin + circleRadius);
@@ -209,7 +218,7 @@ class Icon {
       margin + radius + circleRadius
     );
     ctx.lineTo(width / 2, height + margin + circleRadius);
-    ctx.stroke();
+    ctx.fill();
 
     ctx.restore();
   }

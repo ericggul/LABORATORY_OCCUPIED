@@ -1,9 +1,4 @@
 import styled, { css } from "styled-components";
-import media from "styled-media-query";
-
-const getRandom = (a: number, b: number) => {
-  return Math.random() * (b - a) + a;
-};
 
 export const Container = styled.div`
   height: calc(100vh + 10rem);
@@ -11,7 +6,7 @@ export const Container = styled.div`
   position: absolute;
   top: -5rem;
   left: -5rem;
-  background: #936f6f;
+  background: hsl(184, 20%, 46%);
   opacity: 0.8;
   filter: blur(5rem);
 `;

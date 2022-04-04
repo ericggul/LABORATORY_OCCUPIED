@@ -72,7 +72,7 @@ class Canvas {
     this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
     for (let i = 0; i < this.layerNumber; i++) {
-      this.layerSets.push(new Layer(100, this.stageWidth, this.stageHeight));
+      this.layerSets.push(new Layer(20, this.stageWidth, this.stageHeight));
     }
 
     this.then = Date.now();
@@ -93,8 +93,8 @@ class Canvas {
   }
 
   draw() {
-    this.ctx.fillStyle = "white";
-    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+    // this.ctx.fillStyle = "white";
+    // this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
     this.layerSets.map((layer: any) => layer.draw(this.ctx, this.elapsedTime));
   }
@@ -156,13 +156,13 @@ class Icon {
     this.center = center;
 
     this.angle = getRandom(0, Math.PI * 2);
-    this.angleSpeed = getRandom(0, getRandom(0, 0.03));
-    this.scale = getRandom(0, getRandom(0, 150));
+    this.angleSpeed = getRandom(0.005, getRandom(0.005, 0.02));
+    this.scale = getRandom(0, getRandom(0, 35));
     this.color = {
       h: (this.scale * 350) / 150,
       s: getRandom(40, 50),
       l: getRandom(30, 80),
-      a: (getRandom(0.03, 0.05) * this.scale) / 150,
+      a: getRandom(0.03, 0.08),
     };
 
     this.bodyRadius = getRandom(4, 8);
@@ -183,6 +183,7 @@ class Icon {
     ctx.beginPath();
     ctx.moveTo(0, circleRadius);
     ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+    ctx.lineWidth = 0.1;
     ctx.stroke();
 
     //Body
@@ -209,6 +210,7 @@ class Icon {
       margin + radius + circleRadius
     );
     ctx.lineTo(width / 2, height + margin + circleRadius);
+    ctx.lineWidth = 0.1;
     ctx.stroke();
 
     ctx.restore();

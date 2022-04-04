@@ -1,17 +1,27 @@
 import IconsTesting from "../../PreOccupied/Icons/IconsTesting";
-import IconsCanvasTesting from "../../PreOccupied/Icons/IconsCanvasTesting";
+import IconsCanvasTesting from "../../PreOccupied/Icons/Likes/IconsCanvasTesting";
 
-import IconsCanvasAnimateTesting from "../../PreOccupied/Icons/IconsCanvasAnimate/Testing";
-import A from "../../PreOccupied/Icons/IconsCanvasAnimate/Preliminary/A";
-import B from "../../PreOccupied/Icons/IconsCanvasAnimate/Preliminary/B";
-import C from "../../PreOccupied/Icons/IconsCanvasAnimate/Preliminary/C";
+import IconsCanvasAnimateTesting from "../../PreOccupied/Icons/Likes/IconsCanvasAnimate/Testing";
+import A from "../../PreOccupied/Icons/Likes/IconsCanvasAnimate/Preliminary/A";
+import B from "../../PreOccupied/Icons/Likes/IconsCanvasAnimate/Preliminary/B";
+import C from "../../PreOccupied/Icons/Likes/IconsCanvasAnimate/Preliminary/C";
 
-import IconsCanvasStaticTesting from "../../PreOccupied/Icons/IconsCanvasStatic/Testing";
-import Autumn from "../../PreOccupied/Icons/IconsCanvasStatic/MonoTone/#Autumn";
-import Blossoms from "../../PreOccupied/Icons/IconsCanvasStatic/MonoTone/#Blossoms";
-import Falls from "../../PreOccupied/Icons/IconsCanvasStatic/MonoTone/#Falls";
-import FirstSnow from "../../PreOccupied/Icons/IconsCanvasStatic/MonoTone/#FirstSnow";
-import Ocean from "../../PreOccupied/Icons/IconsCanvasStatic/MonoTone/#Ocean";
+import TornadoA from "../../PreOccupied/Icons/Likes/IconsCanvasAnimate/Tornado/A";
+import TornadoB from "../../PreOccupied/Icons/Likes/IconsCanvasAnimate/Tornado/B";
+
+import IconsCanvasStaticTesting from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/Testing";
+import Autumn from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#Autumn";
+import Blossoms from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#Blossoms";
+import Falls from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#Falls";
+import FirstSnow from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#FirstSnow";
+import Ocean from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#Ocean";
+
+import HumansTesting from "../../PreOccupied/Icons/Humans/HumansTesting";
+import Humans1 from "../../PreOccupied/Icons/Humans/Circles/Humans1";
+// import Humans2 from "../../PreOccupied/Icons/Humans/Circles/Humans2";
+// import Humans3 from "../../PreOccupied/Icons/Humans/Circles/Humans3";
+import Humans4 from "../../PreOccupied/Icons/Humans/Circles/Humans4";
+import Humans5 from "../../PreOccupied/Icons/Humans/Circles/Humans5";
 
 const IconsRoutes = [
   { path: "/iconstesting", component: IconsTesting },
@@ -23,6 +33,8 @@ const IconCanvasAnimate = [
   { path: "/a", component: A },
   { path: "/b", component: B },
   { path: "/c", component: C },
+  { path: "/tornadoA", component: TornadoA },
+  { path: "/tornadoB", component: TornadoB },
 ];
 
 const IconCanvasStatic = [
@@ -34,9 +46,20 @@ const IconCanvasStatic = [
   { path: "/ocean", component: Ocean },
 ];
 
+const HumansRoutes = [
+  { path: "/humanstesting", component: HumansTesting },
+
+  { path: "/humans1", component: Humans1 },
+  // { path: "/humans2", component: Humans2 },
+  // { path: "/humans3", component: Humans3 },
+  { path: "/humans4", component: Humans4 },
+  { path: "/humans5", component: Humans5 },
+];
+
 const ArtNoveauWholeRoutes = [
   ...IconsRoutes,
   ...IconCanvasAnimate,
   ...IconCanvasStatic,
+  ...HumansRoutes,
 ];
 export default ArtNoveauWholeRoutes;

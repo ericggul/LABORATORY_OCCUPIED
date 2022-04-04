@@ -22,6 +22,7 @@
     "@testing-library/user-event": "^12.1.10",
     "@types/canvas-confetti": "^1.4.2",
     "@types/d3-ease": "^3.0.0",
+    "@types/dom-mediacapture-record": "^1.0.11",
     "@types/googlemaps": "^3.43.3",
     "@types/howler": "^2.2.3",
     "@types/jest": "^26.0.15",

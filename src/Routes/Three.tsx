@@ -20,6 +20,8 @@ import ParticlesTutorial from "../Techs/Three/Shape/ParticlesTutorial/Shape";
 
 import CylindersTesting from "../Techs/Three/Cylinders/CylindersTesting/Cylinders";
 
+import OceanTesting from "../Techs/Three/Ocean/OceanTesting";
+
 const NestedCirclesRoutes = [
   { path: "/audioanalyzer", component: ThreeAudioAnalyzer },
 
@@ -42,6 +44,7 @@ const NestedCirclesRoutes = [
   { path: "/particlestutorial", component: ParticlesTutorial },
 
   { path: "/cylinderstesting", component: CylindersTesting },
+  { path: "/oceantesting", component: OceanTesting },
 ];
 
 export default NestedCirclesRoutes;

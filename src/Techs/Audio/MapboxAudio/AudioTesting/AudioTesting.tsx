@@ -100,6 +100,8 @@ class App {
 
   time: any;
 
+  color: any;
+
   constructor(audioElement: any) {
     this.canvas = document.createElement("canvas");
     this.ctx = this.canvas.getContext("2d");
@@ -163,15 +165,16 @@ class App {
   }
 
   init() {
+    this.color = { h: 184, s: 20, l: 46 };
     for (let i = 0; i < 129; i++) {
       this.pointArray.push(
         new Point(
           getRandom(0, this.stageWidth),
           getRandom(0, this.stageHeight),
-          `rgba(${getRandom(180, 255)}, ${getRandom(140, 170)}, ${getRandom(
-            140,
-            170
-          )}, 0.05)`,
+          `hsla(${this.color.h},  ${getRandom(
+            this.color.s - 10,
+            this.color.s + 10
+          )}%, ${getRandom(50, 100)}%, 0.07)`,
           this.cellSize * 10
         )
       );
@@ -225,8 +228,8 @@ class Point {
 
     // Set the fill style and draw a rectangle
     ctx.fillStyle = gradient;
-    ctx.arc(this.x, this.y, size, 0, Math.PI * 2, false);
-
+    // ctx.arc(this.x, this.y, size, 0, Math.PI * 2, false);
+    ctx.fillRect(this.x - size / 2, this.y - size / 2, size, size);
     ctx.fill();
     ctx.closePath();
   }
