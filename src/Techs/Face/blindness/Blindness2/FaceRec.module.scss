@@ -1,0 +1,43 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+
+  color: white;
+  cursor: none;
+
+  .webcam {
+    position: absolute;
+
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -3;
+  }
+
+  .canvasContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 33.34vw);
+    grid-template-rows: repeat(3, 33.34vh);
+
+    .canvas {
+      width: 33.34vw;
+      height: 33.34vh;
+      z-index: 9;
+    }
+  }
+}

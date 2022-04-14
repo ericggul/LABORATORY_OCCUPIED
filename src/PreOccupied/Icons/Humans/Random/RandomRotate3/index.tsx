@@ -61,7 +61,7 @@ class Canvas {
 
     this.ctx.scale(this.scale, this.scale);
 
-    this.layerNumber = 100;
+    this.layerNumber = 20;
     this.layerSets = [];
 
     this.init();
@@ -72,13 +72,20 @@ class Canvas {
     this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
     for (let i = 0; i < this.layerNumber; i++) {
-      this.layerSets.push(new Layer(100, this.stageWidth, this.stageHeight));
+      this.layerSets.push(
+        new Layer(
+          30,
+          this.stageWidth,
+          this.stageHeight,
+          (i * this.stageHeight) / this.layerNumber
+        )
+      );
     }
 
     this.then = Date.now();
     this.initial = Date.now();
 
-    this.draw();
+    this.animate();
   }
 
   animate() {
@@ -93,21 +100,18 @@ class Canvas {
   }
 
   draw() {
-    this.ctx.fillStyle = "white";
-    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+    // this.ctx.fillStyle = "white";
+    // this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
     this.layerSets.map((layer: any) => layer.draw(this.ctx, this.elapsedTime));
   }
 
   capture() {
-    console.log("handling..");
-    let dataURL = this.canvas.toDataURL("image/png");
-    var link = document.createElement("a");
+    const data = this.canvas.toDataURL("image/png");
+    const link = document.createElement("a");
     link.download = "image.png";
-    link.href = dataURL;
-
+    link.href = data;
     link.click();
-    console.log("downloaded..");
     link.remove();
   }
 }
@@ -119,12 +123,17 @@ class Layer {
   stageWidth: any;
   stageHeight: any;
 
-  constructor(iconNumber: any, stageWidth: any, stageHeight: any) {
+  yPos: any;
+
+  constructor(iconNumber: any, stageWidth: any, stageHeight: any, yPos: any) {
     this.iconNumber = iconNumber;
     this.iconSets = [];
     this.stageWidth = stageWidth;
     this.stageHeight = stageHeight;
 
+    this.yPos = yPos;
+
+    console.log(yPos);
     this.init();
   }
 
@@ -133,8 +142,10 @@ class Layer {
       this.iconSets.push(
         new Icon(
           {
-            x: getRandom(-100, this.stageWidth + 50),
-            y: getRandom(-100, this.stageHeight + 50),
+            // x: (i * this.stageWidth) / this.iconNumber,
+            // y: this.yPos,
+            x: getRandom(0, this.stageWidth),
+            y: getRandom(0, this.stageHeight),
           },
           {
             x: this.stageWidth * 0.5,
@@ -161,27 +172,42 @@ class Icon {
   //shape
   bodyRadius: any;
 
+  margin: any;
+  marginSpeed: any;
+
+  headBang: any;
+  headBangSpeed: any;
+
   constructor(pos: any, center: any) {
     this.pos = pos;
     this.center = center;
 
     this.angle = getRandom(0, Math.PI * 2);
-    this.angleSpeed = getRandom(0, getRandom(0, 0.03));
-    this.scale = getRandom(0, getRandom(0, 35));
+    this.angleSpeed = getRandom(0.005, getRandom(0.005, 0.02));
+    this.scale = getRandom(3, getRandom(8, 10));
     this.color = {
-      h: (this.scale * 350) / 150,
-      s: getRandom(40, 50),
-      l: getRandom(30, 80),
-      a: getRandom(0.03, 0.08),
+      h: getRandom(0, 350),
+      s: getRandom(30, 40),
+      l: getRandom(50, 80),
+      a: getRandom(0.03, 0.05),
     };
 
-    this.bodyRadius = getRandom(4, 8);
+    this.bodyRadius = getRandom(5, 9);
+
+    this.margin = getRandom(1, 4);
+    this.marginSpeed = getRandom(0.005, getRandom(0.01, 0.02));
+
+    this.headBang = getRandom(-1, 1);
+    this.headBangSpeed = getRandom(0.005, getRandom(0.01, 0.02));
   }
 
   draw(ctx: any, time: any) {
+    this.margin = Math.sin(time * this.marginSpeed) * 1 + 2;
     this.angle += this.angleSpeed;
+    this.headBang = Math.sin(time * this.headBangSpeed) * 1;
+
     ctx.save();
-    ctx.translate(this.center.x, this.center.y);
+    ctx.translate(this.pos.x, this.pos.y);
     ctx.rotate(this.angle);
     ctx.scale(this.scale, this.scale);
 
@@ -191,36 +217,26 @@ class Icon {
     //Circle
     const circleRadius = 5;
     ctx.beginPath();
-    ctx.moveTo(0, circleRadius);
-    ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
-    ctx.lineWidth = 0.1;
+    ctx.moveTo(0, 0);
+    ctx.arc(this.headBang, -circleRadius, circleRadius, 0, Math.PI * 2);
+
     ctx.stroke();
 
     //Body
-    const margin = 2;
+    const margin = this.margin;
     const radius = this.bodyRadius;
     const height = 8;
-    const width = 20;
+    const width = 19;
 
     ctx.beginPath();
-    ctx.moveTo(width / 2, height + margin + circleRadius);
-    ctx.lineTo(-width / 2, height + margin + circleRadius);
-    ctx.lineTo(-width / 2, margin + radius + circleRadius);
-    ctx.quadraticCurveTo(
-      -width / 2,
-      margin + circleRadius,
-      -width / 2 + radius,
-      margin + circleRadius
-    );
-    ctx.lineTo(width / 2 - radius, margin + circleRadius);
-    ctx.quadraticCurveTo(
-      width / 2,
-      margin + circleRadius,
-      width / 2,
-      margin + radius + circleRadius
-    );
-    ctx.lineTo(width / 2, height + margin + circleRadius);
-    ctx.lineWidth = 0.1;
+    ctx.moveTo(width / 2, height + margin);
+    ctx.lineTo(-width / 2, height + margin);
+    ctx.lineTo(-width / 2, margin + radius);
+    ctx.quadraticCurveTo(-width / 2, margin, -width / 2 + radius, margin);
+    ctx.lineTo(width / 2 - radius, margin);
+    ctx.quadraticCurveTo(width / 2, margin, width / 2, margin + radius);
+    ctx.lineTo(width / 2, height + margin);
+
     ctx.stroke();
 
     ctx.restore();

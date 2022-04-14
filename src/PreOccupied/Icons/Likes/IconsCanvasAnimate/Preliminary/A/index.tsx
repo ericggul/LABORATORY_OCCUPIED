@@ -71,6 +71,8 @@ class Canvas {
   }
 
   init() {
+    this.ctx.fillStyle = "black";
+    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
     for (let i = 0; i < this.iconNumber; i++) {
       this.iconSets.push(
         new Icon(
@@ -141,10 +143,10 @@ class Icon {
     this.targetAngle = Math.PI * getRandom(4, getRandom(10, 30));
     this.scale = 5;
     this.targetScale = getRandom(3, getRandom(3, 13));
-    this.color = `rgba(${getRandom(0, 250)}, ${getRandom(
-      100,
-      150
-    )}, ${getRandom(0, 150)}, ${getRandom(0.02, getRandom(0.02, 0.05))})`;
+    this.color = `rgba(${getRandom(0, 150)}, ${getRandom(0, 150)}, ${getRandom(
+      200,
+      250
+    )}, ${getRandom(0.02, getRandom(0.02, 0.05))})`;
 
     this.timeStart = timeStart;
   }

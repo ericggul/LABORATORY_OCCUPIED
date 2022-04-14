@@ -99,7 +99,17 @@ class Canvas {
     this.layerSets.map((layer: any) => layer.draw(this.ctx, this.elapsedTime));
   }
 
-  capture() {}
+  capture() {
+    console.log("handling..");
+    let dataURL = this.canvas.toDataURL("image/png");
+    var link = document.createElement("a");
+    link.download = "image.png";
+    link.href = dataURL;
+
+    link.click();
+    console.log("downloaded..");
+    link.remove();
+  }
 }
 
 class Layer {

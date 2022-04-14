@@ -72,7 +72,7 @@ class Canvas {
     this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
     for (let i = 0; i < this.layerNumber; i++) {
-      this.layerSets.push(new Layer(100, this.stageWidth, this.stageHeight));
+      this.layerSets.push(new Layer(20, this.stageWidth, this.stageHeight));
     }
 
     this.then = Date.now();
@@ -93,21 +93,18 @@ class Canvas {
   }
 
   draw() {
-    this.ctx.fillStyle = "white";
-    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+    // this.ctx.fillStyle = "white";
+    // this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
     this.layerSets.map((layer: any) => layer.draw(this.ctx, this.elapsedTime));
   }
 
   capture() {
-    console.log("handling..");
-    let dataURL = this.canvas.toDataURL("image/png");
-    var link = document.createElement("a");
+    const data = this.canvas.toDataURL("image/png");
+    const link = document.createElement("a");
     link.download = "image.png";
-    link.href = dataURL;
-
+    link.href = data;
     link.click();
-    console.log("downloaded..");
     link.remove();
   }
 }
@@ -161,27 +158,38 @@ class Icon {
   //shape
   bodyRadius: any;
 
+  //
+  colorSpeed: any;
+  colorAmplitude: any;
+  colorLambda: any;
+
   constructor(pos: any, center: any) {
     this.pos = pos;
     this.center = center;
 
     this.angle = getRandom(0, Math.PI * 2);
-    this.angleSpeed = getRandom(0, getRandom(0, 0.03));
+    this.angleSpeed = getRandom(0.005, getRandom(0.005, 0.02));
     this.scale = getRandom(0, getRandom(0, 35));
     this.color = {
-      h: (this.scale * 350) / 150,
-      s: getRandom(40, 50),
-      l: getRandom(30, 80),
-      a: getRandom(0.03, 0.08),
+      h: getRandom(0, 350),
+      s: getRandom(30, 70),
+      l: getRandom(30, 70),
+      a: getRandom(0.1, 0.15),
     };
 
     this.bodyRadius = getRandom(4, 8);
+
+    this.colorSpeed = getRandom(0.1, 0.2);
+    this.colorAmplitude = getRandom(10, 30);
+    this.colorLambda = getRandom(0, Math.PI * 2);
   }
 
   draw(ctx: any, time: any) {
-    this.angle += this.angleSpeed;
+    this.scale += 0.001;
+    // this.angle += this.angleSpeed;
+
     ctx.save();
-    ctx.translate(this.center.x, this.center.y);
+    ctx.translate(this.pos.x, this.pos.y);
     ctx.rotate(this.angle);
     ctx.scale(this.scale, this.scale);
 
@@ -194,7 +202,7 @@ class Icon {
     ctx.moveTo(0, circleRadius);
     ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
     ctx.lineWidth = 0.1;
-    ctx.stroke();
+    ctx.fill();
 
     //Body
     const margin = 2;
@@ -221,7 +229,7 @@ class Icon {
     );
     ctx.lineTo(width / 2, height + margin + circleRadius);
     ctx.lineWidth = 0.1;
-    ctx.stroke();
+    ctx.fill();
 
     ctx.restore();
   }

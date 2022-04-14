@@ -162,9 +162,9 @@ class Icon {
     this.scale = getRandom(1, 5);
     this.targetScale = getRandom(1, getRandom(1, getRandom(5, 10)));
     this.targetColor = {
-      r: getRandom(0, 200),
+      r: getRandom(150, 200),
       g: getRandom(0, 200),
-      b: getRandom(100, 150),
+      b: getRandom(0, 200),
       a: getRandom(0.05, 0.1),
     };
     this.color = {

@@ -71,6 +71,8 @@ class Canvas {
   }
 
   init() {
+    this.ctx.fillStyle = "white";
+    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
     for (let i = 0; i < this.iconNumber; i++) {
       this.iconSets.push(
         new Icon(

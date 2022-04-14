@@ -180,6 +180,7 @@ class Particle {
     this.pos.y += ((pos.y - currentPos.y) / 100) * randomness;
 
     ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g},${this.color.b}, ${opacity})`;
+
     ctx.translate(this.pos.x, this.pos.y);
 
     ctx.fillRect(-this.size.x / 2, -this.size.y / 2, this.size.x, this.size.y);

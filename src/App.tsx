@@ -169,6 +169,8 @@ import WhiteMonuments13 from "./Labs/WhiteMonuments/WhiteMonuments13/WhiteMonume
 import Smudge from "./Techs/Smudge/Smudge";
 import Quotes from "./Techs/Quotes/Quotes";
 import FaceRec from "./Techs/Face/FaceRec/FaceRec";
+import Blindness1 from "./Techs/Face/blindness/Blindness1";
+import Blindness2 from "./Techs/Face/blindness/Blindness2";
 
 import DeviceMotionTesting from "./Techs/DeviceMotion/DeviceMotionTesting";
 
@@ -372,7 +374,9 @@ function App() {
             component={MonochromeTesting}
           />
 
-          <Route exact path="/facerec" component={FaceRec} />
+          <Route exact path="/face-rec" component={FaceRec} />
+          <Route exact path="/blindness1" component={Blindness1} />
+          <Route exact path="/blindness2" component={Blindness2} />
 
           <Route
             exact

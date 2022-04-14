@@ -18,10 +18,15 @@ import Ocean from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#Oce
 
 import HumansTesting from "../../PreOccupied/Icons/Humans/HumansTesting";
 import Humans1 from "../../PreOccupied/Icons/Humans/Circles/Humans1";
-// import Humans2 from "../../PreOccupied/Icons/Humans/Circles/Humans2";
-// import Humans3 from "../../PreOccupied/Icons/Humans/Circles/Humans3";
+import Humans2 from "../../PreOccupied/Icons/Humans/Circles/Humans2";
+import Humans3 from "../../PreOccupied/Icons/Humans/Circles/Humans3";
 import Humans4 from "../../PreOccupied/Icons/Humans/Circles/Humans4";
 import Humans5 from "../../PreOccupied/Icons/Humans/Circles/Humans5";
+
+import HumanRandomRotate1 from "../../PreOccupied/Icons/Humans/Random/RandomRotate1";
+import HumanRandomRotate2 from "../../PreOccupied/Icons/Humans/Random/RandomRotate2";
+import HumanRandomRotate3 from "../../PreOccupied/Icons/Humans/Random/RandomRotate3";
+import HumanRandomSimple from "../../PreOccupied/Icons/Humans/Random/RandomSimple";
 
 const IconsRoutes = [
   { path: "/iconstesting", component: IconsTesting },
@@ -50,10 +55,15 @@ const HumansRoutes = [
   { path: "/humanstesting", component: HumansTesting },
 
   { path: "/humans1", component: Humans1 },
-  // { path: "/humans2", component: Humans2 },
-  // { path: "/humans3", component: Humans3 },
+  { path: "/humans2", component: Humans2 },
+  { path: "/humans3", component: Humans3 },
   { path: "/humans4", component: Humans4 },
   { path: "/humans5", component: Humans5 },
+
+  { path: "/humanrandomrotate1", component: HumanRandomRotate1 },
+  { path: "/humanrandomrotate2", component: HumanRandomRotate2 },
+  { path: "/humanrandomrotate3", component: HumanRandomRotate3 },
+  { path: "/humanrandomsimple", component: HumanRandomSimple },
 ];
 
 const ArtNoveauWholeRoutes = [

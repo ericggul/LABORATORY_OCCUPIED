@@ -61,7 +61,7 @@ class Canvas {
 
     this.ctx.scale(this.scale, this.scale);
 
-    this.layerNumber = 100;
+    this.layerNumber = 10;
     this.layerSets = [];
 
     this.init();
@@ -72,13 +72,13 @@ class Canvas {
     this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
     for (let i = 0; i < this.layerNumber; i++) {
-      this.layerSets.push(new Layer(100, this.stageWidth, this.stageHeight));
+      this.layerSets.push(new Layer(20, this.stageWidth, this.stageHeight));
     }
 
     this.then = Date.now();
     this.initial = Date.now();
 
-    this.draw();
+    this.animate();
   }
 
   animate() {
@@ -93,8 +93,8 @@ class Canvas {
   }
 
   draw() {
-    this.ctx.fillStyle = "white";
-    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+    // this.ctx.fillStyle = "white";
+    // this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
     this.layerSets.map((layer: any) => layer.draw(this.ctx, this.elapsedTime));
   }
@@ -161,24 +161,36 @@ class Icon {
   //shape
   bodyRadius: any;
 
+  //
+  colorSpeed: any;
+  colorAmplitude: any;
+  colorLambda: any;
+
   constructor(pos: any, center: any) {
     this.pos = pos;
     this.center = center;
 
     this.angle = getRandom(0, Math.PI * 2);
-    this.angleSpeed = getRandom(0, getRandom(0, 0.03));
+    this.angleSpeed = getRandom(0.005, getRandom(0.005, 0.02));
     this.scale = getRandom(0, getRandom(0, 35));
     this.color = {
       h: (this.scale * 350) / 150,
       s: getRandom(40, 50),
-      l: getRandom(30, 80),
+      l: getRandom(30, 70),
       a: getRandom(0.03, 0.08),
     };
 
     this.bodyRadius = getRandom(4, 8);
+
+    this.colorSpeed = getRandom(0.1, 0.2);
+    this.colorAmplitude = getRandom(10, 30);
+    this.colorLambda = getRandom(0, Math.PI * 2);
   }
 
   draw(ctx: any, time: any) {
+    this.scale += 0.001;
+    this.color.s += Math.sin(time + this.colorLambda) * this.colorAmplitude;
+    this.color.l += Math.cos(time + this.colorLambda) * this.colorAmplitude;
     this.angle += this.angleSpeed;
     ctx.save();
     ctx.translate(this.center.x, this.center.y);

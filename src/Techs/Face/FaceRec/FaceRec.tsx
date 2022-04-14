@@ -10,9 +10,9 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 function FaceRec() {
   const webcamRef = useRef<any>(null);
   const canvasRef = useRef<any>(null);
+  const canvasRef2 = useRef<any>(null);
 
   const { width, height } = useWindowDimensions();
-  const isMobile = width < 760 ? true : false;
 
   const [cameraSize, setCameraSize] = useState({
     width: width,
@@ -23,9 +23,6 @@ function FaceRec() {
     height: height,
   });
 
-  console.log(cameraSize);
-  console.log(canvasSize);
-
   useEffect(() => {
     const camHeightCal = (width: any, height: any) => {
       if (height / width > 0.75) {
@@ -35,7 +32,7 @@ function FaceRec() {
       }
     };
     setCameraSize(camHeightCal(width, height));
-    setCanvasSize(camHeightCal(width + 2, height + 2));
+    setCanvasSize(camHeightCal(width, height));
   }, [width, height]);
 
   const runFacemesh = async () => {
@@ -46,11 +43,16 @@ function FaceRec() {
     canvas.width = canvasSize.width;
     canvas.height = canvasSize.height;
     const ctx = canvasRef.current.getContext("2d");
-    // ctx.fillStyle = "black";
-    // ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
+    ctx.font = "10px Times New Roman";
+    ctx.textAlign = "center";
+
+    let elapsedTime = 0;
 
     setInterval(() => {
-      detect(net, ctx);
+      elapsedTime += 100;
+      detect(net, ctx, elapsedTime);
     }, 100);
   };
 
@@ -58,7 +60,7 @@ function FaceRec() {
   //Just like this part of video
 
   const detect = useCallback(
-    async (net: any, ctx: any) => {
+    async (net: any, ctx: any, elapsedTime: number) => {
       if (
         typeof webcamRef.current !== "undefined" &&
         webcamRef.current !== null &&
@@ -69,9 +71,7 @@ function FaceRec() {
 
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
-        drawMesh(face, ctx, canvasSize.width, canvasSize.height);
-
-        // requestAnimationFrame(()=> {drawMesh(face,ctx, canvasSize.width, canvasSize.height)})
+        drawMesh(face, ctx, canvasSize.width, canvasSize.height, elapsedTime);
       }
     },
     [webcamRef]
@@ -79,8 +79,10 @@ function FaceRec() {
 
   useEffect(() => {
     tf.getBackend();
-    runFacemesh();
-  }, []);
+    if (canvasRef && canvasRef.current) {
+      runFacemesh();
+    }
+  }, [canvasRef]);
 
   return (
     <div className={style.container}>
@@ -94,6 +96,14 @@ function FaceRec() {
       />
       <canvas
         ref={canvasRef}
+        className={style.canvas}
+        style={{
+          width: `${canvasSize.width}px`,
+          height: `${canvasSize.height}px`,
+        }}
+      />
+      <canvas
+        ref={canvasRef2}
         className={style.canvas}
         style={{
           width: `${canvasSize.width}px`,
