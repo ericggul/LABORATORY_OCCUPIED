@@ -7,8 +7,8 @@ import classNames from "classnames";
 import { drawMesh } from "./Utils";
 import useWindowDimensions from "../../../../hooks/useWindowDimensions";
 
-const ROWS = 3;
-const COLS = 3;
+const ROWS = 5;
+const COLS = 5;
 const NUMS = ROWS * COLS;
 
 function FaceRec() {

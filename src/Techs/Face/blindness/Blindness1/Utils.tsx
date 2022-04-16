@@ -31,7 +31,7 @@ export const drawMesh = (
 
         ctx1.save();
         ctx1.fillStyle = `rgba(255, 255, 255, .5)`;
-        ctx1.fillText(selectedWord, x, y);
+        ctx1.fillText(selectedWord, canvasSize.width - x, y);
         ctx1.fill();
         ctx1.restore();
 

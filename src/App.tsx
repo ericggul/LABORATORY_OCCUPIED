@@ -171,8 +171,10 @@ import Quotes from "./Techs/Quotes/Quotes";
 import FaceRec from "./Techs/Face/FaceRec/FaceRec";
 import Blindness1 from "./Techs/Face/blindness/Blindness1";
 import Blindness2 from "./Techs/Face/blindness/Blindness2";
+import Blindness3 from "./Techs/Face/blindness/Blindness3";
 
 import DeviceMotionTesting from "./Techs/DeviceMotion/DeviceMotionTesting";
+import DeviceMotionPanel from "./Techs/DeviceMotion/DeviceMotionPanel";
 
 import UTurn from "./Labs/U/UTurn/UTurn";
 import UR1 from "./Labs/U/UR1/UR1";
@@ -377,11 +379,17 @@ function App() {
           <Route exact path="/face-rec" component={FaceRec} />
           <Route exact path="/blindness1" component={Blindness1} />
           <Route exact path="/blindness2" component={Blindness2} />
+          <Route exact path="/blindness3" component={Blindness3} />
 
           <Route
             exact
             path="/device-motion-testing"
             component={DeviceMotionTesting}
+          />
+          <Route
+            exact
+            path="/device-motion-panel"
+            component={DeviceMotionPanel}
           />
 
           <Route exact path="/building" component={Building} />
