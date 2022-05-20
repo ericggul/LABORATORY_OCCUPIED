@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, Environment, ContactShadows } from "@react-three/drei";
 import { Suspense, useState, useEffect, useRef } from "react";
-import { GLTF } from "three-stdlib";
+
 import {
   EffectComposer,
   DepthOfField,
@@ -12,9 +12,7 @@ import {
 
 function Hands(props: any) {
   const group = useRef<THREE.Group>();
-  const { nodes, materials } = useGLTF(
-    "/assets/hands/hand3-transformed.glb"
-  ) as any;
+  const { nodes, materials } = useGLTF("/assets/3DModels/hand.glb") as any;
 
   const { viewport, camera } = useThree();
 

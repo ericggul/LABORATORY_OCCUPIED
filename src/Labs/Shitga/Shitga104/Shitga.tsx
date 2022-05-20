@@ -75,7 +75,7 @@ class App {
     this.stageWidth = this.wrapper.clientWidth;
     this.stageHeight = this.wrapper.clientHeight;
 
-    this.scale = 1;
+    this.scale = 10;
 
     this.canvas.width = 610 * this.scale;
     this.canvas.height = 610 * this.scale;
@@ -112,27 +112,30 @@ class App {
   init2() {
     for (let i = 0; i < this.numbers; i++) {
       for (let j = 0; j < this.numbers; j++) {
-        this.ctx.fillStyle = `rgba(0,0,0, ${getRandom(0.1, 1)})`;
+        this.ctx.fillStyle = `rgba(0,0,0, ${getRandom(
+          getRandom(0.2, 0.5),
+          1
+        )})`;
 
         const expandWidth = Math.random() < 0.5;
         const widthFibonacci = expandWidth
           ? this.squareFibonacci - 1
           : weightedNumber(
               this.squareFibonacci - 1,
-              this.squareFibonacci + 2,
-              0.9
+              this.squareFibonacci + 5,
+              0.994
             );
         const heightFibonacci = !expandWidth
           ? this.squareFibonacci - 1
           : weightedNumber(
               this.squareFibonacci - 1,
               this.squareFibonacci + 2,
-              0.9
+              0.82
             );
         this.ctx.fillRect(
           this.squareInterval * i + this.margin,
           this.squareInterval * j + this.margin,
-          fibonacci(widthFibonacci),
+          fibonacci(this.squareFibonacci - 1),
           fibonacci(heightFibonacci)
         );
       }

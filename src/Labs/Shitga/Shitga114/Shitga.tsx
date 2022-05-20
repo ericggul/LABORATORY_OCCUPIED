@@ -113,6 +113,23 @@ class App {
     for (let i = 0; i < this.numbers; i++) {
       for (let j = 0; j < this.numbers; j++) {
         this.ctx.fillStyle = `rgba(0, 0, 0, ${getRandom(0.3, 1)})`;
+
+        const expandWidth = Math.random() < 0.5;
+        const widthFibonacci = expandWidth
+          ? this.squareFibonacci - 1
+          : weightedNumber(
+              this.squareFibonacci - 1,
+              this.squareFibonacci + 3,
+              0.7
+            );
+        const heightFibonacci = !expandWidth
+          ? this.squareFibonacci - 1
+          : weightedNumber(
+              this.squareFibonacci - 1,
+              this.squareFibonacci + 3,
+              0.99
+            );
+
         this.ctx.fillRect(
           this.squareInterval * i + this.margin,
           this.squareInterval * j + this.margin,

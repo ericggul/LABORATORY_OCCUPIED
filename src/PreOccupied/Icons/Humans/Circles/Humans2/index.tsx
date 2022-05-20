@@ -167,15 +167,15 @@ class Icon {
 
     this.angle = getRandom(0, Math.PI * 2);
     this.angleSpeed = getRandom(0, getRandom(0, 0.03));
-    this.scale = getRandom(0, getRandom(0, 35));
+    this.scale = getRandom(0, getRandom(0, 60));
     this.color = {
-      h: (this.scale * 350) / 150,
+      h: (this.scale * 350) / 250,
       s: getRandom(40, 50),
       l: getRandom(30, 80),
       a: getRandom(0.03, 0.08),
     };
 
-    this.bodyRadius = getRandom(4, 8);
+    this.bodyRadius = getRandom(6, 12);
   }
 
   draw(ctx: any, time: any) {
@@ -189,7 +189,7 @@ class Icon {
       ctx.strokeStyle = `hsla(${this.color.h},${this.color.s}%,${this.color.l}%, ${this.color.a})`;
 
     //Circle
-    const circleRadius = 5;
+    const circleRadius = 7;
     ctx.beginPath();
     ctx.moveTo(0, circleRadius);
     ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);

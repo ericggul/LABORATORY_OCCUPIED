@@ -43,9 +43,10 @@ function FaceRec() {
   }, [canvasRef1, canvasRef2]);
 
   const runFacemesh = async () => {
-    const model = await facemesh.load(
-      facemesh.SupportedPackages.mediapipeFacemesh
-    );
+    // const model = await facemesh.load(
+    //   facemesh.SupportedPackages.mediapipeFacemesh
+    // );
+    const model = facemesh.SupportedModels.MediaPipeFaceMesh;
 
     //Initialize Canvas
     const canvas1 = canvasRef1.current;

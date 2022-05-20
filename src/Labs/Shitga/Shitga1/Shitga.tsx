@@ -31,10 +31,17 @@ const fibonacci = (a: number) => {
 };
 
 export default function Shitga() {
+  const [draw, setDraw] = useState<any>(null);
   useEffect(() => {
-    const app = new App();
+    setDraw(new App());
   }, []);
 
+  useEffect(() => {
+    if (draw) {
+      document.addEventListener("click", () => draw.capture());
+      return () => document.removeEventListener("click", () => draw.capture());
+    }
+  }, [draw]);
   return <div className={style.container} id="CanvasWrapper"></div>;
 }
 
@@ -80,6 +87,18 @@ class App {
     );
     console.log(this.margin);
     this.init2();
+  }
+
+  capture() {
+    console.log("handling..");
+    let dataURL = this.canvas.toDataURL("image/png");
+    var link = document.createElement("a");
+    link.download = "shitga.png";
+    link.href = dataURL;
+
+    link.click();
+    console.log("downloaded..");
+    link.remove();
   }
 
   init2() {

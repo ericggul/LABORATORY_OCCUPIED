@@ -12,7 +12,7 @@ import {
 import { EffectComposer, SSAO } from "@react-three/postprocessing";
 
 const SphereMesh = () => {
-  const ref = useRef<THREE.Mesh>(null!);
+  const ref = useRef<THREE.Mesh>(null!) as any;
   const camera = useThree((state) => state.camera);
 
   useFrame((state) => {

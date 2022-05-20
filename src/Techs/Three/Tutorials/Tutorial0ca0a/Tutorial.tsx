@@ -32,7 +32,7 @@ function Banana({ z }: any) {
   const [clicked, setClicked] = useState(false);
 
   const { nodes, materials } = useGLTF(
-    "/assets/banana2-transformed.glb"
+    "/assets/3DModels/banana.glb"
   ) as GLTFResult;
 
   const { viewport, camera } = useThree();

@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import "./App.css";
-import style from "./App.module.scss";
+
 import {
   Route,
   Switch,
@@ -20,6 +20,9 @@ import Area6 from "./Labs/Area/Area6/Area6";
 import AreaTesting from "./Labs/Area/AreaTesting/AreaTesting";
 
 import RadialGradientTesting from "./Labs/RadialGradient/RadialGradientTesting/RadialGradientTesting";
+
+//Taang
+import Taang from "./Labs/Letters/Taang";
 
 import Square from "./Labs/Square/Square1/Square";
 import Square2 from "./Labs/Square/Square2/Square2";
@@ -94,6 +97,7 @@ import Depth3 from "./Labs/Depth/Depth3/Depth3";
 import Depth4 from "./Labs/Depth/Depth4/Depth4";
 
 import Rainbow from "./Labs/Rainbow/Rainbow";
+import WaatTesting from "./Labs/Waat/WaatTesting";
 
 import ComponentsTesting from "./Labs/Components/ComponentsTesting/Components";
 
@@ -239,6 +243,9 @@ import StraightRoutes from "./Routes/Straight";
 import DomestikaTutorialsRoutes from "./Routes/DomestikaTutorials";
 
 import IconsRoutes from "./Routes/PreOccupied/Icons";
+import XismRoutes from "./Routes/PreOccupied/Xism";
+import ScoringRoutes from "./Routes/PreOccupied/Scoring";
+import ButtonsRoutes from "./Routes/PreOccupied/UIStudy";
 
 import styled from "styled-components";
 import LoadingPage from "./Pages/LoadingPage/LoadingPage";
@@ -286,6 +293,7 @@ function App() {
           <Route exact path="/tonetesting" component={ToneTesting} />
 
           <Route exact path="/bounce-music" component={BounceMusic} />
+          <Route exact path="/taang" component={Taang} />
 
           <Route
             exact
@@ -376,10 +384,12 @@ function App() {
             component={MonochromeTesting}
           />
 
+          <Route exact path="/waattesting" component={WaatTesting} />
+          {/* 
           <Route exact path="/face-rec" component={FaceRec} />
           <Route exact path="/blindness1" component={Blindness1} />
           <Route exact path="/blindness2" component={Blindness2} />
-          <Route exact path="/blindness3" component={Blindness3} />
+          <Route exact path="/blindness3" component={Blindness3} /> */}
 
           <Route
             exact
@@ -616,6 +626,31 @@ function App() {
           ))}
 
           {IconsRoutes.map((route: any, i: any) => (
+            <Route
+              exact
+              key={i}
+              path={`${route.path}`}
+              component={route.component}
+            />
+          ))}
+
+          {XismRoutes.map((route: any, i: any) => (
+            <Route
+              exact
+              key={i}
+              path={`${route.path}`}
+              component={route.component}
+            />
+          ))}
+          {ScoringRoutes.map((route: any, i: any) => (
+            <Route
+              exact
+              key={i}
+              path={`${route.path}`}
+              component={route.component}
+            />
+          ))}
+          {ButtonsRoutes.map((route: any, i: any) => (
             <Route
               exact
               key={i}

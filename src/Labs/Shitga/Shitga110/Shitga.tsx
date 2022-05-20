@@ -75,7 +75,7 @@ class App {
     this.stageWidth = this.wrapper.clientWidth;
     this.stageHeight = this.wrapper.clientHeight;
 
-    this.scale = 1;
+    this.scale = 10;
 
     this.canvas.width = 610 * this.scale;
     this.canvas.height = 610 * this.scale;

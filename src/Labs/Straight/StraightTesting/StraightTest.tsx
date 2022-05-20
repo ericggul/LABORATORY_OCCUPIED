@@ -22,9 +22,6 @@ export default function StraightTest() {
   // `hsl(${getRandom(0,20)}, ${getRandom(70,90)}%, ${getRandom(20,40)}%)`,
   // `hsl(${getRandom(300,330)}, ${getRandom(20,30)}%, ${getRandom(50,60)}%)`,
 
-  // `hsl(${getRandom(200,250)}, ${getRandom(30,50)}%, ${getRandom(50,70)}%)`,
-  //         `hsl(${getRandom(200,250)}, ${getRandom(30,50)}%, ${getRandom(50,70)}%)`,
-
   // `hsl(${getRandom(0,40)}, ${getRandom(40,50)}%, ${getRandom(20,40)}%)`,
   // `hsl(${getRandom(200,230)}, ${getRandom(50,60)}%, ${getRandom(60,80)}%)`,
 
@@ -36,11 +33,18 @@ export default function StraightTest() {
 
   const getColor = () => {
     const randomColorArray = [
-      `hsl(${getRandom(90, 180)}, ${getRandom(0, 70)}%, ${getRandom(30, 90)}%)`,
-      `hsl(${getRandom(200, 210)}, ${getRandom(70, 80)}%, ${getRandom(
-        20,
-        80
+      `hsl(${getRandom(350, 350)}, ${getRandom(100, 100)}%, ${getRandom(
+        30,
+        40
       )}%)`,
+      `hsl(${getRandom(350, 350)}, ${getRandom(100, 100)}%, ${getRandom(
+        30,
+        40
+      )}%)`,
+      `hsl(350, 75%, 20%)`,
+
+      `hsl(70, ${getRandom(60, 80)}%, 60%)`,
+      `hsl(70, ${getRandom(60, 80)}%, 95%)`,
       // `hsl(330, ${getRandom(0,100)}%, ${getRandom(0,100)}%)`,
     ];
     return randomColorArray[
@@ -58,6 +62,7 @@ export default function StraightTest() {
   const snipping = async () => {
     console.log("reached");
     if (containerRef && containerRef.current) {
+      console.log("here");
       await html2canvas(containerRef.current).then((canvas) => {
         console.log("canvas created");
         let dataURL = canvas.toDataURL("image/png");

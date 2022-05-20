@@ -60,7 +60,7 @@ class Canvas {
 
     this.ctx.scale(this.scale, this.scale);
 
-    this.iconRows = this.iconCols = 90;
+    this.iconRows = this.iconCols = Math.floor(this.stageWidth / 10);
     this.iconNumber = this.iconRows * this.iconCols;
     this.iconSets = [];
 

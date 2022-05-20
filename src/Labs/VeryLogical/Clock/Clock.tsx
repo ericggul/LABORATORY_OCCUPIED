@@ -24,7 +24,7 @@ function Clock() {
     return () => clearInterval(interval);
   }, [accelerator, velocity]);
 
-  const numberConverter = useCallback((input) => {
+  const numberConverter = useCallback((input: any) => {
     if (input < 10) {
       return `0${input}`;
     } else {

@@ -4,7 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Physics, usePlane, useBox } from "@react-three/cannon";
 
 const Plane = ({ ...args }) => {
-  const [ref] = usePlane(() => ({ ...args }));
+  const [ref] = usePlane(() => ({ ...args })) as any;
   return (
     <mesh ref={ref} receiveShadow>
       <planeGeometry args={[10, 10]} />
@@ -13,7 +13,7 @@ const Plane = ({ ...args }) => {
   );
 };
 const Box = ({ ...args }) => {
-  const [ref] = useBox(() => ({ ...args, mass: 1 }));
+  const [ref] = useBox(() => ({ ...args, mass: 1 })) as any;
   return (
     <mesh ref={ref}>
       <boxGeometry args={[1, 1, 1]} />

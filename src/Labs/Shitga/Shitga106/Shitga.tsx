@@ -112,7 +112,7 @@ class App {
   init2() {
     for (let i = 0; i < this.numbers; i++) {
       for (let j = 0; j < this.numbers; j++) {
-        this.ctx.fillStyle = `rgba(0, 0, 0, ${getRandom(0.4, 1)})`;
+        this.ctx.fillStyle = `rgba(0, 0, 0, ${getRandom(0.8, 1)})`;
         this.ctx.fillRect(
           this.squareInterval * i + this.margin,
           this.squareInterval * j + this.margin,
@@ -120,14 +120,14 @@ class App {
             weightedNumber(
               this.squareFibonacci - 1,
               this.squareFibonacci + 3,
-              0.999999
+              0.92
             )
           ),
           fibonacci(
             weightedNumber(
               this.squareFibonacci - 1,
               this.squareFibonacci + 3,
-              0.2
+              0.9
             )
           )
         );

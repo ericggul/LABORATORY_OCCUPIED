@@ -39,9 +39,7 @@ function FaceRec() {
   }, [canvasRefs]);
 
   const runFacemesh = async () => {
-    const model = await facemesh.load(
-      facemesh.SupportedPackages.mediapipeFacemesh
-    );
+    const model = facemesh.SupportedModels.MediaPipeFaceMesh;
 
     //Initialize Canvas
     let contexts: any = [];

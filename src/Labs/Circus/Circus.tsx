@@ -38,7 +38,7 @@ function Circus() {
     return Math.random() * (b - a) + a;
   }, []);
 
-  const getRandomColor = useCallback((i) => {
+  const getRandomColor = useCallback((i: number) => {
     const index = Math.abs(i - 1.5);
     return `rgb(${getRandom(200 - index * 100, 305 - index * 60)},${getRandom(
       index,

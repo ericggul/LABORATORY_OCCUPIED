@@ -6,7 +6,10 @@ import { Physics, usePlane, useBox } from "@react-three/cannon";
 import { EffectComposer, SSAO } from "@react-three/postprocessing";
 
 function Plane(props: any) {
-  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }));
+  const [ref] = usePlane(() => ({
+    rotation: [-Math.PI / 2, 0, 0],
+    ...props,
+  })) as any;
 
   return (
     <mesh ref={ref} receiveShadow>
@@ -22,7 +25,7 @@ function Cube(props: any) {
     position: [0, 5, 0],
     rotation: [0.4, 0.2, 0.5],
     ...props,
-  }));
+  })) as any;
 
   return (
     <mesh receiveShadow castShadow ref={ref}>

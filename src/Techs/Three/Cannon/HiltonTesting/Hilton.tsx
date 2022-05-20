@@ -10,7 +10,7 @@ function Plane(props: any) {
   const [ref] = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
     ...props,
-  }));
+  })) as any;
 
   return (
     <mesh ref={ref}>
@@ -25,7 +25,7 @@ function Cube({ xLocation, yLocation }: any) {
     args: [HEIGHT, WIDTH, DEPTH],
     mass: Math.random() * 300,
     position: [xLocation, yLocation, 0],
-  }));
+  })) as any;
 
   return <Instance ref={ref} />;
 }

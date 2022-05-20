@@ -88,7 +88,7 @@ function Clock() {
     }
   }, [start, fakeTimeNow]);
 
-  const numberConverter = useCallback((input) => {
+  const numberConverter = useCallback((input: any) => {
     if (input < 10) {
       if (input < 0) {
         return "0";

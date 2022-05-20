@@ -75,7 +75,7 @@ class App {
     this.stageWidth = this.wrapper.clientWidth;
     this.stageHeight = this.wrapper.clientHeight;
 
-    this.scale = 1;
+    this.scale = 10;
 
     this.canvas.width = 610 * this.scale;
     this.canvas.height = 610 * this.scale;
@@ -112,25 +112,36 @@ class App {
   init2() {
     for (let i = 0; i < this.numbers; i++) {
       for (let j = 0; j < this.numbers; j++) {
-        this.ctx.fillStyle = `rgba(0, 0, 0, ${getRandom(0.1, 1)})`;
-        this.ctx.fillRect(
-          this.squareInterval * i + this.margin,
-          this.squareInterval * j + this.margin,
-          fibonacci(
-            weightedNumber(
-              this.squareFibonacci - 1,
-              this.squareFibonacci + 5,
-              0.9
+        const horizontal = Math.random() < 0.5;
+        this.ctx.fillStyle = `rgba(0, 0, 0, ${getRandom(0.6, 1)})`;
+
+        if (horizontal) {
+          this.ctx.fillRect(
+            this.squareInterval * i + this.margin,
+            this.squareInterval * j + this.margin,
+            fibonacci(
+              weightedNumber(
+                this.squareFibonacci - 1,
+                this.squareFibonacci + 3,
+                0.8
+              )
+            ),
+            fibonacci(this.squareFibonacci - 1)
+          );
+        } else {
+          this.ctx.fillRect(
+            this.squareInterval * i + this.margin,
+            this.squareInterval * j + this.margin,
+            fibonacci(this.squareFibonacci - 1),
+            fibonacci(
+              weightedNumber(
+                this.squareFibonacci - 1,
+                this.squareFibonacci + 3,
+                0.7
+              )
             )
-          ),
-          fibonacci(
-            weightedNumber(
-              this.squareFibonacci - 1,
-              this.squareFibonacci + 1,
-              0.9
-            )
-          )
-        );
+          );
+        }
       }
     }
     this.ctx.fillStyle = "white";

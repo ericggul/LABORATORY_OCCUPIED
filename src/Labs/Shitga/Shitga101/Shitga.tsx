@@ -75,14 +75,14 @@ class App {
     this.stageWidth = this.wrapper.clientWidth;
     this.stageHeight = this.wrapper.clientHeight;
 
-    this.scale = 1;
+    this.scale = 10;
 
     this.canvas.width = 610 * this.scale;
     this.canvas.height = 610 * this.scale;
 
     this.ctx.scale(this.scale, this.scale);
 
-    this.squareFibonacci = 2;
+    this.squareFibonacci = 5;
     this.squareInterval = fibonacci(this.squareFibonacci);
 
     this.numbers = Math.floor(610 / this.squareInterval);
@@ -112,35 +112,24 @@ class App {
   init2() {
     for (let i = 0; i < this.numbers; i++) {
       for (let j = 0; j < this.numbers; j++) {
-        const fixedLoc = { x: 0.3, y: 0.4 };
-        const opacityIdx =
-          (i / this.numbers - fixedLoc.x) ** 2 +
-          (j / this.numbers - fixedLoc.y) ** 2;
-        this.ctx.fillStyle = `rgba(0,0,0, ${getRandom(
-          0.1,
-          getRandom(0.1, getRandom(0.1, getRandom(0.1, 1)))
-        )})`;
-
-        const expandWidth = Math.random() > 0.3;
-        const widthFibonacci = expandWidth
-          ? this.squareFibonacci - 1
-          : weightedNumber(
-              this.squareFibonacci - 1,
-              this.squareFibonacci + 3,
-              0.1
-            );
-        const heightFibonacci = !expandWidth
-          ? this.squareFibonacci - 1
-          : weightedNumber(
-              this.squareFibonacci - 1,
-              this.squareFibonacci + 3,
-              0.1
-            );
+        this.ctx.fillStyle = `rgba(0, 0, 0, ${getRandom(0.8, 1)})`;
         this.ctx.fillRect(
           this.squareInterval * i + this.margin,
           this.squareInterval * j + this.margin,
-          fibonacci(widthFibonacci),
-          fibonacci(heightFibonacci)
+          fibonacci(
+            weightedNumber(
+              this.squareFibonacci - 1,
+              this.squareFibonacci + 2,
+              0.997
+            )
+          ),
+          fibonacci(
+            weightedNumber(
+              this.squareFibonacci - 1,
+              this.squareFibonacci + 2,
+              0.997
+            )
+          )
         );
       }
     }

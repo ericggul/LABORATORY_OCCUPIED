@@ -55,7 +55,8 @@ class Canvas {
     this.canvas.height = this.stageHeight * this.scale;
 
     this.ctx.scale(this.scale, this.scale);
-    this.squareNumber = 10000;
+    // this.squareNumber = 10000;
+    this.squareNumber = 100000;
     this.squareSets = [];
 
     this.init();

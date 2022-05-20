@@ -19,7 +19,7 @@ function Rainbow() {
     return Math.random() * (b - a) + a;
   }, []);
 
-  const getHexRandom = useCallback((colors) => {
+  const getHexRandom = useCallback((colors: any) => {
     const result = new Array(6)
       .fill(0)
       .map(() => Math.floor(Math.random() * 8 + 8).toString(16))

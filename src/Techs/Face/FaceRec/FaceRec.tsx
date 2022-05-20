@@ -36,9 +36,7 @@ function FaceRec() {
   }, [width, height]);
 
   const runFacemesh = async () => {
-    const net = await facemesh.load(
-      facemesh.SupportedPackages.mediapipeFacemesh
-    );
+    const net = facemesh.SupportedModels.MediaPipeFaceMesh;
     const canvas = canvasRef.current;
     canvas.width = canvasSize.width;
     canvas.height = canvasSize.height;

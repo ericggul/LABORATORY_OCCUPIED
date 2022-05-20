@@ -35,7 +35,7 @@ function FaceRec() {
 
   const [model, setModel] = useState<any>(null);
   const runFacemesh = async () => {
-    setModel(await facemesh.load(facemesh.SupportedPackages.mediapipeFacemesh));
+    setModel(facemesh.SupportedModels.MediaPipeFaceMesh);
   };
 
   const Points = ({ model, size }: any) => {

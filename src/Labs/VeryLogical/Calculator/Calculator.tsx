@@ -15,7 +15,7 @@ function Calculator() {
   const [answer, setAnswer] = useState();
 
   const addString = useCallback(
-    (string) => {
+    (string: any) => {
       if (resetDisplay) {
         setResetDisplay(false);
         if (string === ".") {
@@ -53,7 +53,7 @@ function Calculator() {
   }, [currentDisplay, input, savedCalcCommand]);
 
   const handleCalcClick = useCallback(
-    (calc) => {
+    (calc: any) => {
       setInputStack((st) => st + 1);
       const result = calculate();
       console.log("handle", result);

@@ -4,9 +4,9 @@ import axios from "axios";
 import { db } from "../../../utils/firebase/firebase";
 import { useState, useEffect, useRef } from "react";
 import NumberMover from "./foundations/NumberMover";
+import Element from "./foundations/DataSector/Element";
 import HandsModel from "./foundations/HandsModel";
 import { fibonacci } from "./utils/fibonacci";
-import { numberParse } from "./utils/numberParse";
 
 const SECTOR_DATA = {
   shitga: { header: "shitga", currency: "krw" },
@@ -30,60 +30,6 @@ const SECTOR_DATA = {
     currency: <>&#181;&#103;&#8725;&#109;&sup2;</>,
   },
 };
-
-function Element({ data }: any) {
-  const [traingleUp, setTriangleUp] = useState(
-    data.currentPrice > data.prevPrice
-  );
-  return (
-    <div className={style.element}>
-      <div className={style.upperRow}>
-        <div className={style.header}>{data.header}</div>
-        <div
-          className={style.mover}
-          style={{ color: traingleUp ? "#3affd0" : "#ff3a3a" }}
-        >
-          <div className={style.triangle}>
-            {traingleUp ? (
-              <div className={style.triangleUp} />
-            ) : (
-              <div className={style.triangleDown} />
-            )}
-          </div>
-
-          <div className={style.moverNumbers}>
-            <div className={style.absolute}>
-              {numberParse(data.currentPrice - data.prevPrice)}
-            </div>
-            <div className={style.relative}>{`${(
-              ((data.currentPrice - data.prevPrice) / data.prevPrice) *
-              100
-            ).toFixed(1)}%`}</div>
-          </div>
-        </div>
-      </div>
-      <div className={style.lowerRow}>
-        <div
-          className={style.price}
-          style={{
-            fontSize:
-              numberParse(data.currentPrice).length > 7
-                ? "calc(min(1.25vw, 1rem) * 2)"
-                : "calc(min(1.25vw, 1rem) * 3)",
-          }}
-        >
-          {numberParse(data.currentPrice)}
-        </div>
-        <div
-          className={style.currency}
-          style={{ textTransform: data.capital ? "lowercase" : "uppercase" }}
-        >
-          {data.currency}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function Shitga() {
   const [data, setData] = useState(SECTOR_DATA);

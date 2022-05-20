@@ -15,7 +15,7 @@ import { Synth } from "tone";
 import BlueDanubeAudio from "../../../assets/BlueDanube.mp3";
 
 const SphereMesh = () => {
-  const ref = useRef<THREE.Mesh>(null!);
+  const ref = useRef<THREE.Mesh>(null!) as any;
 
   return (
     <mesh ref={ref}>
@@ -64,7 +64,7 @@ export default function Sphere() {
   const [posData, setPosData] = useState({ x: 0, y: 0, z: 0 });
 
   const handleData = useCallback(
-    (data) => {
+    (data: any) => {
       // pitchShift.pitch = data.x;
       setPosData(data);
     },
