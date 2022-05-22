@@ -2,12 +2,13 @@ import style from "./style.module.scss";
 import { useEffect } from "react";
 import TestImg from "../../assets/test1.jpeg";
 import TestImg2 from "../../assets/test2.png";
+import TestImg3 from "../../assets/test3.jpeg";
 
 const getRandom = (a: number, b: number) => Math.random() * (b - a) + a;
 
 export default function Display() {
   useEffect(() => {
-    const render = new App(TestImg2);
+    const render = new App(TestImg3);
     return () => {
       render.destroy();
     };

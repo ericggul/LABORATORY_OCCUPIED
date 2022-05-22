@@ -1,0 +1,31 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 7rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .left {
+    width: 2rem;
+    height: auto;
+    margin-left: 2rem;
+    margin-right: 1.5rem;
+    cursor: pointer;
+  }
+
+  .main {
+    font-size: 1.5rem;
+  }
+
+  .right {
+    font-size: 0.8rem;
+    width: 5rem;
+    margin-right: 0.5rem;
+    text-align: center;
+  }
+}

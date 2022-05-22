@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: white;
+}
+
+.shitga {
+  width: calc(min(70vw, 40vh));
+  height: calc(min(70vw, 40vh));
+  margin: 1rem;
+}
+
+.description {
+  margin: 2rem;
+  text-align: center;
+
+  h1 {
+    margin: 0.5rem;
+  }
+
+  p {
+    margin: 0rem;
+  }
+}
+
+.audioList {
+  width: 100vw;
+  margin: 1rem 0;
+
+  .audio {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    width: 100vw;
+
+    border-top: 1px solid white;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+
+    img {
+      position: absolute;
+      left: 2rem;
+      height: 1.4rem;
+      width: auto;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid white;
+    }
+  }
+}
+
+.caption {
+  margin-top: 2rem;
+  max-width: 80%;
+  text-align: center;
+  font-size: 0.8rem;
+}
