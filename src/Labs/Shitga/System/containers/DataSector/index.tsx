@@ -1,8 +1,7 @@
 import style from "./style.module.scss";
 
-import axios from "axios";
-
 import { useState, useEffect, useRef } from "react";
+import useResize from "../../../../../hooks/useResize";
 import Element from "../../foundations/DataSector/Element";
 import HandsModel from "../../foundations/HandsModel";
 import { fibonacci } from "../../utils/fibonacci";
@@ -37,6 +36,7 @@ const SECTOR_DATA = {
 };
 
 export default function Shitga() {
+  const [windowWidth, windowHeight] = useResize();
   const [data, setData] = useState(SECTOR_DATA);
   const [displayReady, setDisplayReady] = useState(0);
 
@@ -116,17 +116,27 @@ export default function Shitga() {
       <div className={style.handsModel}>
         <HandsModel />
       </div>
-      <div className={style.wrapper}>
-        {displayReady > 3 && (
-          <>
-            <Element data={data.currency} />
-            <Element data={data.chanel} />
-            <Element data={data.shitga} />
-            <Element data={data.bitcoin} />
-            <Element data={data.nasdaq} />
-          </>
-        )}
-      </div>
+      {windowWidth < 768 ? (
+        <div className={style.wrapper}>
+          {displayReady > 3 && (
+            <>
+              <Element data={data.shitga} />
+            </>
+          )}
+        </div>
+      ) : (
+        <div className={style.wrapper}>
+          {displayReady > 3 && (
+            <>
+              <Element data={data.currency} />
+              <Element data={data.chanel} />
+              <Element data={data.shitga} />
+              <Element data={data.bitcoin} />
+              <Element data={data.nasdaq} />
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

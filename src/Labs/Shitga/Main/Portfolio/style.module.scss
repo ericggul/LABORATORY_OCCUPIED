@@ -9,45 +9,13 @@
   color: white;
 }
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+.navigatorList {
+  width: 100vw;
+  margin: 1.5rem 0;
 
-.shitga {
-  width: calc(min(70vw, 40vh));
-  height: calc(min(70vw, 40vh));
-  margin: 1rem;
-
-  animation: appear 0.7s backwards;
-  animation-delay: 0.3s;
-}
-
-.description {
-  margin: 2rem;
   text-align: center;
 
-  h1 {
-    margin: 0.5rem;
-  }
-
-  p {
-    margin: 0rem;
-  }
-
-  animation: appear 0.7s backwards;
-  animation-delay: 0.5s;
-}
-
-.audioList {
-  width: 100vw;
-  margin: 1rem 0;
-
-  .audio {
+  .navigator {
     cursor: pointer;
     position: relative;
     display: flex;
@@ -72,17 +40,5 @@
     &:last-child {
       border-bottom: 1px solid white;
     }
-
-    animation: appear 0.7s backwards;
   }
-}
-
-.caption {
-  margin-top: 2rem;
-  max-width: 80%;
-  text-align: center;
-  font-size: 0.8rem;
-
-  animation: appear 0.7s backwards;
-  animation-delay: 1.5s;
 }

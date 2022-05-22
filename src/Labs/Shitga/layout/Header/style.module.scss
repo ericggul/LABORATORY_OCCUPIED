@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.3s;
 
   .left {
     width: 2rem;
@@ -16,10 +17,12 @@
     margin-left: 2rem;
     margin-right: 1.5rem;
     cursor: pointer;
+    transition: all 0.3s;
   }
 
   .main {
     font-size: 1.5rem;
+    font-weight: bold;
   }
 
   .right {

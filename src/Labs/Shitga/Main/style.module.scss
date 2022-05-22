@@ -17,37 +17,59 @@
     opacity: 1;
   }
 }
+.introduction {
+  text-align: center;
+  max-width: 90%;
+  h1 {
+    font-size: 2.5rem;
+    margin: 0.6rem;
+  }
+  p {
+    font-size: 0.8rem;
+    animation: appear 0.7s backwards;
+    animation-delay: 0.4s;
+  }
+}
 
 .shitga {
   width: calc(min(70vw, 40vh));
   height: calc(min(70vw, 40vh));
   margin: 1rem;
-
   animation: appear 0.7s backwards;
-  animation-delay: 0.3s;
+  animation-delay: 0.8s;
 }
 
 .description {
-  margin: 2rem;
+  margin: 1rem;
   text-align: center;
+
+  animation: appear 0.7s backwards;
+  animation-delay: 0.8s;
 
   h1 {
     margin: 0.5rem;
   }
 
   p {
-    margin: 0rem;
+    margin: 0.1rem;
   }
-
-  animation: appear 0.7s backwards;
-  animation-delay: 0.5s;
 }
 
-.audioList {
+.navigatorList {
   width: 100vw;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 
-  .audio {
+  text-align: center;
+  p {
+    font-size: 1.2rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    font-weight: bold;
+
+    animation: appear 0.7s backwards;
+    animation-delay: 1.2s;
+  }
+  .navigator {
     cursor: pointer;
     position: relative;
     display: flex;
@@ -62,6 +84,8 @@
     font-size: 1.2rem;
     padding: 0.5rem 0;
 
+    animation: appear 0.7s backwards;
+
     img {
       position: absolute;
       left: 2rem;
@@ -72,17 +96,5 @@
     &:last-child {
       border-bottom: 1px solid white;
     }
-
-    animation: appear 0.7s backwards;
   }
-}
-
-.caption {
-  margin-top: 2rem;
-  max-width: 80%;
-  text-align: center;
-  font-size: 0.8rem;
-
-  animation: appear 0.7s backwards;
-  animation-delay: 1.5s;
 }

@@ -1,4 +1,4 @@
-$relative-1rem: min(1.25vw, 1rem);
+$relative-1rem: min(max(1.25vw, 9.6px), 1rem);
 
 .element {
   display: flex;

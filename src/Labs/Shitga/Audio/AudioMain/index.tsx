@@ -14,7 +14,7 @@ export default function Audio() {
   const history = useHistory();
   return (
     <div className={style.container}>
-      <Header title="오디오 가이드" />
+      <Header title="오디오 가이드" url="/main" />
 
       {windowWidth < 768 && (
         <div className={style.shitga}>
@@ -23,7 +23,6 @@ export default function Audio() {
       )}
 
       <div className={style.description}>
-        <h1>싯가 오디오 가이드</h1>
         <p>예술의전당 청년미술상점</p>
         <p>2022.05.26-06.31</p>
       </div>
@@ -34,6 +33,7 @@ export default function Audio() {
               className={style.audio}
               key={i}
               onClick={() => history.push(`/audio-guide/${i}`)}
+              style={{ animationDelay: `${1 + i * 0.05}s` }}
             >
               <img src={Headphones} alt="오디오 가이드" />
               {AUDIO_DATA[i].title}

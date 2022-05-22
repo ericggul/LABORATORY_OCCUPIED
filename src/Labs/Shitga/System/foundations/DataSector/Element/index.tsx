@@ -3,7 +3,7 @@ import style from "./style.module.scss";
 import { numberParse } from "../../../utils/numberParse";
 
 export default function Element({ data }: any) {
-  const traingleUp = useMemo(() => data.currentPrice > data.prevPrice, []);
+  const traingleUp = useMemo(() => data.currentPrice > data.prevPrice, [data]);
   return (
     <div className={style.element}>
       <div className={style.upperRow}>
@@ -37,8 +37,8 @@ export default function Element({ data }: any) {
           style={{
             fontSize:
               numberParse(data.currentPrice).length > 7
-                ? "calc(min(1.25vw, 1rem) * 2)"
-                : "calc(min(1.25vw, 1rem) * 3)",
+                ? "calc(min(max(1.25vw, 9.6px), 1rem) * 2)"
+                : "calc(min(max(1.25vw, 9.6px), 1rem) * 3)",
           }}
         >
           {numberParse(data.currentPrice)}

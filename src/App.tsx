@@ -658,7 +658,7 @@ function App() {
               component={route.component}
             />
           ))}
-          <Redirect exact to="/lobby" />
+          <Redirect exact to="/shitga" />
         </Switch>
       </Suspense>
     </Router>
