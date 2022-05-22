@@ -1,0 +1,87 @@
+$relative-1rem: min(1.25vw, 1rem);
+
+.element {
+  display: flex;
+
+  width: calc(16 * $relative-1rem);
+  height: calc(9 * $relative-1rem);
+  margin: 0;
+
+  color: white;
+  font-size: $relative-1rem;
+  text-align: right;
+  flex-direction: column;
+
+  border-right: 1px solid white;
+
+  &:last-child {
+    border-right: 0px solid white;
+  }
+  justify-content: space-between;
+}
+
+.upperRow {
+  margin: 0 calc(1.2 * $relative-1rem);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .header {
+    font-weight: bold;
+    font-size: calc(1.2 * $relative-1rem);
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  .mover {
+    display: flex;
+
+    .triangle {
+      .triangleUp {
+        width: 0;
+        height: 0;
+        border-left: calc(0.6 * $relative-1rem) solid transparent;
+        border-right: calc(0.6 * $relative-1rem) solid transparent;
+        border-bottom: calc(1 * $relative-1rem) solid #3affd0;
+        margin-top: calc(0.2 * $relative-1rem);
+        margin-right: calc(0.5 * $relative-1rem);
+      }
+
+      .triangleDown {
+        width: 0;
+        height: 0;
+        border-left: calc(0.6 * $relative-1rem) solid transparent;
+        border-right: calc(0.6 * $relative-1rem) solid transparent;
+        border-top: calc(1 * $relative-1rem) solid #ff3a3a;
+        margin-top: calc(0.2 * $relative-1rem);
+        margin-right: calc(0.5 * $relative-1rem);
+      }
+    }
+
+    .moverNumbers {
+      .absolute {
+      }
+      .relative {
+      }
+    }
+  }
+}
+
+.lowerRow {
+  margin: 0 calc(1.2 * $relative-1rem);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  .price {
+    font-weight: bold;
+    font-size: calc(3 * $relative-1rem);
+    margin-bottom: calc(-0.4 * $relative-1rem);
+  }
+
+  .currency {
+    font-size: calc(0.85 * $relative-1rem);
+    text-transform: uppercase;
+  }
+}

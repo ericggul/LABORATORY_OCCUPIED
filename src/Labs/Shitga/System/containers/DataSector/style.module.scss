@@ -1,0 +1,28 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.handsModel {
+  width: 100vw;
+  height: 85vh;
+  top: 0;
+  position: absolute;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 30vh;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-direction: row;
+}

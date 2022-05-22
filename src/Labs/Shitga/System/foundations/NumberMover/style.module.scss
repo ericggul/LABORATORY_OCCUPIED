@@ -1,5 +1,10 @@
-.price {
-  font-size: 6rem;
+.display {
+  text-align: center;
+  margin: 1rem;
+  margin-bottom: 1rem;
+
+  font-size: 10vh;
   font-weight: bold;
-  height: 7rem;
+
+  transition: all 0.3s;
 }

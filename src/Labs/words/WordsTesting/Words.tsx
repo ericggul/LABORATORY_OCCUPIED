@@ -1,8 +1,5 @@
 import style from "./Words.module.scss";
-import { useState, useEffect, useRef, useCallback } from "react";
-import { debounce } from "../../../functions/timer";
-import classNames from "classnames";
-import { clearInterval } from "timers";
+
 const TEXT = "Esquivons Les Ecchymoses des Esquimaux aux Mots Exquis ";
 const LENGTH = 16;
 

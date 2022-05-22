@@ -10,11 +10,11 @@ import TornadoA from "../../PreOccupied/Icons/Likes/IconsCanvasAnimate/Tornado/A
 import TornadoB from "../../PreOccupied/Icons/Likes/IconsCanvasAnimate/Tornado/B";
 
 import IconsCanvasStaticTesting from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/Testing";
-import Autumn from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#Autumn";
-import Blossoms from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#Blossoms";
-import Falls from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#Falls";
-import FirstSnow from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#FirstSnow";
-import Ocean from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/#Ocean";
+import Autumn from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/Autumn";
+import Blossoms from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/Blossoms";
+import Falls from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/Falls";
+import FirstSnow from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/FirstSnow";
+import Ocean from "../../PreOccupied/Icons/Likes/IconsCanvasStatic/MonoTone/Ocean";
 
 import HumansTesting from "../../PreOccupied/Icons/Humans/HumansTesting";
 import Humans1 from "../../PreOccupied/Icons/Humans/Circles/Humans1";
