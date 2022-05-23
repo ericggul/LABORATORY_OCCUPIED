@@ -4,14 +4,12 @@ import Header from "../../layout/Header";
 import { AUDIO_DATA } from "../Data/data";
 import Headphones from "../assets/headphones.svg";
 
-import { useHistory } from "react-router-dom";
-import useResize from "../../../../hooks/useResize";
+import { useNavigate } from "react-router-dom";
+
 import ShitgaContainer from "../../Artworks/ShitgaContainer/Shitga";
 
 export default function Audio() {
-  const [windowWidth, windowHeight] = useResize();
-
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <div className={style.container}>
       <Header title="오디오 가이드" url="/main" />
@@ -30,7 +28,7 @@ export default function Audio() {
             <div
               className={style.audio}
               key={i}
-              onClick={() => history.push(`/audio-guide/${i}`)}
+              onClick={() => navigate(`/audio-guide/${i}`)}
               style={{ animationDelay: `${1 + i * 0.05}s` }}
             >
               <img src={Headphones} alt="오디오 가이드" />

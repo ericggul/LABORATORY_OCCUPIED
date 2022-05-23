@@ -10,13 +10,11 @@ const getRandom = (a: number, b: number) => Math.random() * (b - a) + a;
 const SingleSeries = ({ salesData, pos }: any) => {
   const [show, setShow] = useState(false);
 
-  const opacity = useMemo(() => getRandom(0.1, 1), []);
-  const fontSize = useMemo(() => 1, []);
   const color = useMemo(() => `hsl(166, 100%, ${getRandom(61, 100)}%)`, []);
   useEffect(() => {
     let timeout = setTimeout(() => {
       setShow(true);
-    }, getRandom(getRandom(2000, 5000), 15000));
+    }, getRandom(getRandom(2000, 5000), 10000));
 
     return () => clearTimeout(timeout);
   }, [salesData]);
@@ -26,7 +24,6 @@ const SingleSeries = ({ salesData, pos }: any) => {
       style={{
         left: `${pos.x}px`,
         color,
-        fontSize: `${fontSize}rem`,
       }}
     >
       {salesData >= 15 &&
@@ -57,7 +54,7 @@ export default function TimeSeriesSector() {
     <div className={style.container}>
       <div className={style.header}>
         <h1>싯가</h1>
-        <p>작품 가격 추세</p>
+        <p>작품 가격 추세(단위: 원)</p>
       </div>
 
       <div className={style.footer}>

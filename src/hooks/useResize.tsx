@@ -19,14 +19,12 @@ function useResize() {
     const documentClientWidth = document.documentElement.clientWidth;
     setWindowWidth(documentClientWidth);
   }, []);
-  const debouncedOnResize = useMemo(() => debounce(onResize, 50), [onResize]);
 
   useEffect(() => {
-    window.addEventListener("resize", debouncedOnResize);
-    debouncedOnResize();
+    window.addEventListener("resize", onResize);
 
-    return () => window.removeEventListener("resize", debouncedOnResize);
-  }, [debouncedOnResize]);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   return [windowWidth, windowHeight];
 }

@@ -1,16 +1,14 @@
 import style from "./style.module.scss";
 
-import { useHistory } from "react-router-dom";
-import useResize from "../../../hooks/useResize";
+import { useNavigate } from "react-router-dom";
+
 import ShitgaContainer from "../Artworks/ShitgaContainer/Shitga";
 
 import Link from "./assets/link.svg";
 import { DATA } from "./data";
 
 export default function Audio() {
-  const [windowWidth, windowHeight] = useResize();
-
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <div className={style.container}>
       <div className={style.introduction}>
@@ -29,19 +27,17 @@ export default function Audio() {
         <p>예술의전당 청년미술상점</p>
       </div>
       <div className={style.navigatorList}>
-        {DATA.map((data, i) => {
-          return (
-            <div
-              className={style.navigator}
-              key={i}
-              onClick={() => history.push(data.url)}
-              style={{ animationDelay: `${1.25 + i * 0.05}s` }}
-            >
-              <img src={Link} alt="세부 페이지 링크" />
-              {data.title}
-            </div>
-          );
-        })}
+        {DATA.map((data, i) => (
+          <div
+            className={style.navigator}
+            key={i}
+            onClick={() => navigate(data.url)}
+            style={{ animationDelay: `${1.25 + i * 0.05}s` }}
+          >
+            <img src={Link} alt="세부 페이지 링크" />
+            {data.title}
+          </div>
+        ))}
       </div>
     </div>
   );

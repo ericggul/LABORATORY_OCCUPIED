@@ -1,15 +1,15 @@
 import style from "./style.module.scss";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import GoBack from "../assets/go-back.svg";
 
 export default function Header({ title, url, backHidden = false }: any) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <div className={style.container}>
       <img
         className={style.left}
-        onClick={() => (url ? history.push(url) : history.goBack())}
+        onClick={() => (url ? navigate(url) : navigate("/shitga"))}
         src={GoBack}
         alt="뒤로가기"
         style={{ opacity: backHidden ? 0 : 1 }}

@@ -31,9 +31,10 @@ const fibonacci = (a: number) => {
 };
 
 export default function Shitga() {
-  const [draw, setDraw] = useState<any>(null);
   useEffect(() => {
-    setDraw(new App());
+    const draw = new App();
+
+    return () => draw.destroy();
   }, []);
 
   return <div className={style.container} id="CanvasWrapper"></div>;
@@ -56,6 +57,8 @@ class App {
 
   scale: any;
 
+  resizeEvent: any;
+
   constructor() {
     this.wrapper = document.getElementById("CanvasWrapper");
     this.canvas = document.createElement("canvas");
@@ -63,7 +66,6 @@ class App {
     this.ctx = this.canvas.getContext("2d");
 
     this.resize();
-    window.addEventListener("resize", this.resize.bind(this));
   }
 
   resize() {
@@ -91,6 +93,11 @@ class App {
     this.ctx.fillStyle = "white";
     this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
     this.init();
+  }
+
+  destroy() {
+    this.canvas.remove();
+    this.numbers = 0;
   }
 
   init() {

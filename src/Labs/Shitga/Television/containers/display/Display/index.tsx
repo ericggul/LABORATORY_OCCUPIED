@@ -6,18 +6,14 @@ import TestImg3 from "../../../assets/test3.jpeg";
 
 const getRandom = (a: number, b: number) => Math.random() * (b - a) + a;
 
-export default function Display() {
+export default function Display({ url }: any) {
   useEffect(() => {
-    const render = new App(TestImg3);
+    const render = new App(url ? url : TestImg3);
     return () => {
       render.destroy();
     };
-  }, []);
-  return (
-    <div className={style.container}>
-      <div id="wrapper" className={style.wrapper} />
-    </div>
-  );
+  }, [url]);
+  return <div id="wrapper" className={style.wrapper} />;
 }
 
 class App {
@@ -77,7 +73,9 @@ class App {
 
     this.isLoaded = false;
     this.image = new Image();
+    this.image.crossOrigin = "Anonymous";
     this.image.src = image;
+
     this.image.onload = () => {
       this.isLoaded = true;
       this.drawImage();
@@ -86,6 +84,8 @@ class App {
 
   destroy() {
     cancelAnimationFrame(this.animationRequest);
+    this.canvas.remove();
+    this.tmpCanvas.remove();
     this.imgData = null;
     this.isLoaded = false;
   }
@@ -168,6 +168,9 @@ class App {
       this.stageHeight
     );
 
+    this.ctx.fillStyle = "black";
+    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+
     this.drawDots();
   }
 
@@ -212,7 +215,10 @@ class App {
     this.interval = 5;
     this.delta = 0;
     this.elapsedTime = 0;
-    this.animate();
+
+    setTimeout(() => {
+      this.animate();
+    }, 1000);
   }
 
   animate() {
@@ -223,14 +229,26 @@ class App {
     if (this.delta > this.interval) {
       this.then = Date.now();
       this.elapsedTime++;
+
       this.ctx.fillStyle = "black";
       this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+
       this.dots.forEach((dot: any) => {
         dot.animate(this.ctx, this.elapsedTime);
       });
+
+      if (this.elapsedTime === 3700) {
+        this.finished();
+      }
     }
 
     this.animationRequest = requestAnimationFrame(this.animate.bind(this));
+  }
+
+  finished() {
+    this.destroy();
+    window.location.href =
+      "https://laboratory-occupied.com/television-display-finished";
   }
 }
 
@@ -242,6 +260,8 @@ class Dot {
   radiusTarget: any;
   radiusSpeed: any;
   radiusDelta: any;
+
+  finalRadiusDisminishingSpeed: any;
 
   pixelSize: any;
   rgb: any;
@@ -262,6 +282,8 @@ class Dot {
   colorDelta: any;
 
   blank: boolean;
+
+  opacity: any;
 
   constructor(pos: any, radius: any, pixelSize: any, rgb: any) {
     this.pos = pos;
@@ -287,14 +309,20 @@ class Dot {
     this.pixelSize = pixelSize;
     this.rgb = rgb;
     this.blank = false;
+
+    this.opacity = 0;
+    this.finalRadiusDisminishingSpeed = 1;
   }
 
   animate(ctx: any, time: any) {
-    const t = time - 30;
+    if (time >= 0 && time < 50) {
+      this.opacity += 0.02;
+    }
+    const t = time - 100;
 
     let CYCLE = 100;
 
-    if (t < CYCLE * 16) {
+    if (t > 0 && t < CYCLE * 16) {
       //size radius adjust
       const radiusCycle = t % CYCLE;
 
@@ -418,18 +446,28 @@ class Dot {
         this.radius += (this.originalRadius - this.radiusTarget) / 3;
       }
     } else if (t >= CYCLE * 30 && t < CYCLE * 31) {
-      this.radius += 0.1;
-    } else if (t >= CYCLE * 31 && t < CYCLE * 33) {
-      this.radius -= 0.25;
+      const SHORT_CYCLE = 5;
+      const localT = t - CYCLE * 30;
+      const radiusCycle = localT % SHORT_CYCLE;
+      //radius
+      if (radiusCycle >= 0 && radiusCycle < 2) {
+        this.radius -= (this.originalRadius - this.radiusTarget) / 2;
+      } else if (radiusCycle >= 3 && radiusCycle < 4) {
+        this.radius += this.originalRadius - this.radiusTarget;
+      }
+    } else if (t >= CYCLE * 31 && t < CYCLE * 35) {
+      this.finalRadiusDisminishingSpeed -= 0.04;
+      this.radius += this.finalRadiusDisminishingSpeed;
       this.cornerRadius -= 0.25;
       this.cornerRadius = Math.max(this.cornerRadius, 0);
       this.radius = Math.max(this.radius, 0);
     }
 
-    if (t >= 0 && t < CYCLE * 35) {
-      ctx.fillStyle = `rgb(${this.rgb.red}, ${this.rgb.green}, ${this.rgb.blue})`;
+    if (t < CYCLE * 35) {
+      ctx.fillStyle = `rgba(${this.rgb.red}, ${this.rgb.green}, ${this.rgb.blue}, ${this.opacity})`;
       this.blank ? this.drawBlank(ctx) : this.drawRounded(ctx);
     }
+
     //color adjust
     this.rgb.red += Math.sin(time * 0.01) * 0.1;
   }

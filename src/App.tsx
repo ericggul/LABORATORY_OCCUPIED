@@ -3,8 +3,8 @@ import "./App.css";
 
 import {
   Route,
-  Switch,
-  Redirect,
+  Routes,
+  Navigate,
   BrowserRouter as Router,
 } from "react-router-dom";
 
@@ -98,8 +98,6 @@ import Depth4 from "./Labs/Depth/Depth4/Depth4";
 
 import Rainbow from "./Labs/Rainbow/Rainbow";
 import WaatTesting from "./Labs/Waat/WaatTesting";
-
-import ComponentsTesting from "./Labs/Components/ComponentsTesting/Components";
 
 import Facade1 from "./Labs/Facade/Facade1/Facade1";
 import Facade2 from "./Labs/Facade/Facade2/Facade2";
@@ -247,419 +245,320 @@ import XismRoutes from "./Routes/PreOccupied/Xism";
 import ScoringRoutes from "./Routes/PreOccupied/Scoring";
 import ButtonsRoutes from "./Routes/PreOccupied/UIStudy";
 
-import styled from "styled-components";
 import LoadingPage from "./Pages/LoadingPage/LoadingPage";
-const LoadingWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 function App() {
   return (
     <Router>
-      <Suspense
-        fallback={
-          <LoadingWrapper>
-            <LoadingPage />
-          </LoadingWrapper>
-        }
-      >
-        <Switch>
-          <Route exact path="/lobby" component={MainPage} />
-          <Route exact path="/archived" component={ArchivedPage} />
+      <Suspense fallback={<LoadingPage />}>
+        <Routes>
+          <Route path="/lobby" element={<MainPage />} />
+          <Route path="/archived" element={<ArchivedPage />} />
 
-          <Route exact path="/area1" component={Area1} />
-          <Route exact path="/area2" component={Area2} />
-          <Route exact path="/area3" component={Area3} />
-          <Route exact path="/area4" component={Area4} />
-          <Route exact path="/area5" component={Area5} />
-          <Route exact path="/area6" component={Area6} />
-          <Route exact path="/areatesting" component={AreaTesting} />
+          <Route path="/area1" element={<Area1 />} />
+          <Route path="/area2" element={<Area2 />} />
+          <Route path="/area3" element={<Area3 />} />
+          <Route path="/area4" element={<Area4 />} />
+          <Route path="/area5" element={<Area5 />} />
+          <Route path="/area6" element={<Area6 />} />
+          <Route path="/areatesting" element={<AreaTesting />} />
 
           <Route
-            exact
             path="/radialgradienttesting"
-            component={RadialGradientTesting}
+            element={<RadialGradientTesting />}
           />
 
-          <Route exact path="/uturn" component={UTurn} />
-          <Route exact path="/ur1" component={UR1} />
-          <Route exact path="/urscreen" component={URScreen} />
-          <Route exact path="/ugrid" component={UGrid} />
+          <Route path="/uturn" element={<UTurn />} />
+          <Route path="/ur1" element={<UR1 />} />
+          <Route path="/urscreen" element={<URScreen />} />
+          <Route path="/ugrid" element={<UGrid />} />
 
-          <Route exact path="/tonetesting" component={ToneTesting} />
+          <Route path="/tonetesting" element={<ToneTesting />} />
 
-          <Route exact path="/bounce-music" component={BounceMusic} />
-          <Route exact path="/taang" component={Taang} />
+          <Route path="/bounce-music" element={<BounceMusic />} />
+          <Route path="/taang" element={<Taang />} />
 
-          <Route
-            exact
-            path="/text-blink-testing"
-            component={TextBlinkTesting}
-          />
-          <Route exact path="/spike" component={Spike} />
-          <Route exact path="/writings" component={Writings} />
+          <Route path="/text-blink-testing" element={<TextBlinkTesting />} />
+          <Route path="/spike" element={<Spike />} />
+          <Route path="/writings" element={<Writings />} />
 
-          <Route exact path="/calculator" component={Calculator} />
-          <Route exact path="/clock" component={Clock} />
-          <Route exact path="/clock2" component={Clock2} />
-          <Route exact path="/dollar" component={Dollar} />
+          <Route path="/calculator" element={<Calculator />} />
+          <Route path="/clock" element={<Clock />} />
+          <Route path="/clock2" element={<Clock2 />} />
+          <Route path="/dollar" element={<Dollar />} />
 
-          <Route exact path="/email" component={Email} />
+          <Route path="/email" element={<Email />} />
 
-          <Route exact path="/sixteentesting" component={SixteenTesting} />
+          <Route path="/sixteentesting" element={<SixteenTesting />} />
 
-          <Route exact path="/square" component={Square} />
-          <Route exact path="/square2" component={Square2} />
-          <Route exact path="/square3" component={Square3} />
-          <Route exact path="/square4" component={Square4} />
-          <Route exact path="/square5" component={Square5} />
-          <Route exact path="/square6" component={Square6} />
-          <Route exact path="/square7" component={Square7} />
-          <Route exact path="/square8" component={Square8} />
-          <Route exact path="/square9" component={Square9} />
-          <Route exact path="/square10" component={Square10} />
-          <Route exact path="/square11" component={Square11} />
-          <Route exact path="/square12" component={Square12} />
-          <Route exact path="/square13" component={Square13} />
-          <Route exact path="/square14" component={Square14} />
+          <Route path="/square" element={<Square />} />
+          <Route path="/square2" element={<Square2 />} />
+          <Route path="/square3" element={<Square3 />} />
+          <Route path="/square4" element={<Square4 />} />
+          <Route path="/square5" element={<Square5 />} />
+          <Route path="/square6" element={<Square6 />} />
+          <Route path="/square7" element={<Square7 />} />
+          <Route path="/square8" element={<Square8 />} />
+          <Route path="/square9" element={<Square9 />} />
+          <Route path="/square10" element={<Square10 />} />
+          <Route path="/square11" element={<Square11 />} />
+          <Route path="/square12" element={<Square12 />} />
+          <Route path="/square13" element={<Square13 />} />
+          <Route path="/square14" element={<Square14 />} />
 
-          <Route exact path="/persian" component={Persian} />
-          <Route exact path="/persian2" component={Persian2} />
+          <Route path="/persian" element={<Persian />} />
+          <Route path="/persian2" element={<Persian2 />} />
 
-          <Route exact path="/depth" component={Depth} />
-          <Route exact path="/depth2" component={Depth2} />
-          <Route exact path="/depth3" component={Depth3} />
-          <Route exact path="/depth4" component={Depth4} />
+          <Route path="/depth" element={<Depth />} />
+          <Route path="/depth2" element={<Depth2 />} />
+          <Route path="/depth3" element={<Depth3 />} />
+          <Route path="/depth4" element={<Depth4 />} />
 
-          <Route
-            exact
-            path="/componentsTesting"
-            component={ComponentsTesting}
-          />
+          <Route path="/facade1" element={<Facade1 />} />
+          <Route path="/facade2" element={<Facade2 />} />
+          <Route path="/pompidou" element={<Pompidou />} />
 
-          <Route exact path="/facade1" component={Facade1} />
-          <Route exact path="/facade2" component={Facade2} />
-          <Route exact path="/pompidou" component={Pompidou} />
+          <Route path="/smudge" element={<Smudge />} />
 
-          <Route exact path="/smudge" component={Smudge} />
+          <Route path="/243" element={<TFT />} />
+          <Route path="/242" element={<TwoFourtyTwo />} />
+          <Route path="/241" element={<TFO />} />
+          <Route path="/991" element={<NineNintyOne />} />
+          <Route path="/773" element={<SevenSeventyThree />} />
 
-          <Route exact path="/243" component={TFT} />
-          <Route exact path="/242" component={TwoFourtyTwo} />
-          <Route exact path="/241" component={TFO} />
-          <Route exact path="/991" component={NineNintyOne} />
-          <Route exact path="/773" component={SevenSeventyThree} />
+          <Route path="/neontesting" element={<NeonTesting />} />
+          <Route path="/neon" element={<Neon />} />
+          <Route path="/neon2" element={<Neon2 />} />
+          <Route path="/neon3" element={<Neon3 />} />
+          <Route path="/neon4" element={<Neon4 />} />
+          <Route path="/neon5" element={<Neon5 />} />
+          <Route path="/zizzic" element={<Zizzic />} />
+          <Route path="/monet" element={<Monet />} />
+          <Route path="/quotes" element={<Quotes />} />
+          <Route path="/rotate-permanent" element={<Circus />} />
 
-          <Route exact path="/neontesting" component={NeonTesting} />
-          <Route exact path="/neon" component={Neon} />
-          <Route exact path="/neon2" component={Neon2} />
-          <Route exact path="/neon3" component={Neon3} />
-          <Route exact path="/neon4" component={Neon4} />
-          <Route exact path="/neon5" component={Neon5} />
-          <Route exact path="/zizzic" component={Zizzic} />
-          <Route exact path="/monet" component={Monet} />
-          <Route exact path="/quotes" component={Quotes} />
-          <Route exact path="/rotate-permanent" component={Circus} />
+          <Route path="/rose-selavy" element={<RoseSelavy />} />
+          <Route path="/words1" element={<Words1 />} />
+          <Route path="/words2" element={<Words2 />} />
+          <Route path="/orchestra" element={<Orchestra />} />
+          <Route path="/pipeorgan" element={<PipeOrgan />} />
+          <Route path="/textspread" element={<TextSpread />} />
+          <Route path="/wordstesting" element={<WordsTesting />} />
 
-          <Route exact path="/rose-selavy" component={RoseSelavy} />
-          <Route exact path="/words1" component={Words1} />
-          <Route exact path="/words2" component={Words2} />
-          <Route exact path="/orchestra" component={Orchestra} />
-          <Route exact path="/pipeorgan" component={PipeOrgan} />
-          <Route exact path="/textspread" component={TextSpread} />
-          <Route exact path="/wordstesting" component={WordsTesting} />
+          <Route path="/linestesting" element={<LinesTesting />} />
 
-          <Route exact path="/linestesting" component={LinesTesting} />
+          <Route path="/monochrome1" element={<Monochrome1 />} />
+          <Route path="/monochrome2" element={<Monochrome2 />} />
+          <Route path="/monochrome3" element={<Monochrome3 />} />
+          <Route path="/monochrome4" element={<Monochrome4 />} />
+          <Route path="/monochrometesting" element={<MonochromeTesting />} />
 
-          <Route exact path="/monochrome1" component={Monochrome1} />
-          <Route exact path="/monochrome2" component={Monochrome2} />
-          <Route exact path="/monochrome3" component={Monochrome3} />
-          <Route exact path="/monochrome4" component={Monochrome4} />
-          <Route
-            exact
-            path="/monochrometesting"
-            component={MonochromeTesting}
-          />
-
-          <Route exact path="/waattesting" component={WaatTesting} />
+          <Route path="/waattesting" element={<WaatTesting />} />
           {/* 
-          <Route exact path="/face-rec" component={FaceRec} />
-          <Route exact path="/blindness1" component={Blindness1} />
-          <Route exact path="/blindness2" component={Blindness2} />
-          <Route exact path="/blindness3" component={Blindness3} /> */}
+          <Route  path="/face-rec" element={<FaceRec/>} />
+          <Route  path="/blindness1" element={<Blindness1/>} />
+          <Route  path="/blindness2" element={<Blindness2/>} />
+          <Route  path="/blindness3" element={<Blindness3/>} /> */}
 
           <Route
-            exact
             path="/device-motion-testing"
-            component={DeviceMotionTesting}
+            element={<DeviceMotionTesting />}
           />
+          <Route path="/device-motion-panel" element={<DeviceMotionPanel />} />
+
+          <Route path="/building" element={<Building />} />
+
+          <Route path="/instagrammable" element={<Instagrammable />} />
+
+          <Route path="/division" element={<Division />} />
+
+          <Route path="/sasektesting" element={<SasekTesting />} />
+          <Route path="/functionstesting" element={<FunctionsTesting />} />
+          <Route path="/pow3" element={<Pow3 />} />
+          <Route path="/tan" element={<Tan />} />
+          <Route path="/tanh" element={<TanH />} />
+
+          <Route path="/rainbow" element={<Rainbow />} />
+
+          <Route path="/leveltesting" element={<LevelTesting />} />
+
+          <Route path="/lsd" element={<Lsd />} />
+          <Route path="/nightsky" element={<Nightsky />} />
+          <Route path="/verticals" element={<Verticals />} />
+          <Route path="/emergence" element={<Emergence />} />
+
+          <Route path="/audiotesting" element={<AudioTesting />} />
+          <Route path="/audiodefault" element={<AudioDefault />} />
+          <Route path="/ragethenight" element={<RageTheNight />} />
+          <Route path="/ragethenight2" element={<RageTheNight2 />} />
+          <Route path="/bluedanube1" element={<BlueDanube1 />} />
+          <Route path="/bluedanube2" element={<BlueDanube2 />} />
+          <Route path="/bluedanube3" element={<BlueDanube3 />} />
+
+          <Route path="/mouseballmove" element={<MouseBallMove />} />
+          <Route path="/meteo" element={<Meteo />} />
+          <Route path="/meteocircle" element={<MeteoCircle />} />
+
+          <Route path="/ballsgradient" element={<BallsGradient />} />
+          <Route path="/ballsbounce1" element={<BallsBounce1 />} />
+          <Route path="/ballsbounce2" element={<BallsBounce2 />} />
+          <Route path="/ballsbounce3" element={<BallsBounce3 />} />
+          <Route path="/ballsconverge" element={<BallsConverge />} />
+
+          <Route path="/color1" element={<Color1 />} />
+          <Route path="/color2" element={<Color2 />} />
+
+          <Route path="/texture1" element={<Texture1 />} />
+          <Route path="/texture2" element={<Texture2 />} />
+          <Route path="/texture3" element={<Texture3 />} />
+          <Route path="/texture4" element={<Texture4 />} />
+          <Route path="/texture5" element={<Texture5 />} />
+          <Route path="/texturetesting" element={<TextureTesting />} />
+
+          <Route path="/largeTexture1" element={<LargeTexture1 />} />
+
+          <Route path="/largeTexture2" element={<LargeTexture2 />} />
           <Route
-            exact
-            path="/device-motion-panel"
-            component={DeviceMotionPanel}
-          />
-
-          <Route exact path="/building" component={Building} />
-
-          <Route exact path="/instagrammable" component={Instagrammable} />
-
-          <Route exact path="/division" component={Division} />
-
-          <Route exact path="/sasektesting" component={SasekTesting} />
-          <Route exact path="/functionstesting" component={FunctionsTesting} />
-          <Route exact path="/pow3" component={Pow3} />
-          <Route exact path="/tan" component={Tan} />
-          <Route exact path="/tanh" component={TanH} />
-
-          <Route exact path="/rainbow" component={Rainbow} />
-
-          <Route exact path="/leveltesting" component={LevelTesting} />
-
-          <Route exact path="/lsd" component={Lsd} />
-          <Route exact path="/nightsky" component={Nightsky} />
-          <Route exact path="/verticals" component={Verticals} />
-          <Route exact path="/emergence" component={Emergence} />
-
-          <Route exact path="/audiotesting" component={AudioTesting} />
-          <Route exact path="/audiodefault" component={AudioDefault} />
-          <Route exact path="/ragethenight" component={RageTheNight} />
-          <Route exact path="/ragethenight2" component={RageTheNight2} />
-          <Route exact path="/bluedanube1" component={BlueDanube1} />
-          <Route exact path="/bluedanube2" component={BlueDanube2} />
-          <Route exact path="/bluedanube3" component={BlueDanube3} />
-
-          <Route exact path="/mouseballmove" component={MouseBallMove} />
-          <Route exact path="/meteo" component={Meteo} />
-          <Route exact path="/meteocircle" component={MeteoCircle} />
-
-          <Route exact path="/ballsgradient" component={BallsGradient} />
-          <Route exact path="/ballsbounce1" component={BallsBounce1} />
-          <Route exact path="/ballsbounce2" component={BallsBounce2} />
-          <Route exact path="/ballsbounce3" component={BallsBounce3} />
-          <Route exact path="/ballsconverge" component={BallsConverge} />
-
-          <Route exact path="/color1" component={Color1} />
-          <Route exact path="/color2" component={Color2} />
-
-          <Route exact path="/texture1" component={Texture1} />
-          <Route exact path="/texture2" component={Texture2} />
-          <Route exact path="/texture3" component={Texture3} />
-          <Route exact path="/texture4" component={Texture4} />
-          <Route exact path="/texture5" component={Texture5} />
-          <Route exact path="/texturetesting" component={TextureTesting} />
-
-          <Route exact path="/largeTexture1" component={LargeTexture1} />
-
-          <Route exact path="/largeTexture2" component={LargeTexture2} />
-          <Route
-            exact
             path="/largetexturetesting"
-            component={LargeTextureTesting}
+            element={<LargeTextureTesting />}
           />
 
-          <Route exact path="/elevator" component={Elevator} />
-          <Route exact path="/elevatorcircular" component={ElevatorCircular} />
+          <Route path="/elevator" element={<Elevator />} />
+          <Route path="/elevatorcircular" element={<ElevatorCircular />} />
           <Route
-            exact
             path="/elevatorrectangular"
-            component={ElevatorRectangular}
+            element={<ElevatorRectangular />}
           />
-          <Route exact path="/parkinglot" component={ParkingLot} />
+          <Route path="/parkinglot" element={<ParkingLot />} />
 
           <Route
-            exact
             path="/towardsdivergencetesting"
-            component={TowardsDivergenceTesting}
+            element={<TowardsDivergenceTesting />}
           />
 
-          <Route exact path="/chandelier1" component={Chandelier1} />
-          <Route exact path="/chandelier2" component={Chandelier2} />
-          <Route exact path="/chandelier3" component={Chandelier3} />
+          <Route path="/chandelier1" element={<Chandelier1 />} />
+          <Route path="/chandelier2" element={<Chandelier2 />} />
+          <Route path="/chandelier3" element={<Chandelier3 />} />
 
-          <Route
-            exact
-            path="/datacirclestesting"
-            component={DataCirclesTesting}
-          />
+          <Route path="/datacirclestesting" element={<DataCirclesTesting />} />
 
-          <Route exact path="/nineone1" component={NineOne1} />
+          <Route path="/nineone1" element={<NineOne1 />} />
 
-          <Route exact path="/verticaltesting" component={VerticalTesting} />
-          <Route exact path="/vertical1" component={Vertical1} />
-          <Route exact path="/vertical2" component={Vertical2} />
-          <Route exact path="/vertical3" component={Vertical3} />
+          <Route path="/verticaltesting" element={<VerticalTesting />} />
+          <Route path="/vertical1" element={<Vertical1 />} />
+          <Route path="/vertical2" element={<Vertical2 />} />
+          <Route path="/vertical3" element={<Vertical3 />} />
 
-          <Route
-            exact
-            path="/quadriptychtesting"
-            component={QuadriptychTesting}
-          />
+          <Route path="/quadriptychtesting" element={<QuadriptychTesting />} />
 
-          <Route exact path="/cities" component={Cities} />
-          <Route exact path="/quadrisquare12" component={QuadriSquare12} />
+          <Route path="/cities" element={<Cities />} />
+          <Route path="/quadrisquare12" element={<QuadriSquare12 />} />
 
-          <Route
-            exact
-            path="/whitemonumentstest"
-            component={WhiteMonumentsTest}
-          />
-          <Route exact path="/whitemonuments1" component={WhiteMonuments1} />
-          <Route exact path="/whitemonuments2" component={WhiteMonuments2} />
-          <Route exact path="/whitemonuments3" component={WhiteMonuments3} />
-          <Route exact path="/whitemonuments4" component={WhiteMonuments4} />
-          <Route exact path="/whitemonuments5" component={WhiteMonuments5} />
-          <Route exact path="/whitemonuments6" component={WhiteMonuments6} />
-          <Route exact path="/whitemonuments7" component={WhiteMonuments7} />
-          <Route exact path="/whitemonuments8" component={WhiteMonuments8} />
-          <Route exact path="/whitemonuments9" component={WhiteMonuments9} />
-          <Route exact path="/whitemonuments10" component={WhiteMonuments10} />
-          <Route exact path="/whitemonuments11" component={WhiteMonuments11} />
-          <Route exact path="/whitemonuments12" component={WhiteMonuments12} />
-          <Route exact path="/whitemonuments13" component={WhiteMonuments13} />
+          <Route path="/whitemonumentstest" element={<WhiteMonumentsTest />} />
+          <Route path="/whitemonuments1" element={<WhiteMonuments1 />} />
+          <Route path="/whitemonuments2" element={<WhiteMonuments2 />} />
+          <Route path="/whitemonuments3" element={<WhiteMonuments3 />} />
+          <Route path="/whitemonuments4" element={<WhiteMonuments4 />} />
+          <Route path="/whitemonuments5" element={<WhiteMonuments5 />} />
+          <Route path="/whitemonuments6" element={<WhiteMonuments6 />} />
+          <Route path="/whitemonuments7" element={<WhiteMonuments7 />} />
+          <Route path="/whitemonuments8" element={<WhiteMonuments8 />} />
+          <Route path="/whitemonuments9" element={<WhiteMonuments9 />} />
+          <Route path="/whitemonuments10" element={<WhiteMonuments10 />} />
+          <Route path="/whitemonuments11" element={<WhiteMonuments11 />} />
+          <Route path="/whitemonuments12" element={<WhiteMonuments12 />} />
+          <Route path="/whitemonuments13" element={<WhiteMonuments13 />} />
 
-          <Route exact path="/mapboxtesting" component={MapBoxTesting} />
-          <Route exact path="/mapssunflower" component={MapsSunflower} />
-          <Route exact path="/mapstesting" component={MapsTesting} />
+          <Route path="/mapboxtesting" element={<MapBoxTesting />} />
+          <Route path="/mapssunflower" element={<MapsSunflower />} />
+          <Route path="/mapstesting" element={<MapsTesting />} />
 
-          <Route exact path="/diamond" component={Diamond} />
-          <Route exact path="/diamond2" component={Diamond2} />
-          <Route exact path="/vapor" component={Vapor} />
-          <Route exact path="/vapor2" component={Vapor2} />
-          <Route exact path="/movement" component={Movement} />
-          <Route exact path="/movement2" component={Movement2} />
-          <Route
-            exact
-            path="/patternstestingcentre"
-            component={TestingCentre}
-          />
+          <Route path="/diamond" element={<Diamond />} />
+          <Route path="/diamond2" element={<Diamond2 />} />
+          <Route path="/vapor" element={<Vapor />} />
+          <Route path="/vapor2" element={<Vapor2 />} />
+          <Route path="/movement" element={<Movement />} />
+          <Route path="/movement2" element={<Movement2 />} />
+          <Route path="/patternstestingcentre" element={<TestingCentre />} />
 
-          <Route exact path="/singasong" component={SingaSong} />
-          <Route exact path="/snowfall" component={Snowfall} />
+          <Route path="/singasong" element={<SingaSong />} />
+          <Route path="/snowfall" element={<Snowfall />} />
 
-          <Route exact path="/blt" component={BLT} />
-          <Route exact path="/bob" component={BOB} />
-          <Route exact path="/wht" component={WHT} />
-          <Route exact path="/wob" component={WOB} />
+          <Route path="/blt" element={<BLT />} />
+          <Route path="/bob" element={<BOB />} />
+          <Route path="/wht" element={<WHT />} />
+          <Route path="/wob" element={<WOB />} />
 
           {FourPillarsRoutes.map((route: any, i: any) => (
-            <Route
-              exact
-              key={i}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={i} path={route.path} element={<route.component />} />
           ))}
           {CircleVariantsRoutes.map((route: any, i: any) => (
-            <Route
-              exact
-              key={i}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={i} path={route.path} element={<route.component />} />
           ))}
           {ClementAugustinRoutes.map((route: any, i: any) => (
-            <Route
-              exact
-              key={i}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={i} path={route.path} element={<route.component />} />
           ))}
           {GridVariantsRoutes.map((route: any, i: any) => (
-            <Route
-              exact
-              key={i}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={i} path={route.path} element={<route.component />} />
           ))}
           {ThreeRoutes.map((route: any, i: any) => (
             <Route
-              exact
               key={i}
               path={`/three${route.path}`}
-              component={route.component}
+              element={<route.component />}
             />
           ))}
           {ArtNoveauRoutes.map((route: any, i: any) => (
-            <Route
-              exact
-              key={i}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={i} path={route.path} element={<route.component />} />
           ))}
           {ShitgaRoutes.map((route: any, i: any) => (
-            <Route
-              exact
-              key={i}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={i} path={route.path} element={<route.component />} />
           ))}
           {ParticlesRoutes.map((route: any, i: any) => (
-            <Route
-              exact
-              key={i}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={i} path={route.path} element={<route.component />} />
           ))}
           {StraightRoutes.map((route: any, i: any) => (
-            <Route
-              exact
-              key={i}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={i} path={route.path} element={<route.component />} />
           ))}
           {DomestikaTutorialsRoutes.map((route: any, i: any) => (
             <Route
-              exact
               key={i}
               path={`/domestika${route.path}`}
-              component={route.component}
+              element={<route.component />}
             />
           ))}
 
           {IconsRoutes.map((route: any, i: any) => (
             <Route
-              exact
               key={i}
               path={`${route.path}`}
-              component={route.component}
+              element={<route.component />}
             />
           ))}
 
           {XismRoutes.map((route: any, i: any) => (
             <Route
-              exact
               key={i}
               path={`${route.path}`}
-              component={route.component}
+              element={<route.component />}
             />
           ))}
           {ScoringRoutes.map((route: any, i: any) => (
             <Route
-              exact
               key={i}
               path={`${route.path}`}
-              component={route.component}
+              element={<route.component />}
             />
           ))}
           {ButtonsRoutes.map((route: any, i: any) => (
             <Route
-              exact
               key={i}
               path={`${route.path}`}
-              component={route.component}
+              element={<route.component />}
             />
           ))}
-          <Redirect exact to="/shitga" />
-        </Switch>
+          <Route path="*" element={<Navigate to="/shitga" replace />} />
+        </Routes>
       </Suspense>
     </Router>
   );

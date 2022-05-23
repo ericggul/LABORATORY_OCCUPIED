@@ -42,10 +42,14 @@
     bottom: 0;
     top: 0;
     margin: auto;
+
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    font-size: 1.4rem;
 
     div {
       @keyframes appear {

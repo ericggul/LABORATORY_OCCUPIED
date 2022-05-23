@@ -1,6 +1,7 @@
 import style from "./style.module.scss";
 import Header from "../../../../layout/Header";
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Modal from "./Modal";
 import WaitingModal from "./WaitingModal";
@@ -11,9 +12,12 @@ export default function Upload() {
   const [imageFile, setImageFile] = useState<any>(!null);
   const [image, setImage] = useState<any>(!null);
   const [imagePresent, setImagePresent] = useState(false);
-  const [phoneModal, setPhoneModal] = useState(false);
 
+  //modals
+  const [phoneModal, setPhoneModal] = useState(false);
   const [waitingModal, setWaitingModal] = useState(false);
+
+  const navigate = useNavigate();
 
   const onImageChange = (e: any) => {
     if (e.target.files.length !== 0) {
@@ -43,6 +47,7 @@ export default function Upload() {
       await uploadImage({ image: imageFile, nickname: text });
       alert("업로드 완료!");
       setWaitingModal(false);
+      navigate("/television-complete");
     },
 
     [imageFile]

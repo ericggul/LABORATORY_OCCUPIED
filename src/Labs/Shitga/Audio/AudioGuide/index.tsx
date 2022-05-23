@@ -1,7 +1,7 @@
 import style from "./style.module.scss";
 import { useMemo } from "react";
 import ReactAudioPlayer from "react-audio-player";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { AUDIO_DATA } from "../Data/data";
 
 import Headphones from "../assets/headphones.svg";
@@ -9,9 +9,12 @@ import Header from "../../layout/Header";
 
 export default function Audio() {
   const params = useParams<any>();
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const audio = useMemo(() => AUDIO_DATA[parseInt(params.idx)], [params]);
+  const audio = useMemo(
+    () => AUDIO_DATA[parseInt(params.idx ? params?.idx : "3")],
+    [params]
+  );
 
   return (
     <div className={style.container}>
@@ -21,10 +24,12 @@ export default function Audio() {
         {AUDIO_DATA.map((audio, i) => (
           <div
             key={i}
-            onClick={() => history.push(`/audio-guide/${i}`)}
+            onClick={() => navigate(`/audio-guide/${i}`)}
             style={{
               boxShadow:
-                i == params.idx ? "0 0 1rem white" : "0 0 1rem transparent",
+                i === parseInt(params.idx ? params?.idx : "3")
+                  ? "0 0 1rem white"
+                  : "0 0 1rem transparent",
             }}
           >
             <img src={Headphones} alt="오디오 가이드" />

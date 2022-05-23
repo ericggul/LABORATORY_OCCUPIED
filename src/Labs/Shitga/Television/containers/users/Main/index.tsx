@@ -1,7 +1,7 @@
 import style from "./style.module.scss";
 
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //container
 import Header from "../../../../layout/Header";
@@ -14,7 +14,7 @@ import Screen from "../../../assets/screen.svg";
 import Search from "../../../assets/search.svg";
 
 export default function Main() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [modalStatus, setModalStatus] = useState("off");
 
@@ -34,7 +34,7 @@ export default function Main() {
       </div>
       <div
         className={style.button}
-        onClick={() => history.push("/television-upload")}
+        onClick={() => navigate("/television-upload")}
       >
         작품 참여하기
       </div>

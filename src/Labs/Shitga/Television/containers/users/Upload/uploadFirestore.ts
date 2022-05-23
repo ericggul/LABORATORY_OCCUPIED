@@ -15,13 +15,13 @@ export default async function uploadImage({ image, nickname }: any) {
   const imageRef = await addDoc(televisionRef, {
     createdAt: serverTimestamp(),
     nickname,
+    presented: false,
   });
-  console.log("19");
+
   const idRef = ref(
     storageRef,
     `${imageRef.id}_image.${image.type.split("/").pop()}`
   );
-  console.log("24");
 
   try {
     await uploadBytesResumable(idRef, image, {
@@ -31,7 +31,6 @@ export default async function uploadImage({ image, nickname }: any) {
     console.log(e);
   }
 
-  console.log("28");
   const imageUrl = await getDownloadURL(idRef);
   const parentChatRef = doc(televisionRef, imageRef.id);
   await updateDoc(parentChatRef, {
