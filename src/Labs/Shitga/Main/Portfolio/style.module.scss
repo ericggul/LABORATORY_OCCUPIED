@@ -5,13 +5,21 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  overflow-y: scroll;
   background-color: black;
   color: white;
+}
+
+.description {
+  width: 80vw;
+  margin-bottom: 3rem;
+  margin-top: 7rem;
 }
 
 .navigatorList {
   width: 100vw;
   margin: 1.5rem 0;
+  margin-bottom: 4rem;
 
   text-align: center;
 
@@ -27,18 +35,14 @@
     width: 100vw;
 
     border-top: 1px solid white;
-    font-size: 1.2rem;
-    padding: 0.5rem 0;
+    font-size: 1rem;
+    padding: 0.4rem 0;
 
     img {
       position: absolute;
       left: 2rem;
       height: 1.4rem;
       width: auto;
-    }
-
-    &:last-child {
-      border-bottom: 1px solid white;
     }
   }
 }

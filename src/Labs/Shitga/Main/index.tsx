@@ -15,15 +15,12 @@ export default function Audio() {
     <div className={style.container}>
       <div className={style.introduction}>
         <h1>싯가</h1>
-
         <p>시가의 잘못된 표현. 흔히 시기에 따라 변하는 물건값을 일컫음.</p>
       </div>
 
-      {windowWidth < 768 && (
-        <div className={style.shitga}>
-          <ShitgaContainer />
-        </div>
-      )}
+      <div className={style.shitga}>
+        <ShitgaContainer />
+      </div>
 
       <div className={style.description}>
         <p>최정윤 작가</p>
@@ -32,7 +29,6 @@ export default function Audio() {
         <p>예술의전당 청년미술상점</p>
       </div>
       <div className={style.navigatorList}>
-        <p>Link</p>
         {DATA.map((data, i) => {
           return (
             <div

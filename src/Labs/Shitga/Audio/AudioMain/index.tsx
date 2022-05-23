@@ -16,11 +16,9 @@ export default function Audio() {
     <div className={style.container}>
       <Header title="오디오 가이드" url="/main" />
 
-      {windowWidth < 768 && (
-        <div className={style.shitga}>
-          <ShitgaContainer />
-        </div>
-      )}
+      <div className={style.shitga}>
+        <ShitgaContainer />
+      </div>
 
       <div className={style.description}>
         <p>예술의전당 청년미술상점</p>

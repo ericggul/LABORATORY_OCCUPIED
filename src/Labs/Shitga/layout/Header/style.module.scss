@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   width: 100vw;
-  height: 7rem;
+  height: 3rem;
   color: white;
   display: flex;
   align-items: center;
@@ -12,23 +12,22 @@
   transition: all 0.3s;
 
   .left {
-    width: 2rem;
+    width: 1.5rem;
     height: auto;
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-right: 1.5rem;
     cursor: pointer;
     transition: all 0.3s;
   }
 
   .main {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
   }
 
   .right {
     font-size: 0.8rem;
-    width: 5rem;
-    margin-right: 0.5rem;
+    width: 4rem;
     text-align: center;
   }
 }

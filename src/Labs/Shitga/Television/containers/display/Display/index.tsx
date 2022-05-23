@@ -1,8 +1,8 @@
 import style from "./style.module.scss";
 import { useEffect } from "react";
-import TestImg from "../../assets/test1.jpeg";
-import TestImg2 from "../../assets/test2.png";
-import TestImg3 from "../../assets/test3.jpeg";
+import TestImg from "../../../assets/test1.jpeg";
+import TestImg2 from "../../../assets/test2.png";
+import TestImg3 from "../../../assets/test3.jpeg";
 
 const getRandom = (a: number, b: number) => Math.random() * (b - a) + a;
 
@@ -64,7 +64,7 @@ class App {
     this.wrapper.appendChild(this.canvas);
 
     this.tmpCanvas = document.createElement("canvas");
-    this.tmpCanvas.setAttribute("style", "opcity: 0");
+    this.tmpCanvas.setAttribute("style", "opacity: 0");
     this.wrapper.appendChild(this.tmpCanvas);
 
     this.ctx = this.canvas.getContext("2d");

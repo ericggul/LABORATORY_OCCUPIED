@@ -11,7 +11,8 @@ import Portfolio from "../Labs/Shitga/Main/Portfolio";
 import AudioMain from "../Labs/Shitga/Audio/AudioMain";
 import AudioGuide from "../Labs/Shitga/Audio/AudioGuide";
 
-import TelevisionDisplay from "../Labs/Shitga/Television/containers/Display";
+import TelevisionDisplay from "../Labs/Shitga/Television/containers/display/Display";
+import TelevisionUpload from "../Labs/Shitga/Television/containers/users/Upload";
 import TelevisionMain from "../Labs/Shitga/Television/containers/users/Main";
 
 import ShitgaTesting from "../Labs/Shitga/Artworks/ShitgaTesting/Shitga";
@@ -29,6 +30,7 @@ const ShitgaRoutes = [
   { path: "/audio", component: AudioMain },
 
   { path: "/television-display", component: TelevisionDisplay },
+  { path: "/television-upload", component: TelevisionUpload },
   { path: "/television", component: TelevisionMain },
 
   { path: "/shitga-current-price", component: DataSector },

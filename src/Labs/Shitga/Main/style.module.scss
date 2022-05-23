@@ -4,7 +4,8 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  overflow-y: scroll;
   background-color: black;
   color: white;
 }
@@ -18,11 +19,12 @@
   }
 }
 .introduction {
+  margin-top: 1rem;
   text-align: center;
   max-width: 90%;
   h1 {
     font-size: 2.5rem;
-    margin: 0.6rem;
+    margin: 0.5rem;
   }
   p {
     font-size: 0.8rem;
@@ -32,15 +34,15 @@
 }
 
 .shitga {
-  width: calc(min(70vw, 40vh));
-  height: calc(min(70vw, 40vh));
-  margin: 1rem;
+  width: calc(min(70vw, 30vh));
+  height: calc(min(70vw, 30vh));
+  margin: 0.3rem;
   animation: appear 0.7s backwards;
   animation-delay: 0.8s;
 }
 
 .description {
-  margin: 1rem;
+  margin: 0.5rem;
   text-align: center;
 
   animation: appear 0.7s backwards;
@@ -51,24 +53,17 @@
   }
 
   p {
-    margin: 0.1rem;
+    margin: 0;
+    font-size: 0.8rem;
   }
 }
 
 .navigatorList {
   width: 100vw;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
+  margin-bottom: 4rem;
 
   text-align: center;
-  p {
-    font-size: 1.2rem;
-    margin: 0;
-    margin-bottom: 1rem;
-    font-weight: bold;
-
-    animation: appear 0.7s backwards;
-    animation-delay: 1.2s;
-  }
   .navigator {
     cursor: pointer;
     position: relative;
@@ -81,8 +76,8 @@
     width: 100vw;
 
     border-top: 1px solid white;
-    font-size: 1.2rem;
-    padding: 0.5rem 0;
+    font-size: 1rem;
+    padding: 0.4rem 0;
 
     animation: appear 0.7s backwards;
 

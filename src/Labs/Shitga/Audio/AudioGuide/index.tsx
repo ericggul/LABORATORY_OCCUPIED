@@ -33,6 +33,10 @@ export default function Audio() {
         ))}
       </div>
 
+      <div className={style.audioPlayer}>
+        <ReactAudioPlayer src={audio.audio} controls autoPlay />
+      </div>
+
       <div className={style.link}>
         <a
           href={audio.links.url}
@@ -43,11 +47,6 @@ export default function Audio() {
           <div className={style.button}>{audio.links.description}</div>
         </a>
       </div>
-
-      <div className={style.audioPlayer}>
-        <ReactAudioPlayer src={audio.audio} controls />
-      </div>
-
       <div className={style.scriptWrapper}>
         <div className={style.header}>Script</div>
         <div className={style.script}>

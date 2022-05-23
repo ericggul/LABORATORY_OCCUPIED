@@ -1,0 +1,44 @@
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.background {
+  backdrop-filter: blur(2px);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(200, 200, 200, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  animation: appear 0.5s;
+
+  transition: all 0.3s;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 3;
+  width: 14rem;
+  padding: 1rem;
+  height: 7rem;
+  background: black;
+  color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.3s;
+}
