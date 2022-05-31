@@ -10,7 +10,7 @@ import Modal from "../Modal";
 
 //assets
 import Writings from "../../../assets/message-square-lines.svg";
-import Screen from "../../../assets/screen.svg";
+
 import Search from "../../../assets/search.svg";
 
 export default function Main() {

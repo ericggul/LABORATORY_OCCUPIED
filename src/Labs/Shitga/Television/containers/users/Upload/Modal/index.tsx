@@ -9,7 +9,12 @@ const Modal = ({ closeModal, handleSubmit }: any) => {
       <div className={style.modal} onClick={(ev) => ev.stopPropagation()}>
         <div className={style.header}>
           <h3>닉네임을 입력해주세요</h3>
-          <p>본 정보는 이미지 식별용 외의 용도로 사용되지 않습니다.</p>
+
+          {text !== "" ? (
+            <p>버튼을 클릭하면 작품 참여가 완료됩니다.</p>
+          ) : (
+            <p>본 정보는 이미지 식별용 외의 용도로 사용되지 않습니다.</p>
+          )}
         </div>
         <div className={style.inputWrapper}>
           <input

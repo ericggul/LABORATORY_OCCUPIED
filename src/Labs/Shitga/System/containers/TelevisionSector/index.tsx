@@ -53,7 +53,7 @@ export default function TelevisionSector() {
   return (
     <div className={style.container}>
       <div className={style.header}>
-        <h1>참여형 작품</h1>
+        <h2>참여형 작품</h2>
         <h1>텔레비전에 내가 나왔으면</h1>
         <h1>정말 좋겠네 정말 좋겠네</h1>
       </div>
@@ -89,7 +89,7 @@ export default function TelevisionSector() {
           <div className={style.imageWrapper}>
             <img src={QR} alt="QR코드" />
           </div>
-          <h2>텔레비전(이 모니터)에 투영된 내 모습이 궁금하다면?</h2>
+          <h2>텔레비전에 투영된 내 모습이 궁금하다면?</h2>
           <h1>QR코드로 참여하기</h1>
         </div>
       )}

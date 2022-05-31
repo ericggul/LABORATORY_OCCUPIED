@@ -288,7 +288,7 @@ class Dot {
   }
 
   animate(ctx: any, time: any) {
-    const t = time - 30;
+    const t = time;
     let CYCLE = 100;
     const radiusCycle = t % CYCLE;
 

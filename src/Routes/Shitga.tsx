@@ -5,6 +5,8 @@ import PriceSector from "../Labs/Shitga/System/containers/PriceSector";
 import TimeSeriesSector from "../Labs/Shitga/System/containers/TimeSeriesSector";
 import TelevisionSector from "../Labs/Shitga/System/containers/TelevisionSector";
 
+import Shitga113 from "../Labs/Shitga/Artworks/Shitga113/Shitga";
+
 //user
 import Main from "../Labs/Shitga/Main";
 import Portfolio from "../Labs/Shitga/Main/Portfolio";
@@ -22,7 +24,16 @@ import TelevisionMain from "../Labs/Shitga/Television/containers/users/Main";
 import ShitgaTesting from "../Labs/Shitga/Artworks/ShitgaTesting/Shitga";
 
 const ShitgaRoutes = [
+  //should not be on user side
   { path: "/shitga-system", component: ShitgaSystem },
+  { path: "/television-display", component: TelevisionDisplay },
+  { path: "/shitga113", component: Shitga113 },
+
+  { path: "/price-sector", component: PriceSector },
+
+  { path: "/time-sector", component: TimeSeriesSector },
+
+  { path: "/television-sector", component: TelevisionSector },
 
   //user interfaces
   { path: "/shitga", component: Main },
@@ -35,7 +46,6 @@ const ShitgaRoutes = [
     path: "/television-display-finished",
     component: TelevisionDisplayFinished,
   },
-  { path: "/television-display", component: TelevisionDisplay },
 
   { path: "/television-complete", component: TelevisionComplete },
   { path: "/television-upload", component: TelevisionUpload },
@@ -43,7 +53,6 @@ const ShitgaRoutes = [
 
   { path: "/shitga-current-price", component: DataSector },
 
-  { path: "/time-seris-sector", component: TimeSeriesSector },
   { path: "/shitga-testing", component: ShitgaTesting },
 ];
 

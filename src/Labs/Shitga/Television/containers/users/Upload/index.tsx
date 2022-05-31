@@ -99,9 +99,9 @@ export default function Upload() {
       ) : (
         <div className={style.instruction}>
           <p>
-            인물 사진, 풍경 사진 등 텔레비전에 상영될만한 사진을 올려주세요.
+            인물 사진, 풍경 사진 등 텔레비전에 상영될 나만의 사진을 올려주세요.
           </p>
-          <p>정방향 사진을 추천합니다.</p>
+          <p>정방향 사진의 사용을 추천합니다.</p>
         </div>
       )}
 

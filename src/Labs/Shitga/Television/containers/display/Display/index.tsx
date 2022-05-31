@@ -311,7 +311,7 @@ class Dot {
     this.blank = false;
 
     this.opacity = 0;
-    this.finalRadiusDisminishingSpeed = 1;
+    this.finalRadiusDisminishingSpeed = 0.1;
   }
 
   animate(ctx: any, time: any) {
@@ -456,7 +456,7 @@ class Dot {
         this.radius += this.originalRadius - this.radiusTarget;
       }
     } else if (t >= CYCLE * 31 && t < CYCLE * 35) {
-      this.finalRadiusDisminishingSpeed -= 0.04;
+      this.finalRadiusDisminishingSpeed -= 0.01;
       this.radius += this.finalRadiusDisminishingSpeed;
       this.cornerRadius -= 0.25;
       this.cornerRadius = Math.max(this.cornerRadius, 0);

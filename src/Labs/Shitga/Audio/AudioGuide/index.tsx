@@ -42,6 +42,15 @@ export default function Audio() {
         <ReactAudioPlayer src={audio.audio} controls autoPlay />
       </div>
 
+      <div className={style.scriptWrapper}>
+        <div className={style.header}>Script</div>
+        <div className={style.script}>
+          {audio.description.split("\n").map((line: string, idx: number) => {
+            return <div key={idx}>{line}</div>;
+          })}
+        </div>
+      </div>
+
       <div className={style.link}>
         <a
           href={audio.links.url}
@@ -51,14 +60,6 @@ export default function Audio() {
         >
           <div className={style.button}>{audio.links.description}</div>
         </a>
-      </div>
-      <div className={style.scriptWrapper}>
-        <div className={style.header}>Script</div>
-        <div className={style.script}>
-          {audio.description.split("\n").map((line: string, idx: number) => {
-            return <div key={idx}>{line}</div>;
-          })}
-        </div>
       </div>
     </div>
   );

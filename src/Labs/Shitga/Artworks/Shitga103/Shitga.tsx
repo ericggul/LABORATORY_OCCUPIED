@@ -67,11 +67,10 @@ class App {
     this.wrapper.appendChild(this.canvas);
     this.ctx = this.canvas.getContext("2d");
 
-    this.resize();
-    window.addEventListener("resize", this.resize.bind(this));
+    this.sizeSetup();
   }
 
-  resize() {
+  sizeSetup() {
     this.stageWidth = this.wrapper.clientWidth;
     this.stageHeight = this.wrapper.clientHeight;
 
@@ -94,7 +93,7 @@ class App {
     );
     this.ctx.fillStyle = "white";
     this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
-    this.init2();
+    this.init();
   }
 
   capture() {
@@ -109,7 +108,7 @@ class App {
     link.remove();
   }
 
-  init2() {
+  init() {
     for (let i = 0; i < this.numbers; i++) {
       for (let j = 0; j < this.numbers; j++) {
         this.ctx.fillStyle = `rgba(0, 0, 0, ${getRandom(0.8, 1)})`;

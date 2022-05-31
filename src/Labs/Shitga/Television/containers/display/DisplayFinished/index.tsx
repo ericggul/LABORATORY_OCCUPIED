@@ -6,12 +6,12 @@ import QR from "./assets/QR.png";
 export default function DisplayFinished() {
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     navigate("/data-sector");
-  //   }, 15000);
-  //   return () => clearTimeout(timeout);
-  // }, []);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigate("/shitga-system");
+    }, 15000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <div className={style.container}>
@@ -20,8 +20,7 @@ export default function DisplayFinished() {
       <div className={style.imageWrapper}>
         <img src={QR} alt="QR코드" />
       </div>
-      <p>나의 사진도 모니터 위에 송출해보세요.</p>
-      <h1>참여링크</h1>
+      <p>참여 링크</p>
     </div>
   );
 }
