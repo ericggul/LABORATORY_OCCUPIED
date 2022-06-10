@@ -47,7 +47,7 @@ class App {
     this.canvas.height = this.stageHeight;
     this.ctx.scale(1, 1);
 
-    this.gridUnitWidth = 36;
+    this.gridUnitWidth = 80;
     this.particlesNumX = Math.ceil(this.stageWidth / this.gridUnitWidth);
     this.particlesNumY = Math.ceil(this.stageHeight / this.gridUnitWidth);
 
@@ -82,8 +82,8 @@ class Particle {
     this.unitSize = this.size / this.divider;
 
     this.fillStyle = {
-      h: 220,
-      s: getRandom(50, 100),
+      h: 320,
+      s: 100,
       l: 50,
     };
   }
@@ -95,19 +95,18 @@ class Particle {
       }%)`;
     for (let i = 0; i < this.divider; i++) {
       for (let j = 0; j < this.divider; j++) {
-        const horizontalOrVertical = Math.random() < 0.5 ? 0 : 1;
+        const hOV = Math.random() < 0.5 ? 0 : 1;
         let grd = ctx.createLinearGradient(
           this.x + i * this.unitSize,
           this.y + j * this.unitSize,
-          this.x + (i + horizontalOrVertical) * this.unitSize,
-          this.y + (j + 1 - horizontalOrVertical) * this.unitSize
+          this.x + (i + 1 - hOV) * this.unitSize,
+          this.y + (j + 1) * this.unitSize
         );
         const colorA = getRandomColor();
         const colorB = getRandomColor();
-        grd.addColorStop(0.2, colorA);
-        grd.addColorStop(0.8, colorB);
+        grd.addColorStop(0, colorA);
+        grd.addColorStop(1, colorB);
 
-        ctx.fillStyle = grd;
         ctx.fillRect(
           this.x + i * this.unitSize,
           this.y + j * this.unitSize,

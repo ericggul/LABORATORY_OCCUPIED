@@ -31,6 +31,20 @@ import TiltedGrid2 from "../Labs/Grid/TiltedGrid/TiltedGrid2/TiltedGrid";
 import TiltedGrid3 from "../Labs/Grid/TiltedGrid/TiltedGrid3/TiltedGrid";
 import TiltedGrid4 from "../Labs/Grid/TiltedGrid/TiltedGrid4/TiltedGrid";
 
+import OnOffGrid1 from "../Labs/Grid/OnOffGrid/OnOffGrid1/OnOffGrid";
+import OnOffGrid2 from "../Labs/Grid/OnOffGrid/OnOffGrid2/OnOffGrid";
+import OnOffGrid3 from "../Labs/Grid/OnOffGrid/OnOffGrid3/OnOffGrid";
+import OnOffGrid4 from "../Labs/Grid/OnOffGrid/OnOffGrid4/OnOffGrid";
+import OnOffGrid5 from "../Labs/Grid/OnOffGrid/OnOffGrid5/OnOffGrid";
+import OnOffGrid6 from "../Labs/Grid/OnOffGrid/OnOffGrid6/OnOffGrid";
+import OnOffGrid7 from "../Labs/Grid/OnOffGrid/OnOffGrid7/OnOffGrid";
+import OnOffGrid8 from "../Labs/Grid/OnOffGrid/OnOffGrid8/OnOffGrid";
+import OnOffGrid9 from "../Labs/Grid/OnOffGrid/OnOffGrid9/OnOffGrid";
+import OnOffGrid10 from "../Labs/Grid/OnOffGrid/OnOffGrid10/OnOffGrid";
+import OnOffGrid11 from "../Labs/Grid/OnOffGrid/OnOffGrid11/OnOffGrid";
+import OnOffGrid12 from "../Labs/Grid/OnOffGrid/OnOffGrid12/OnOffGrid";
+import OnOffGrid13 from "../Labs/Grid/OnOffGrid/OnOffGrid13/OnOffGrid";
+import OnOffGrid14 from "../Labs/Grid/OnOffGrid/OnOffGrid14/OnOffGrid";
 import OnOffGridTesting from "../Labs/Grid/OnOffGrid/OnOffGridTesting/OnOffGrid";
 
 import GridColor1 from "../Labs/Grid/GridColor/GridColor1/GridColor1";
@@ -38,6 +52,8 @@ import GridColor2 from "../Labs/Grid/GridColor/GridColor2/GridColor2";
 import GridColor3 from "../Labs/Grid/GridColor/GridColor3/GridColor3";
 import GridColor4 from "../Labs/Grid/GridColor/GridColor4/GridColor4";
 import GridColor5 from "../Labs/Grid/GridColor/GridColor5/GridColor5";
+
+import GridGridTesting from "../Labs/Grid/GridGrid/GridGridTesting";
 
 const OriginalGridRoutes = [
   { path: "/gridtesting", component: GridTestingCentre },
@@ -75,6 +91,20 @@ const TiltedGridRoutes = [
 ];
 
 const OnOffGridRoutes = [
+  { path: "/onoffgrid1", component: OnOffGrid1 },
+  { path: "/onoffgrid2", component: OnOffGrid2 },
+  { path: "/onoffgrid3", component: OnOffGrid3 },
+  { path: "/onoffgrid4", component: OnOffGrid4 },
+  { path: "/onoffgrid5", component: OnOffGrid5 },
+  { path: "/onoffgrid6", component: OnOffGrid6 },
+  { path: "/onoffgrid7", component: OnOffGrid7 },
+  { path: "/onoffgrid8", component: OnOffGrid8 },
+  { path: "/onoffgrid9", component: OnOffGrid9 },
+  { path: "/onoffgrid10", component: OnOffGrid10 },
+  { path: "/onoffgrid11", component: OnOffGrid11 },
+  { path: "/onoffgrid12", component: OnOffGrid12 },
+  { path: "/onoffgrid13", component: OnOffGrid13 },
+  { path: "/onoffgrid14", component: OnOffGrid14 },
   { path: "/onoffgridtesting", component: OnOffGridTesting },
 ];
 
@@ -85,12 +115,18 @@ const GridColorRoutes = [
   { path: "/gridcolor4", component: GridColor4 },
   { path: "/gridcolor5", component: GridColor5 },
 ];
+
+const GridGridRoutes = [
+  { path: "/gridgridtesting", component: GridGridTesting },
+];
+
 const GridVariantsRoutes = [
   ...OriginalGridRoutes,
   ...AnimatedGridRoutes,
   ...TiltedGridRoutes,
   ...OnOffGridRoutes,
   ...GridColorRoutes,
+  ...GridGridRoutes,
 ];
 
 export default GridVariantsRoutes;

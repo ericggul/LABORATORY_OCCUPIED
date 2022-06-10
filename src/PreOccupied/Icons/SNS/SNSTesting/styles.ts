@@ -9,6 +9,7 @@ interface PosWrapper {
   top: number;
   fontSize: number;
   color: any;
+  rotate: number;
 }
 
 export const IconWrapper = styled.div<PosWrapper>`
@@ -18,5 +19,5 @@ export const IconWrapper = styled.div<PosWrapper>`
   font-size: ${(props) => props.fontSize}px;
   color: ${(props) => props.color};
   height: auto;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(${(props) => props.rotate}deg);
 `;

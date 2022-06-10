@@ -47,13 +47,29 @@ class App {
     this.canvas.height = this.stageHeight;
     this.ctx.scale(1, 1);
 
-    this.gridUnitWidth = 36;
+    this.gridUnitWidth = 20;
     this.particlesNumX = Math.ceil(this.stageWidth / this.gridUnitWidth);
     this.particlesNumY = Math.ceil(this.stageHeight / this.gridUnitWidth);
 
-    for (let i = 0; i < this.stageWidth; i += this.gridUnitWidth) {
-      for (let j = 0; j < this.stageHeight; j += this.gridUnitWidth) {
-        this.particles.push(new Particle(i, j, this.gridUnitWidth));
+    for (
+      let i = 0;
+      i < this.stageWidth + this.gridUnitWidth * 5;
+      i += this.gridUnitWidth
+    ) {
+      for (
+        let j = 0;
+        j < this.stageHeight + this.gridUnitWidth * 5;
+        j += this.gridUnitWidth
+      ) {
+        this.particles.push(
+          new Particle(
+            i,
+            j,
+            this.gridUnitWidth,
+            this.stageWidth,
+            this.stageHeight
+          )
+        );
       }
     }
     this.draw();
@@ -74,7 +90,7 @@ class Particle {
 
   fillStyle: any;
 
-  constructor(x: any, y: any, size: any) {
+  constructor(x: any, y: any, size: any, width: any, height: any) {
     this.x = x;
     this.y = y;
     this.size = size;
@@ -82,37 +98,37 @@ class Particle {
     this.unitSize = this.size / this.divider;
 
     this.fillStyle = {
-      h: 220,
-      s: getRandom(50, 100),
-      l: 50,
+      h: getRandom(50, 200) + (100 * y) / height,
+      s: 100,
+      l: getRandom(75, 90) - Math.abs(x / width - 0.5) * 60,
     };
   }
 
   draw(ctx: any) {
     const getRandomColor = () =>
-      `hsl(${this.fillStyle.h + getRandom(-50, 50)}, ${this.fillStyle.s}%, ${
+      `hsla(${this.fillStyle.h + getRandom(-100, 100)}, ${this.fillStyle.s}%, ${
         this.fillStyle.l
-      }%)`;
+      }%, 0.08)`;
     for (let i = 0; i < this.divider; i++) {
       for (let j = 0; j < this.divider; j++) {
-        const horizontalOrVertical = Math.random() < 0.5 ? 0 : 1;
+        const hOV = Math.random() < 0.5 ? 0 : 1;
         let grd = ctx.createLinearGradient(
           this.x + i * this.unitSize,
           this.y + j * this.unitSize,
-          this.x + (i + horizontalOrVertical) * this.unitSize,
-          this.y + (j + 1 - horizontalOrVertical) * this.unitSize
+          this.x + (i + 1 - hOV) * this.unitSize,
+          this.y + (j + 1) * this.unitSize
         );
         const colorA = getRandomColor();
         const colorB = getRandomColor();
-        grd.addColorStop(0.2, colorA);
-        grd.addColorStop(0.8, colorB);
-
+        grd.addColorStop(0, colorA);
+        grd.addColorStop(1, colorB);
         ctx.fillStyle = grd;
+
         ctx.fillRect(
-          this.x + i * this.unitSize,
-          this.y + j * this.unitSize,
-          this.unitSize,
-          this.unitSize
+          this.x + (i - 7) * this.unitSize,
+          this.y + (j - 7) * this.unitSize,
+          this.unitSize * 15,
+          this.unitSize * 25
         );
       }
     }

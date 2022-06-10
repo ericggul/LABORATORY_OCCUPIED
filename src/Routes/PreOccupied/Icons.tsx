@@ -28,6 +28,10 @@ import HumanRandomRotate2 from "../../PreOccupied/Icons/Humans/Random/RandomRota
 import HumanRandomRotate3 from "../../PreOccupied/Icons/Humans/Random/RandomRotate3";
 import HumanRandomSimple from "../../PreOccupied/Icons/Humans/Random/RandomSimple";
 
+//SNS
+import SNSTesting from "PreOccupied/Icons/SNS/SNSTesting";
+import SNS1 from "PreOccupied/Icons/SNS/SNS1";
+
 const IconsRoutes = [
   { path: "/iconstesting", component: IconsTesting },
   { path: "/iconscanvastesting", component: IconsCanvasTesting },
@@ -66,10 +70,16 @@ const HumansRoutes = [
   { path: "/humanrandomsimple", component: HumanRandomSimple },
 ];
 
+const SNSRoutes = [
+  { path: "/snstesting", component: SNSTesting },
+  { path: "/sns1", component: SNS1 },
+];
+
 const ArtNoveauWholeRoutes = [
   ...IconsRoutes,
   ...IconCanvasAnimate,
   ...IconCanvasStatic,
   ...HumansRoutes,
+  ...SNSRoutes,
 ];
 export default ArtNoveauWholeRoutes;
