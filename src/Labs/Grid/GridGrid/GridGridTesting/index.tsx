@@ -99,7 +99,7 @@ class Particle {
 
     this.fillStyle = {
       h: getRandom(240, 280),
-      s: 100,
+      s: 0,
       l: getRandom(50, getRandom(70, 90)),
     };
   }

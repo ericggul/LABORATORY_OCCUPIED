@@ -11,7 +11,8 @@ interface Props {
 
 export const MapContainer = styled.div<Props>`
   height: 100vh;
-  ${(props) => (props.displayMap ? "opacity: .8" : "opacity : 0")}
+  ${(props) => (props.displayMap ? "opacity: 1" : "opacity : 0")};
+  transition: opacity 0.5s ease-in-out;
 `;
 
 export const Loading = styled.div`

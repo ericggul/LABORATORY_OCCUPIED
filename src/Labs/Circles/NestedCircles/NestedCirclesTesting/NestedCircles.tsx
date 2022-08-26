@@ -15,9 +15,16 @@ const discreteGenerator = (a: number, interval: number) => {
 };
 
 export default function NestedCircles() {
+  const [draw, setDraw] = useState<any>(null);
   useEffect(() => {
-    const app = new App();
+    setDraw(new App());
   }, []);
+  useEffect(() => {
+    if (draw) {
+      document.addEventListener("click", () => draw.capture());
+      return () => document.removeEventListener("click", () => draw.capture());
+    }
+  }, [draw]);
 
   return <div className={style.container} id="CanvasWrapper"></div>;
 }
@@ -47,8 +54,6 @@ class App {
     this.circleSets = [];
 
     this.resize();
-
-    window.requestAnimationFrame(this.animate.bind(this));
   }
 
   resize() {
@@ -58,42 +63,49 @@ class App {
     this.canvas.width = this.stageWidth;
     this.canvas.height = this.stageHeight;
     this.ctx.scale(1, 1);
+    this.init();
+  }
 
+  init() {
     this.maximumRadius = Math.min(this.stageHeight, this.stageHeight);
-    this.circleNum = 50000;
+    this.circleNum = 500000;
 
-    this.subdivision = 100;
+    this.subdivision = 50;
 
     for (let sdv = 0; sdv < this.subdivision; sdv++) {
       for (let i = 0; i < this.circleNum / this.subdivision; i++) {
         const radiusRange = getRandomFromArrayWithWeight(
-          [
-            // { min: 0.1, max: 0.105 },
-            // { min: 0.2, max: 0.21 },
-            { min: 0.01, max: 0.1 },
-          ],
-          [2]
+          [{ min: 0.01, max: 0.02 }],
+          [1]
         );
         const xRange = getRandomFromArrayWithWeight(
           [
-            { min: -0.5, max: 0.2 },
-            { min: 0, max: getRandom(0, 0.3) },
-            { min: 0.28, max: 0.4 },
-            { min: 0.38, max: 0.5 },
-            { min: 0.3, max: 0.69 },
-            { min: 0.7, max: 0.91 },
-            { min: 0.9, max: 1.5 },
+            { min: -0.05, max: 0.2 },
+
+            { min: 0.3, max: 0.5 },
+            { min: 0.6, max: 0.65 },
+            { min: 0.7, max: 0.81 },
+            { min: 0.9, max: 0.98 },
           ],
-          [1, 1, 1, 0.5, 3, 3, 1]
+          [2, 0.4, 0.2, 1, 1]
         );
 
         const yRange = getRandomFromArrayWithWeight(
-          [{ min: 0.4, max: 0.41 }],
-          [1]
+          [
+            { min: -0.1, max: 1.1 },
+            { min: -0.1, max: 0.1 },
+            { min: 0.1, max: 0.2 },
+            { min: 0.2, max: 0.21 },
+            { min: 0.28, max: 0.32 },
+            { min: 0.43, max: 0.63 },
+            { min: 0.72, max: 0.75 },
+            { min: 0.9, max: 1.1 },
+          ],
+          [1.3, 1, 0.1, 0.4, 0.7, 2, 0.1, 1]
         );
         this.circleSets.push({
           lineWidth: getRandom(0.01, 0.03),
-          color: { h: 0, s: 100, l: getRandom(30, 70) },
+          color: { h: 0, s: 100, l: getRandom(30, 100) },
           radius:
             getRandomFromArray([this.stageHeight, this.stageWidth]) *
             getRandom(radiusRange.min, radiusRange.max),
@@ -104,13 +116,26 @@ class App {
     }
 
     this.shuffledSets = shuffle(this.circleSets);
+    this.draw();
   }
 
-  animate() {
-    window.requestAnimationFrame(this.animate.bind(this));
-    this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
+  capture() {
+    console.log("handling..");
+    let dataURL = this.canvas.toDataURL("image/png");
+    var link = document.createElement("a");
+    link.download = "image.png";
+    link.href = dataURL;
 
-    this.shuffledSets.map((e: any) => this.drawSingle(e));
+    link.click();
+    console.log("downloaded..");
+    link.remove();
+  }
+
+  draw() {
+    this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
+    this.ctx.fillStyle = "white";
+    this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
+    this.shuffledSets.forEach((e: any) => this.drawSingle(e));
   }
 
   drawSingle(data: any) {

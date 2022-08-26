@@ -33,6 +33,9 @@ import NestedCircles7 from "../Labs/Circles/NestedCircles/NestedCircles7/NestedC
 import NestedCircles8 from "../Labs/Circles/NestedCircles/NestedCircles8/NestedCircles";
 import NestedCircles9 from "../Labs/Circles/NestedCircles/NestedCircles9/NestedCircles";
 import NestedCircles10 from "../Labs/Circles/NestedCircles/NestedCircles10/NestedCircles";
+import NestedCircles11 from "../Labs/Circles/NestedCircles/NestedCircles11/NestedCircles";
+import NestedCircles12 from "../Labs/Circles/NestedCircles/NestedCircles12/NestedCircles";
+import NestedCircles13 from "../Labs/Circles/NestedCircles/NestedCircles13/NestedCircles";
 
 import SemiCirclesTesting from "../Labs/Circles/SemiCircles/SemiCirclesTesting/SemiCircles";
 import SemiCircles1 from "../Labs/Circles/SemiCircles/SemiCircles1/SemiCircles";
@@ -83,6 +86,9 @@ const NestedCirclesRoutes = [
   { path: "/nestedcircles8", component: NestedCircles8 },
   { path: "/nestedcircles9", component: NestedCircles9 },
   { path: "/nestedcircles10", component: NestedCircles10 },
+  { path: "/nestedcircles11", component: NestedCircles11 },
+  { path: "/nestedcircles12", component: NestedCircles12 },
+  { path: "/nestedcircles13", component: NestedCircles13 },
 ];
 
 const SemiCirclesRoutes = [

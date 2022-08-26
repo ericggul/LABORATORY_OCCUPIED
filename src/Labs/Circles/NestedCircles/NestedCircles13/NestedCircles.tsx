@@ -68,7 +68,7 @@ class App {
 
   init() {
     this.maximumRadius = Math.min(this.stageHeight, this.stageHeight);
-    this.circleNum = 400000;
+    this.circleNum = 800000;
 
     this.subdivision = 100;
 
@@ -79,7 +79,7 @@ class App {
             { min: 0.01, max: 0.02 },
             { min: 0.15, max: 0.2 },
           ],
-          [1, 0.5]
+          [1, 0.1]
         );
         const xRange = getRandomFromArrayWithWeight(
           [

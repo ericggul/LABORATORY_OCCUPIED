@@ -1,4 +1,4 @@
-import style from "./SemiCircles.module.scss";
+import style from "./styles.module.scss";
 import {
   shuffle,
   getRandomFromArray,

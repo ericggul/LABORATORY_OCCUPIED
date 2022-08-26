@@ -1,6 +1,5 @@
 import { db, storage } from "../../../../../../utils/firebase/firebase";
 import { getDocs, collection, query, where } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export default async function retriveData() {
   const q = query(
