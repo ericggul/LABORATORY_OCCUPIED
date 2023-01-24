@@ -577,7 +577,7 @@ function App() {
                 element={<route.component />}
               />
             ))}
-            <Route path="*" element={<Navigate to="/shitga" replace />} />
+            <Route path="*" element={<Navigate to="/lobby" replace />} />
           </Routes>
         </Suspense>
       </Router>

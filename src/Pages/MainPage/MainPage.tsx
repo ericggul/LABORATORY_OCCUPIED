@@ -68,7 +68,8 @@ function MainPage() {
         className={style.footer}
         onClick={() => window.open("http://portfolio-jyc.org", "_blank")}
       >
-        Copyright &#169; 2022 Jeanyoon Choi
+        Copyright &#169; 2023 Jeanyoon Choi RCA IED Royal College of Art
+        Information Experience Design
       </div>
     </div>
   );
