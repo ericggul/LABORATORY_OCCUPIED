@@ -18,10 +18,11 @@ export default function DeviceMotion() {
   const { permission, acc } = useDeviceMotion(deviceMotionRequest);
 
   return (
-    <S.Container>
+    <S.Container onClick={() => setDeviceMotionRequest(true)}>
       <S.Button onClick={() => setDeviceMotionRequest(true)}>
         We need your permission
       </S.Button>
+      {deviceMotionRequest ? "yes" : "no"}
       {Object.entries(acc).map(([key, value], idx) => (
         <>
           <div>{key}</div>
